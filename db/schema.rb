@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_162040) do
+ActiveRecord::Schema.define(version: 2020_08_31_150629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cases", force: :cascade do |t|
+    t.bigint "country_id", null: false
     t.integer "total_cases"
     t.integer "new_cases"
     t.integer "total_deaths"
@@ -27,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_162040) do
     t.integer "stringency_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "country_id", null: false
     t.index ["country_id"], name: "index_cases_on_country_id"
   end
 
@@ -61,6 +61,9 @@ ActiveRecord::Schema.define(version: 2020_08_31_162040) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "phone_number", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -68,7 +71,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_162040) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "home_country"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

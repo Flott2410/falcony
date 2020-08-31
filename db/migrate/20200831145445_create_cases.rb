@@ -1,6 +1,7 @@
 class CreateCases < ActiveRecord::Migration[6.0]
   def change
     create_table :cases do |t|
+      t.references :country, null: false, foreign_key: true
       t.integer :total_cases
       t.integer :new_cases
       t.integer :total_deaths
@@ -10,6 +11,7 @@ class CreateCases < ActiveRecord::Migration[6.0]
       t.integer :new_tests
       t.integer :tests_per_case
       t.integer :stringency_index
+
 
       t.timestamps
     end
