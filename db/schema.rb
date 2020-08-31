@@ -37,23 +37,10 @@ ActiveRecord::Schema.define(version: 2020_08_31_151143) do
 
   create_table "indications", force: :cascade do |t|
     t.bigint "country_id", null: false
-    t.text "open"
-    t.text "quarantine"
-    t.text "test"
-    t.string "group_size_public"
-    t.string "masks_in_public"
-    t.string "tourism_accomodations"
-    t.string "restaurants"
-    t.string "bars_cafes"
-    t.string "beaches"
-    t.string "museums"
-    t.string "personal_services"
-    t.string "places_of_worship"
-    t.string "physical_distancing"
-    t.string "health_protocols"
-    t.string "public_transportation"
-    t.string "gatherings"
-    t.string "high_risk_areas"
+    t.string "name"
+    t.text "description"
+    t.string "status"
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_indications_on_country_id"
