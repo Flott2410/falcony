@@ -1,5 +1,4 @@
 class Trip < ApplicationRecord
-  belongs_to :country
   belongs_to :user
 
   belongs_to :origin, :class_name => 'Country'
