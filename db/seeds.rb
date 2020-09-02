@@ -8,6 +8,9 @@
 
 require 'pry-byebug'
 require 'date'
+# consider refactoring and separate seeds into separate files
+# require_relative './_indications'
+
 
 Country.destroy_all
 # Order of creation of seed: 1. countries, 2. cases, 3. indications, 4. users, 5. trips
@@ -137,5 +140,142 @@ end
 
 
 # Indication
-# TODO
+# It's imported from another file to avoid making this file too big
+
+puts 'Generating trips...'
+
+Indication.create!(
+  country: Country.first,
+  category: 'Travel',
+  name: 'open',
+  description: 'May I fly to this country?',
+  status: 'Travelling to Austria
+  Entry from a country with a stable COVID-19 situation is possible without restrictions. The corresponding countries are listed in Appendix A1 of the Entry Ordinance and are currently: Andorra, Belgium, Denmark, Germany, Estonia, Finland, France, Greece, Ireland, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, San Marino, Switzerland, Slovakia, Slovenia, Spain (only the Canary Islands), Czech Republic, Hungary, Vatican, United Kingdom and Cyprus.
+  Travelling from Austria or returning to Austria
+  Travel Information from the Ministry of Foreign Affairs can be found at www.bmeia.gv.at
+  Rules and Exceptions
+  The prerequisite to enter Austria is that the traveller has only resided in countries with a stable COVID-19 situation in the past ten days and is resident or habitually resident in Austria or in one of these countries.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Travel',
+  name: 'quarantine',
+  description: 'May I enter this country without being subject to a mandatory quarantine?',
+  status: 'Travellers from the following countries can enter or leave Austria without restrictions: Andorra, Belgium, Denmark, Germany, Estonia, Finland, France, Greece, Ireland, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg , Malta, Monaco, Netherlands, Norway, Poland, San Marino, Switzerland, Slovakia, Slovenia, Spain (only Canary Islands), Czech Republic, Hungary, Vatican and Cyprus. The regulation applies only to people who are residents in the listed countries or Austrian citizens. It is also a prerequisite that you have not been in any country other than Austria or those European countries in the past 10 days. You can find the latest provisions here: www.sozialministerium.at'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Travel',
+  name: 'test',
+  description: 'May I enter this country without a medical certificate or a negative test?',
+  # in this case the test info is equivalent to the quarantine info
+  status: 'Travellers from the following countries can enter or leave Austria without restrictions: Andorra, Belgium, Denmark, Germany, Estonia, Finland, France, Greece, Ireland, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg , Malta, Monaco, Netherlands, Norway, Poland, San Marino, Switzerland, Slovakia, Slovenia, Spain (only Canary Islands), Czech Republic, Hungary, Vatican and Cyprus. The regulation applies only to people who are residents in the listed countries or Austrian citizens. It is also a prerequisite that you have not been in any country other than Austria or those European countries in the past 10 days. You can find the latest provisions here: www.sozialministerium.at'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'tourism_accomodations',
+  description: 'Are tourism accommodations open?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'restaurants',
+  description: 'Are restaurants open?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter. All restaurants and catering facilities should close at 1 a.m..'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'bars_cafes',
+  description: 'Are bars & cafés open?',
+  # same as restaurants
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter. All restaurants and catering facilities should close at 1 a.m..'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'beaches',
+  description: 'Are beaches and tourist areas openly accessible?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'museums',
+  description: 'Are museums & heritage sites open?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'personal_services',
+  description: 'Are personal care services available?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter. If the minimum distance of one meter between customer and service provider cannot be maintained due to the nature of the service, this is only permitted if the risk of infection can be minimized by taking suitable protective measures.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Services',
+  name: 'places_of_worship',
+  description: 'Are places of worship accessible?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter. A mask must be worn in most places of worship.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Health & Safety',
+  name: 'high_risk_areas',
+  description: 'Are there any risk areas under lockdown in this country?',
+  status: 'No'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Health & Safety',
+  name: 'masks_in_public',
+  description: 'Is a mask required in public?',
+  status: 'Yes, a mask must be worn in certain areas: In grocery stores, public transport and taxis, during indoor events (except at the assigned seat), in cable cars, coaches and excursion boats, in gas stations, bank and post offices, in pharmacies, nursing homes and hospitals as well as in places where health and nursing services are provided and other services, if the 1 metre distance cannot be maintained or no other protective measures (e.g. plexiglass pane) are available. Special regulations apply to the federal states of Upper Austria and Carinthia.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Health & Safety',
+  name: 'physical_distancing',
+  description: 'Is physical distancing required?',
+  status: 'Yes. When entering public places, people who do not live in the same household must be kept at a distance of at least one meter.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Health & Safety',
+  name: 'health_protocols',
+  description: 'IHealth protocols for tourism services and tourists',
+  status: '<a href="https://www.sichere-gastfreundschaft.at">Sichere gastfreundschaft</a><br><a href="https://www.austria.info/en">Safe hospitality</a>'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Health & Safety',
+  name: 'gatherings',
+  description: 'Gatherings',
+  status: 'Events without assigned seats are allowed with a maximum of 200 visitors. Indoors events with assigned seats are allowed with a maximum of 500 visitors. Events with assigned seats in the open air are allowed with a maximum of 750 visitors. In addition, there is the possibility of holding events with assigned and marked seats in a higher number of participants by means of a permit from the district administrative authority with up to 1,000 people in closed rooms and with up to 1,250 people in the open air.'
+  )
+
+Indication.create!(
+  country: Country.first,
+  category: 'Health & Safety',
+  name: 'public_transportation',
+  description: 'Safety measures for public transportation',
+  status: 'A mask must be worn in public transport and taxis and in case of large crowds. '
+  )
 puts 'Done!'
