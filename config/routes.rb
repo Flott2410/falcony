@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :trips, only: [ :create, :show, :index ]
-  resources :countries, only: [ :show ]
+  resources :countries, only: [ :show, :index ] do
+    collection do
+      get :result
+    end
+  end
 end

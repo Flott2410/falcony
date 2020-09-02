@@ -16,6 +16,21 @@
   <% end %>
 </div>
 
+<br>
+<br>
+<br>
+
+
+<%= form_tag result_countries_path, method: :get do %>
+  <%= collection_select :country, :origin, Country.all, :id, :name %>
+  <%= collection_select :country, :destination, Country.all, :id, :name %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<br>
+<br>
+<br>
 
 <!-- Section 2: First info section explaining falcony -->
 
