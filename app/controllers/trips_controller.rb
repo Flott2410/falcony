@@ -25,6 +25,11 @@ before_action :set_trip, only: [ :show ]
 
   end
 
+  def index
+    @trips = Trip.where(user: current_user, bookmarked: true)
+
+  end
+
   def show
   end
 

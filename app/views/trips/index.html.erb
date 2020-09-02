@@ -1,2 +1,11 @@
-index.html.erb
+<ul>
+  <% @trips.each do |trip| %>
+    <li>
+      <%= link_to trip_path(trip) do %>
+        <%= trip.origin.name %> - <%= trip.destination.name  %>
+      <% end %>
+    </li>
 
+  <% end %>
+
+</ul>
