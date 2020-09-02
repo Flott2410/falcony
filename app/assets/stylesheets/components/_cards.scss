@@ -1,0 +1,34 @@
+.card-country {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+}
+
+.card-country img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-country h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-country p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+#expanded {
+  height: 400px;
+}
