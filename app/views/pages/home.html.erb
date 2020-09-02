@@ -1,5 +1,11 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<!-- form for creating a trip -->
+<%= simple_form_for @trip do |f| %>
+  <%= f.input :destination_id, collection: Country.all %>
+  <%= f.input :origin_id, collection: Country.all %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
 
 <!-- basic html structure for every page -->
 
