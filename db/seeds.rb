@@ -8,6 +8,7 @@
 
 require 'pry-byebug'
 require 'date'
+require 'open-uri'
 # consider refactoring and separate seeds into separate files
 # require_relative './_indications'
 
@@ -85,7 +86,7 @@ end
 # Create 4 static users that we can always count on for tests
 
 puts 'Generating users...'
-User.create!(
+kleyv = User.create!(
   first_name: 'Eukleyv',
   last_name: 'Smith',
   phone_number: '123456789',
@@ -93,7 +94,10 @@ User.create!(
   password: '123456',
   country_id: Country.all.sample.id
   )
-User.create!(
+file = URI.open('https://kitt.lewagon.com/placeholder/users/kleyv')
+kleyv.photo.attach(io: file, filename: 'kleyv_avatar.png', content_type: 'image/png')
+
+florian = User.create!(
   first_name: 'Florian',
   last_name: 'Smith',
   phone_number: '123456789',
@@ -101,7 +105,10 @@ User.create!(
   password: '123456',
   country_id: Country.all.sample.id
   )
-User.create!(
+file = URI.open('https://kitt.lewagon.com/placeholder/users/Flott2014')
+florian.photo.attach(io: file, filename: 'florian_avatar.png', content_type: 'image/png')
+
+raffaelle = User.create!(
   first_name: 'Raffaelle',
   last_name: 'Smith',
   phone_number: '123456789',
@@ -109,7 +116,10 @@ User.create!(
   password: '123456',
   country_id: Country.all.sample.id
   )
-User.create!(
+file = URI.open('https://kitt.lewagon.com/placeholder/users/raffoz')
+raffaelle.photo.attach(io: file, filename: 'raffaelle_avatar.png', content_type: 'image/png')
+
+tiago = User.create!(
   first_name: 'Tiago',
   last_name: 'Smith',
   phone_number: '123456789',
@@ -117,6 +127,8 @@ User.create!(
   password: '123456',
   country_id: Country.all.sample.id
   )
+file = URI.open('https://kitt.lewagon.com/placeholder/users/Tiago-Palhoca')
+tiago.photo.attach(io: file, filename: 'tiago_avatar.png', content_type: 'image/png')
 
 
 # Trips
