@@ -9,6 +9,8 @@
 
         <div class="form-inputs">
         <!--  note: still need to add country form for choosing home-country -->
+          <%= f.input :photo, as: :file,
+                      required: true %>
           <%= f.input :first_name,
                       required: true,
                       autofocus: true,
