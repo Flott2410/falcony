@@ -1,0 +1,19 @@
+<h1>Result</h1>
+
+<%= @origin.name %>
+<%= @destination.name %>
+
+
+
+
+<%= simple_form_for @trip do |f| %>
+
+  <div><%= f.input :destination_id, :as => :hidden, :input_html => { :value => @destination.id } %></div>
+  <div><%= f.input :origin_id, :as => :hidden, :input_html => { :value => @origin.id } %></div>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+
+<% end %>
+
+
+<!-- note: save button to add trip - triggers create_trip_from_session (not really :) -->
