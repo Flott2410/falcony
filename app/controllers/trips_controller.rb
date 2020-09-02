@@ -3,14 +3,26 @@ skip_before_action :authenticate_user!, only: [ :create, :show ]
 before_action :set_trip, only: [ :show ]
 
   def create
+    # get trip variables from hidden for or not hidden form if user already sign in
     @trip = Trip.new(trip_params)
-    # assign user_id to trips if user is logged in
-    @trip.user = current_user
-    if @trip.save
-      redirect_to trip_path(@trip)
+    # check if user is signed in
+    if user_signed_in?
+      # if yes create new trip
+      @trip.user = current_user
+      if @trip.save
+        redirect_to trip_path(@trip)
+      else
+        render 'pages/home'
+      end
+    # else save origin and destination in session variable
     else
-      render 'pages/home'
+      session[:create_trip_destination_id] = @trip.destination.id
+      session[:create_trip_origin_id] = @trip.origin.id
+      redirect_to new_user_session_path
     end
+    # option think about find or initialize by
+    # assign user_id to trips if user is logged in
+
   end
 
   def show

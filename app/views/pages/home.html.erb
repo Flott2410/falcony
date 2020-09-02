@@ -1,11 +1,47 @@
-<h1>Pages#home</h1>
+<!-- Navbar -->
 
+<!-- Section 1: Banner with title, and create trip form -->
+<h1 id="headline-landing">Where to next?</h1>
+<h3 id="subheadline-landing">Find all important COVID-19 related travel infos</h3>
 <!-- form for creating a trip -->
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :destination_id, collection: Country.all %>
-  <%= f.input :origin_id, collection: Country.all %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
+<div class="form-trip">
+  <%= simple_form_for @trip do |f| %>
+  <div class="d-flex justify-content-around">
+    <div class="form-trip-input"><%= f.input :destination_id, collection: Country.all, prompt: "Choose your origin", label: false %></div>
+    <div class="form-trip-input"><%= f.input :origin_id, collection: Country.all, prompt: "Choose your destination", label: false %></div>
+  </div>
+  <div class="text-center">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+  <% end %>
+</div>
+
+<br>
+<br>
+<br>
+
+
+<%= form_tag result_countries_path, method: :get do %>
+  <%= collection_select :country, :origin, Country.all, :id, :name %>
+  <%= collection_select :country, :destination, Country.all, :id, :name %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+
+
+<br>
+<br>
+<br>
+
+<!-- Section 2: First info section explaining falcony -->
+
+<!-- Section 3: Second info section about the bookmark and notification feature -->
+
+<!-- Section 4: Third info section with info that Falcony is trustable and maybe references/testimonials -->
+
+
+
+
+
 
 <!-- basic html structure for every page -->
 
