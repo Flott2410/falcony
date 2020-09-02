@@ -1,0 +1,4 @@
+<h1>Show page for showing trip details</h1>
+
+<%= link_to @trip.destination.name, country_path(@trip.destination)  %>
+<%= link_to @trip.origin.name, country_path(@trip.origin)  %>

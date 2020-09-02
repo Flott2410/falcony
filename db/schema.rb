@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_134720) do
     t.integer "stringency_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "date", default: "2020-09-01", null: false
+    t.date "date", default: "2020-09-02", null: false
     t.index ["country_id"], name: "index_cases_on_country_id"
   end
 
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_134720) do
   create_table "trips", force: :cascade do |t|
     t.bigint "origin_id", null: false
     t.bigint "destination_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.boolean "bookmarked"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

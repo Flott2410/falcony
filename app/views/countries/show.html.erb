@@ -1,0 +1,14 @@
+<h1>Country details</h1>
+
+<!-- test country -->
+<p>Country name:</p>
+<%= @country.name %>
+
+<!-- test connection to cases -->
+<p>Total cases:</p>
+<%= @country.cases %>
+<%= @country.cases.last.total_cases %>
+
+<!-- test connection to indications -->
+<p>Indication:</p>
+<%= @country.indications %>
