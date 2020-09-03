@@ -9,8 +9,8 @@
       <div class="form-trip">
         <%= form_tag result_countries_path, method: :get do %>
         <div class="d-flex justify-content-center">
-          <div class="form-trip-input ml-3"><%= collection_select :country, :origin, Country.all, :id, :name %></div>
-          <div class="form-trip-input mr-3"><%= collection_select :country, :destination, Country.all, :id, :name %></div>
+          <div class="form-trip-input" ><%= collection_select(:country, :origin, Country.all, :id, :name,{}, {class: 'min-width-select'}) %></div>
+          <div class="form-trip-input"><%= collection_select(:country, :destination, Country.all, :id, :name,{}, {class: 'min-width-select'}) %></div>
         </div>
         <div class="text-center">
           <%= submit_tag "Search", class: "form-trip-button btn btn-falcony" %>
@@ -19,6 +19,10 @@
       </div>
     </div>
   </div>
+
+
+
+
 
   <!-- Section 2: First info section explaining falcony -->
 
@@ -41,8 +45,7 @@
 
   <br>
   <br>
-  <br>
-  
+  <br>  
   <br>
   <br>
 </div>
