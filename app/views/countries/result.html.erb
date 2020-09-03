@@ -1,19 +1,26 @@
-<h1>Result</h1>
+<h1>Here should be the main page for showing the results from the search</h1>
 
-<%= @origin.name %>
-<%= @destination.name %>
+<h2>Available variable 1: <%= @origin.name %> which is an instance of country</h2>
 
+<h2>Available variable 2: <%= @destination.name %> which is an instance of country</h2>
 
+<p>There should be a nice link to get more details about the specific countries.</p>
+<%= link_to 'Origin', country_path(@origin) %>
+<%= link_to 'Destination', country_path(@destination) %>
 
-
+<!-- hidden form to submit the destination and origin to trip controller method create -->
 <%= simple_form_for @trip do |f| %>
 
-  <div><%= f.input :destination_id, :as => :hidden, :input_html => { :value => @destination.id } %></div>
-  <div><%= f.input :origin_id, :as => :hidden, :input_html => { :value => @origin.id } %></div>
+  <%= f.input :destination_id, :as => :hidden, :input_html => { :value => @destination.id } %>
+  <%= f.input :origin_id, :as => :hidden, :input_html => { :value => @origin.id } %>
 
-  <%= f.button :submit, class: 'btn btn-primary' %>
+  <!-- show button to save trip - user get's directed to log-in/sign-up -->
+  <!-- triggers create_trip_from_session (not really :) -->
+  <%= f.button :submit, 'Save trip', class: 'btn btn-primary' %>
+
+  <!-- after user is logged in he is directed to the page where his saved trips are shown -> index page for trips -->
 
 <% end %>
 
 
-<!-- note: save button to add trip - triggers create_trip_from_session (not really :) -->
+
