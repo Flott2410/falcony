@@ -2,7 +2,7 @@
 require 'csv'
 require 'date'
 
-require 'byebug'
+# require 'byebug'
 
 # this is for the "press a key to continue" function
 require 'io/console'

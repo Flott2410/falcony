@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# require 'pry-byebug'
 require 'date'
 require 'open-uri'
 # consider refactoring and separate seeds into separate files
