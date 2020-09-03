@@ -156,7 +156,7 @@ end
 # Indication
 # It's imported from another file to avoid making this file too big
 
-puts 'Generating trips...'
+puts 'Generating indications...'
 
 Indication.create!(
   country: Country.first,

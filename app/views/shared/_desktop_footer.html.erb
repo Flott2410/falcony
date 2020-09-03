@@ -1,5 +1,5 @@
 <div class="footer">
-  <div class="d-flex justify-content-around align-items-center">
+  <!-- <div class="d-flex justify-content-around align-items-center"> -->
 
     <!-- icons with links to Github, Linkedin and Facebook -->
     <div class="footer-icons">
@@ -9,16 +9,16 @@
     </div>
 
     <!-- links to about Falcony page and Privacy policy -->
-    <div>
-      <p class="paragraph-no-margin"> <%= link_to t("global.navbar.about"), root_path, class: "footer-link" %></p>
-      <p class="paragraph-no-margin"> <%= link_to t("global.navbar.privacy_policy"), root_path, class: "footer-link" %></p>
+    <div class="footer-link">
+      <p class="paragraph-no-margin"> <%= link_to t("global.navbar.about"), root_path %></p>
+      <p class="paragraph-no-margin"> <%= link_to t("global.navbar.privacy_policy"), root_path %></p>
     </div>
 
    <!--  contact info - copyright -->
     <div class="footer-copyright">
        <p class="paragraph-no-margin">Coded with <i class="fas fa-heart"></i> in Lisbon & Diamante</p>
-       <p class="paragraph-no-margin">Contact us: <a class="footer-link" href = "mailto: info@falcony.info">info@falcony.info</a></p>
+       <p class="paragraph-no-margin">Contact us: <a class="footer-link" href = "mailto: email@falcony.info">info@falcony.info</a></p>
     </div>
 
-  </div>
+  <!-- </div> -->
 </div>
