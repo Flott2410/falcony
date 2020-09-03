@@ -1,0 +1,39 @@
+.wrapper {
+  height: 10vh;
+}
+
+.card-summary {
+  overflow: hidden;
+  margin: 0 10vw;
+  height: 24vh;
+  max-height: 250px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: flex-start;
+}
+
+.card-summary img {
+  height: 100%; // 100% of the parent card-summary
+  width: 22vw;
+  max-width: 300px;
+  object-fit: cover;
+}
+
+.card-summary h3 {
+  // font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-summary p {
+  // font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-summary .card-summary-infos {
+  padding: 24px;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_152259) do
+ActiveRecord::Schema.define(version: 2020_09_03_113330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_152259) do
     t.integer "stringency_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "date", default: "2020-09-02", null: false
+    t.date "date", default: "2020-09-03", null: false
     t.index ["country_id"], name: "index_cases_on_country_id"
   end
 
@@ -70,10 +70,19 @@ ActiveRecord::Schema.define(version: 2020_09_02_152259) do
     t.index ["country_id"], name: "index_indications_on_country_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_notifications_on_trip_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.bigint "origin_id", null: false
     t.bigint "destination_id", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.boolean "bookmarked"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -102,6 +111,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_152259) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cases", "countries"
   add_foreign_key "indications", "countries"
+  add_foreign_key "notifications", "trips"
   add_foreign_key "trips", "countries", column: "destination_id"
   add_foreign_key "trips", "countries", column: "origin_id"
   add_foreign_key "trips", "users"

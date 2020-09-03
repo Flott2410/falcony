@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'pry-byebug'
 require 'date'
 require 'open-uri'
 # consider refactoring and separate seeds into separate files
@@ -157,7 +156,7 @@ end
 # Indication
 # It's imported from another file to avoid making this file too big
 
-puts 'Generating trips...'
+puts 'Generating indications...'
 
 Indication.create!(
   country: Country.first,
