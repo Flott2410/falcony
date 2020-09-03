@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-skip_before_action :authenticate_user!, only: [ :create, :show ]
 before_action :set_trip, only: [ :show ]
 
   def create
@@ -26,7 +25,7 @@ before_action :set_trip, only: [ :show ]
   end
 
   def index
-    @trips = Trip.where(user: current_user, bookmarked: true)
+    @trips = Trip.where(user: current_user)
 
   end
 
