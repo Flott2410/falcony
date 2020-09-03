@@ -1,106 +1,79 @@
 <!-- Navbar -->
+<div class="container-fluid p-0">
+  <!-- Section 1: Banner with title, and create trip form -->
+  <div class="row">
+    <div class="banner-landing-1" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(220, 220, 200, 0.1)), url('<%= image_path "landing_page/banner-1.jpg"%>'); ">
+      <h1 id="headline-banner-1">Where do you want to go?</h1>
+      <p id="subheadline-banner-1">Find all important COVID-19 related travel infos</p>
+      <!-- search form for creating a trip -->
+      <div class="form-trip">
+        <%= form_tag result_countries_path, method: :get do %>
+        <div class="d-flex justify-content-center">
+          <div class="form-trip-input ml-3"><%= collection_select :country, :origin, Country.all, :id, :name %></div>
+          <div class="form-trip-input mr-3"><%= collection_select :country, :destination, Country.all, :id, :name %></div>
+        </div>
+        <div class="text-center">
+          <%= submit_tag "Search", class: "form-trip-button btn btn-falcony" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<!-- Section 1: Banner with title, and create trip form -->
-<h1 id="headline-landing">Where to next?</h1>
-<h3 id="subheadline-landing">Find all important COVID-19 related travel infos</h3>
-<!-- form for creating a trip -->
-<div class="form-trip">
-  <%= simple_form_for @trip do |f| %>
-  <div class="d-flex justify-content-around">
-    <div class="form-trip-input"><%= f.input :destination_id, collection: Country.all, prompt: "Choose your origin", label: false %></div>
-    <div class="form-trip-input"><%= f.input :origin_id, collection: Country.all, prompt: "Choose your destination", label: false %></div>
+  <!-- Section 2: First info section explaining falcony -->
+
+  <!-- Section 3: Second info section about the bookmark and notification feature -->
+
+  <!-- Section 4: Third info section with info that Falcony is trustable and maybe references/testimonials -->
+
+
+  <br>
+  <br>
+  <br>
+  <!-- buttons -->
+
+  <%= link_to "New Button", "#", class: 'btn-falcony' %>
+
+  <br>
+  <br>
+  <br>
+
+  <!-- cards -->
+
+  <div class="card-country">
+    <div class="">
+  	<h2>Country A (Colapsed)</h2>
+  	<br>
+  	<p>Country description with <strong>relevant info</strong> and links to more info</p>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Falco_peregrinus_good_-_Christopher_Watson.jpg">
+
+    </div>
   </div>
-  <div class="text-center">
-    <%= f.button :submit, class: 'btn btn-primary' %>
+
+  <br>
+  <br>
+  <br>
+  <div class="card-country" id="expanded">
+    <div class="">
+  	<h2>Country A (Expanded)</h2>
+  	<br>
+  	<p>Country description with <strong>relevant info</strong> and links to more info</p>
+  	<p>Can I travel here?</p>
+  	<p>Do I need tests?</p>
+  	<p>Do I need masks in public?</p>
+  	<p>Do I need to commit?</p>
+  	<p>Can I push to master?</p>
+  	<p>--------------</p>
+  	<p>--------------</p>
+
+  	<p>--------------</p>
+  	<p>--------------</p>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Falco_peregrinus_good_-_Christopher_Watson.jpg">
+
+    </div>
   </div>
-  <% end %>
+  <br>
+  <br>
 </div>
-
-<br>
-<br>
-<br>
-
-
-<%= form_tag result_countries_path, method: :get do %>
-  <%= collection_select :country, :origin, Country.all, :id, :name %>
-  <%= collection_select :country, :destination, Country.all, :id, :name %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-
-<br>
-<br>
-<br>
-
-<!-- Section 2: First info section explaining falcony -->
-
-<!-- Section 3: Second info section about the bookmark and notification feature -->
-
-<!-- Section 4: Third info section with info that Falcony is trustable and maybe references/testimonials -->
-
-
-
-
-
-
-<!-- basic html structure for every page -->
-
-
-<!-- basic components -->
-
-
-<!-- buttons -->
-<br>
-<br>
-<br>
-<br>
-<%= link_to "New Button", "#", class: 'btn-falcony' %>
-
-<!-- cards -->
-<br>
-<br>
-<br>
-<br>
-
-<div class="card-country">
-  <div class="">
-	<h2>Country A (Colapsed)</h2>
-	<br>
-	<p>Country description with <strong>relevant info</strong> and links to more info</p>
-  </div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Falco_peregrinus_good_-_Christopher_Watson.jpg">
-    
-  </div>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="card-country" id="expanded">
-  <div class="">
-	<h2>Country A (Expanded)</h2>
-	<br>
-	<p>Country description with <strong>relevant info</strong> and links to more info</p>
-	<p>Can I travel here?</p>
-	<p>Do I need tests?</p>
-	<p>Do I need masks in public?</p>
-	<p>Do I need to commit?</p>
-	<p>Can I push to master?</p>
-	<p>--------------</p>
-	<p>--------------</p>
-	
-	<p>--------------</p>
-	<p>--------------</p>
-  </div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Falco_peregrinus_good_-_Christopher_Watson.jpg">
-    
-  </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-
