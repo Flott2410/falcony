@@ -60,7 +60,11 @@
 
     <!-- show button to save trip - user get's directed to log-in/sign-up -->
     <!-- triggers create_trip_from_session (not really :) -->
+    <% if user_signed_in? %>
     <%= f.button :submit, 'Save trip', class: 'btn btn-primary' %>
+    <% else %>
+    <a href="" class='btn btn-primary' data-toggle="modal" data-target="#modalLoginForm">Save trip</a>
+    <% end %>
 
     <!-- after user is logged in he is directed to the page where his saved trips are shown -> index page for trips -->
 
@@ -68,5 +72,3 @@
 
 </div>
 
-
-<%= render 'shared/login_modal' %>
