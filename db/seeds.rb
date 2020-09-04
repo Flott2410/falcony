@@ -1,14 +1,10 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 require 'date'
 require 'open-uri'
 require 'csv'
+require 'json'
 
 # consider refactoring and separate seeds into separate files
 # require_relative './_indications'
@@ -19,13 +15,12 @@ Case.destroy_all
 Indication.destroy_all
 User.destroy_all
 Trip.destroy_all
-# Order of creation of seed: 1. countries, 2. cases, 3. indications, 4. users, 5. trips
+# Order of creation of seed: 1.countries, 2.cases, 3.indications, 4.users, 5.trips
 
-# Countries
-# Don't forget to add flags
+# Countries_____________________________________________________________________
+
 # Constant with all countries
 countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italia"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
-# countries_name = ["Austria", "Belgium", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "NOR", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "CHE"]
 
 # For loop that creates a country instance using the strings in the countries constant
 puts 'Generating countries...'
@@ -35,60 +30,92 @@ countries.each do |country|
 end
 
 puts "Countries created ;-)"
-# Cases
-# Seed for the starting point on the first day
 
-current_day = Date.today
-day_zero = Date.new(2020, 8, 1)
-days_since_day_zero = (current_day - day_zero).to_i
-
+# Cases   ______________________________________________________________________
 
 puts 'Generating cases...'
-Country.all.each do |country|
-  Case.create!(
-    date: day_zero.strftime('%Y-%m-%d'),
-    country_id: country.id, # random from the length of countries
-    total_cases: 0,
-    new_cases: 0,
-    total_deaths: 0,
-    new_deaths: 0,
-    population: rand(1_000_000..1_000_000_000),
-    total_tests: 0,
-    new_tests: 0,
-    tests_per_case: 0.0, # float
-    stringency_index: 0 # from 0 to 100. 100 being the strictest
-    )
-end
 
+# parsing the json file
+url = 'https://covid.ourworldindata.org/data/owid-covid-data.json'
+cases_serialized = open(url).read
+cases = JSON.parse(cases_serialized)
 
-# The following seed will take the values from the seed above and update them
-# Create seeds from all days since 2020-01-01
-day = 1
-days_since_day_zero.times do
-
-
-  # Create new data starting from the previous seed with new daily value
-  Country.all.each do |country|
-    previous_case = Case.where(country_id: country.id).last
+countries.each do |country|
+  # iso code: country[0]
+  cases[country[0]]['data'].each do |covid_data|
+    date = Date.parse(covid_data['date'])
+    if date > Date.new(2020, 7, 1)
     Case.create!(
-      date: (day_zero + day).strftime('%Y-%m-%d'),
-      country_id: country.id, # random from the length of countries
-      total_cases: previous_case.total_cases + rand(0..100),
-      new_cases: previous_case.new_cases + rand(0..100),
-      total_deaths: previous_case.total_deaths + rand(0..100),
-      new_deaths: previous_case.new_deaths + rand(0..50),
-      population: previous_case.population,
-      total_tests: previous_case.total_tests + rand(0..1000),
-      new_tests: previous_case.new_tests + rand(0..1000),
-      tests_per_case: previous_case.tests_per_case + rand(0.0..1000.0),
-      stringency_index: rand(0..100)
-      )
+      date: date,
+      country: Country.find_by(iso: country[0]),
+      total_cases: covid_data['total_cases'],
+      new_cases: covid_data['new_cases'],
+      total_deaths: covid_data['total_deaths'],
+      new_deaths: covid_data['new_deaths'],
+      population: cases[country[0]]['population'],
+      total_tests: covid_data['total_tests'],
+      new_tests: covid_data['new_tests'],
+      tests_per_case: covid_data['tests_per_case'],
+      stringency_index: covid_data['stringency_index']
+    )
+    end
   end
-  day += 1 # go to the next day.
 end
 
 puts "Cases created ;-)"
-# Users
+
+# Previous fake code to create fake cases ____________________________
+
+# current_day = Date.today
+# day_zero = Date.new(2020, 8, 1)
+# days_since_day_zero = (current_day - day_zero).to_i
+
+# Country.all.each do |country|
+#   Case.create!(
+#     date: day_zero.strftime('%Y-%m-%d'),
+#     country_id: country.id, # random from the length of countries
+#     total_cases: 0,
+#     new_cases: 0,
+#     total_deaths: 0,
+#     new_deaths: 0,
+#     population: rand(1_000_000..1_000_000_000),
+#     total_tests: 0,
+#     new_tests: 0,
+#     tests_per_case: 0.0, # float
+#     stringency_index: 0 # from 0 to 100. 100 being the strictest
+#     )
+# end
+
+
+# # The following seed will take the values from the seed above and update them
+# # Create seeds from all days since 2020-01-01
+# day = 1
+# days_since_day_zero.times do
+
+
+#   # Create new data starting from the previous seed with new daily value
+#   Country.all.each do |country|
+#     previous_case = Case.where(country_id: country.id).last
+#     Case.create!(
+#       date: (day_zero + day).strftime('%Y-%m-%d'),
+#       country_id: country.id, # random from the length of countries
+#       total_cases: previous_case.total_cases + rand(0..100),
+#       new_cases: previous_case.new_cases + rand(0..100),
+#       total_deaths: previous_case.total_deaths + rand(0..100),
+#       new_deaths: previous_case.new_deaths + rand(0..50),
+#       population: previous_case.population,
+#       total_tests: previous_case.total_tests + rand(0..1000),
+#       new_tests: previous_case.new_tests + rand(0..1000),
+#       tests_per_case: previous_case.tests_per_case + rand(0.0..1000.0),
+#       stringency_index: rand(0..100)
+#       )
+#   end
+#   day += 1 # go to the next day.
+# end
+
+# puts "Cases created ;-)"
+
+# Users ______________________________________________________________________
 # Don't forget to add images
 
 # Create 4 static users that we can always count on for tests
@@ -164,7 +191,9 @@ end
 
 puts "Trips created ;-)"
 
-# Indication
+# Indications____________________________________________________________________
+
+# old files from first indications
 
 # Indication.create!(
 #   country: Country.first,
