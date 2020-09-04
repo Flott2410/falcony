@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_151053) do
+ActiveRecord::Schema.define(version: 2020_09_04_095540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_151053) do
     t.integer "stringency_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "date", default: "2020-09-03", null: false
+    t.date "date", default: "2020-09-01", null: false
     t.index ["country_id"], name: "index_cases_on_country_id"
   end
 
