@@ -15,7 +15,6 @@ before_action :set_trip, only: [ :show ]
     # else save origin and destination in session variable
     # option think about find or initialize by
     # assign user_id to trips if user is logged in
-
   end
 
   def index
