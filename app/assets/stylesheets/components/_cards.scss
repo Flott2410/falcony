@@ -33,7 +33,7 @@
   height: 400px;
 }
 
-.card-body {
+.card-feature {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -45,6 +45,12 @@
 }
 
 #content-b {
-  background-color: #505050;
+  background-color: rgb(43, 54, 54);
   color: white;
+}
+
+.card-feature img {
+  height: 100%;
+  width: 400px;
+  opacity: 0.8;
 }
