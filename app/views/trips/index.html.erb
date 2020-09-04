@@ -18,6 +18,11 @@
               <%= trip.origin.name %> - <%= trip.destination.name  %>
             <% end %>
           </div>
+          <div>
+            <%= link_to trip_path(trip), method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>

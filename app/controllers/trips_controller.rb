@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-before_action :set_trip, only: [ :show ]
+before_action :set_trip, only: [ :show, :destroy ]
 
   def create
     # get trip variables from hidden for or not hidden form if user already sign in
@@ -25,11 +25,17 @@ before_action :set_trip, only: [ :show ]
   end
 
   def index
-    @trips = Trip.where(user: current_user)
+    @trips = Trip.where(user: current_user).order(updated_at: :desc)
 
   end
 
   def show
+  end
+
+  def destroy
+    @trip.destroy
+    redirect_to trips_path
+
   end
 
   private
