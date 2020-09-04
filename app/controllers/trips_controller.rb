@@ -17,7 +17,7 @@ before_action :set_trip, only: [ :show ]
     else
       session[:create_trip_destination_id] = @trip.destination.id
       session[:create_trip_origin_id] = @trip.origin.id
-      redirect_to new_user_session_path
+      redirect_to root_path
     end
     # option think about find or initialize by
     # assign user_id to trips if user is logged in
