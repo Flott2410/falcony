@@ -38,8 +38,13 @@
   justify-content: space-around;
   align-items: center;
   overflow: hidden;
-  height: 450px;
+  height: 500px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+}
+
+#content-b {
+  background-color: #505050;
+  color: white;
 }
