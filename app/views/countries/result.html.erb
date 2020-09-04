@@ -6,11 +6,53 @@
   <div class="card-summary">
     <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" />
     <div class="card-summary-infos">
-      <h3>summary name</h3>
+      <h3>Travelling to <%= @destination.name %></h3>
 
       <!--  Open -->
-      <p><%= @destination.indications.last.description %></p>
-      <p>Open</p>
+      <p><strong>Open: </strong>
+        <% if @destination_open.status == "Y" %>
+          <span><%= "You can travel without limitations" %></span>
+        <% elsif @destination_open.status == "N" %>
+          <span><%= "You cannot travel to " %></span>%>
+        <% elsif @destination_open.status == "WL" %>
+          <span><%= "You can travel with limitations" %></span>
+
+        <% end %>
+      </p>
+
+      <!--  High Risk Areas -->
+      <p><strong>Risk areas: </strong>
+        <% if @destination_high_risk_areas.status == "Y" %>
+          <span><%= "All the country is under lockdown" %></span>
+        <% elsif @destination_high_risk_areas.status == "N" %>
+          <span><%= "There aren't risk areas under lockdown" %></span>
+        <% elsif @destination_high_risk_areas.status == "WL" %>
+          <span><%= "There are some risk areas under lockdown" %></span>
+        <% end %>
+      </p>
+
+      <!--  Quarantine -->
+      <p><strong>Quarantine: </strong>
+        <% if @destination_quarantine.status == "Y" %>
+          <span><%= "No quarantine needed" %></span>
+        <% elsif @destination_quarantine.status == "N" %>
+          <span><%= "Quarantine needed" %></span>
+        <% elsif @destination_quarantine.status == "WL" %>
+          <span><%= "Quarantine is requested in some circumstances" %></span>
+        <% end %>
+      </p>
+
+      <!--  Test -->
+      <p><strong>Test: </strong>
+        <% if @destination_test.status == "Y" %>
+          <span><%= "No test needed" %></span>
+        <% elsif @destination_test.status == "N" %>
+          <span><%= "You need a test to enter" %></span>
+        <% elsif @destination_test.status == "WL" %>
+          <span><%= "Test is requested in some circumstances" %></span>
+        <% end %>
+      </p>
+
     </div>
   </div>
 
@@ -21,11 +63,34 @@
   <div class="card-summary">
     <img src="https://images.unsplash.com/photo-1563183969-a63149297766" />
     <div class="card-summary-infos">
-      <h3>summary name</h3>
+      <h3>Local restrictions and cases</h3>
 
-      <!--  Open -->
-      <p><%=  %></p>
-      <p>Open</p>
+      <!--  Local restrictions -->
+      <p><strong>Restaurants: </strong>
+        <% if @destination_restaurants.status == "Y" %>
+          <span><%= "open" %></span>
+        <% elsif @destination_restaurants.status == "N" %>
+          <span><%= "closed" %></span>%>
+        <% elsif @destination_restaurants.status == "WL" %>
+          <span><%= "have some limitations" %></span>
+          <!-- <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Limitations" data-content="<% @open.description %>" ></button> -->
+        <% end %>
+      </p>
+
+      <p><strong>Bar: </strong>
+        <% if @destination_bars_cafes.status == "Y" %>
+          <span><%= "open" %></span>
+        <% elsif @destination_bars_cafes.status == "N" %>
+          <span><%= "closed" %></span>%>
+        <% elsif @destination_bars_cafes.status == "WL" %>
+          <span><%= "have some limitations" %></span>
+          <!-- <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Limitations" data-content="<% @open.description %>" ></button> -->
+        <% end %>
+      </p>
+
+      <!-- Cases -->
+      <p>In the last week there has been an average of 1.348 daily new cases</p>
+
     </div>
   </div>
 
@@ -35,22 +100,50 @@
   <div class="card-summary">
     <img src="https://images.unsplash.com/photo-1533315318720-a6538dcefcae" />
     <div class="card-summary-infos">
-      <h3>summary name</h3>
+      <h3>Going back to <%= @origin.name %></h3>
 
-      <!--  Open -->
-      <p><%=  %></p>
-      <p>Open</p>
+      <p><strong>Open: </strong>
+        <% if @origin_open.status == "Y" %>
+          <span><%= "You can travel without limitations" %></span>
+        <% elsif @origin_open.status == "N" %>
+          <span><%= "You cannot travel to " %></span>%>
+        <% elsif @origin_open.status == "WL" %>
+          <span><%= "You can travel with limitations" %></span>
+        <% end %>
+      </p>
+
+      <!--  Quarantine -->
+      <p><strong>Quarantine: </strong>
+        <% if @origin_quarantine.status == "Y" %>
+          <span><%= "No quarantine needed" %></span>
+        <% elsif @origin_quarantine.status == "N" %>
+          <span><%= "Quarantine needed" %></span>
+        <% elsif @origin_quarantine.status == "WL" %>
+          <span><%= "Quarantine is requested in some circumstances" %></span>
+        <% end %>
+      </p>
+
+      <!--  Test -->
+      <p><strong>Test: </strong>
+        <% if @origin_test.status == "Y" %>
+          <span><%= "No test needed" %></span>
+        <% elsif @origin_test.status == "N" %>
+          <span><%= "You need a test to enter" %></span>
+        <% elsif @origin_test.status == "WL" %>
+          <span><%= "Test is requested in some circumstances" %></span>
+        <% end %>
+      </p>
+    </div>
     </div>
   </div>
 
 
-  <h3>Available variable 1: <%= @origin.name %> which is an instance of country</h3>
+  <!-- <h3>Available variable 1: <%= @origin.name %> which is an instance of country</h3>
+  <h3>Available variable 2: <%= @destination.name %> which is an instance of country</h3> -->
 
-  <h3>Available variable 2: <%= @destination.name %> which is an instance of country</h3>
-
-  <p>There should be a nice link to get more details about the specific countries.</p>
-  <%= link_to 'Origin', country_path(@origin) %>
-  <%= link_to 'Destination', country_path(@destination) %>
+  <!-- <p>There should be a nice link to get more details about the specific countries.</p> -->
+<!--   <%= link_to 'Origin', country_path(@origin) %>
+  <%= link_to 'Destination', country_path(@destination) %> -->
 
   <!-- hidden form to submit the destination and origin to trip controller method create -->
   <%= simple_form_for @trip do |f| %>
@@ -61,14 +154,10 @@
     <!-- show button to save trip - user get's directed to log-in/sign-up -->
     <!-- triggers create_trip_from_session (not really :) -->
     <% if user_signed_in? %>
-    <%= f.button :submit, 'Save trip', class: 'btn btn-primary' %>
+      <%= f.button :submit, 'Save trip', class: 'btn btn-primary my-5' %>
     <% else %>
-    <a href="" class='btn btn-primary' data-toggle="modal" data-target="#modalLoginForm">Save trip</a>
+      <a href="" class='btn btn-primary' data-toggle="modal" data-target="#modalLoginForm">Save trip</a>
     <% end %>
-
     <!-- after user is logged in he is directed to the page where his saved trips are shown -> index page for trips -->
-
   <% end %>
-
 </div>
-
