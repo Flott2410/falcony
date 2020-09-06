@@ -11,20 +11,59 @@
   <div class="wrapper"></div>
 
   <!-- travel indications -->
-  <div class="card-indications"><
-    <p><%= @masks_in_public.description %></p>
-    <p><%= @physical_distancing.description %></p>
-    <p><%= @health_protocols.description %></p>
-    <p><%= @gatherings.description %></p>
-    <p><%= @high_risk_areas.description %></p>
-    <p><%= @tourism_accomodations.description %></p>
-    <p><%= @restaurants.description %></p>
-    <p><%= @bars_cafes.description %></p>
-    <p><%= @beaches.description %></p>
-    <p><%= @museums.description %></p>
-    <p><%= @personal_services.description %></p>
-    <p><%= @places_of_worship.description %></p>
-    <p><%= @public_transportation.description %></p>
+  <div class="card-indications">
+    <% if @masks_in_public %>
+      <h3>Duty to wear masks</h3>
+      <p><%= @masks_in_public.description %></p>
+    <% end %>
+    <% if @physical_distancing %>
+      <h3>Physical distancing measures</h3>
+      <p><%= @physical_distancing.description %></p>
+    <% end %>
+    <% if @health_protocols %>
+      <h3>Health protocols</h3>
+      <p><%= @health_protocols.description %></p>
+    <% end %>
+    <% if @gatherings %>
+       <h3>Rules for gatherings</h3>
+      <p><%= @gatherings.description %></p>
+    <% end %>
+    <% if @high_risk_areas %>
+       <h3>Areas of high risks</h3>
+      <p><%= @high_risk_areas.description %></p>
+    <% end %>
+    <% if @tourism_accomodations %>
+       <h3>Accomodations</h3>
+      <p><%= @tourism_accomodations.description %></p>
+    <% end %>
+    <% if @restaurants %>
+      <h3>Restaurants</h3>
+      <p><%= @restaurants.description %></p>
+    <% end %>
+    <% if @bars_cafes %>
+      <h3>Bars / Cafes</h3>
+      <p><%= @bars_cafes.description %></p>
+    <% end %>
+    <% if @beaches %>
+      <h3>Beaches</h3>
+      <p><%= @beaches.description %></p>
+    <% end %>
+    <% if @museums %>
+      <h3>Museums</h3>
+      <p><%= @museums.description %></p>
+    <% end %>
+    <% if @personal_services %>
+      <h3>Personal services</h3>
+      <p><%= @personal_services.description %></p>
+    <% end %>
+    <% if @places_of_worship %>
+      <h3>Places of worship</h3>
+      <p><%= @places_of_worship.description %></p>
+    <% end %>
+    <% if @public_transportation %>
+      <h3>Public transportation</h3>
+      <p><%= @public_transportation.description %></p>
+    <% end %>
   </div>
 
   <div class="wrapper"></div>
@@ -33,40 +72,53 @@
   <div class="card-cases">
 
     <!-- new_cases average of last two weeks -->
-    <h3>Avg new cases (last 14 days):</h3>
-    <p><%= @last_two_weeks_average_new_cases %></p>
+    <% if @last_two_weeks_average_new_cases %>
+      <h3>Avg new cases (last 14 days):</h3>
+      <p><%= @last_two_weeks_average_new_cases %></p>
+    <% end %>
 
     <!-- icon (green arrow down, red arrow up) that shows trend -->
-    <h3>Trend</h3>
-    <% if @trend == true %>
-      <p>insert green arrow down</p>
-    <% else %>
-      <p>insert red arrow up</p>
+    <% if @trend %>
+      <h3>Trend</h3>
+      <% if @trend == true %>
+        <p>insert green arrow down</p>
+      <% else %>
+        <p>insert red arrow up</p>
+      <% end %>
     <% end %>
 
     <!-- insert graph with actual new case numbers -->
     <div id="cases-graph">Placeholder graph</div>
 
     <!-- total_deaths per population -->
-    <h3>Total death rate</h3>
-    <P><%= @deaths_pop %> %</P>
+    <% if @deaths_pop %>
+      <h3>Total death rate</h3>
+      <P><%= @deaths_pop %> %</P>
+    <% end %>
 
     <!-- tests divided by the number of cases -->
-    <h3>Test rate</h3>
-    <P><%= @tests_per_case %></P>
+    <% if @tests_per_case %>
+      <h3>Test rate</h3>
+      <P><%= @tests_per_case %></P>
+    <% end %>
 
     <!-- new tests last week -->
-    <h3>New tests last week</h3>
-    <P><%= @new_tests_last_week_avg  %></P>
+    <% if @new_tests_last_week_avg %>
+      <h3>New tests last week</h3>
+      <P><%= @new_tests_last_week_avg  %></P>
+    <% end %>
 
     <!-- total_tests -->
-    <h3>Total tests done</h3>
-    <P><%= @total_tests %></P>
+    <% if @total_tests %>
+      <h3>Total tests done</h3>
+      <P><%= @total_tests %></P>
+    <% end %>
 
     <!-- stringency index interpretation -->
-    <h3>Stringency Index</h3>
-    <P><%= @stringency_index %></P>
-
+    <% if @stringency_index %>
+      <h3>Stringency Index</h3>
+      <P><%= @stringency_index %></P>
+    <% end %>
     <!-- last updated at -->
     <h3>Last updatet at</h3>
     <P><%= @update_date %></P>
