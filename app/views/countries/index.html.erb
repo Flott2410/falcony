@@ -1,0 +1,21 @@
+<div class="content-container d-flex">
+
+  <div class="country-list">
+    <div class="col-md-8 project-list">
+      <h1 class="text-center">Countries list</h1>
+      <% @countries.each do |country| %>
+        <div class="d-flex align-items-center justify-content-left bg-white m-1 px-3">
+          <%= link_to country_path(country) do %>
+            <%= country.name %>
+          <% end %>
+          <div class="ml-3">Flag icon</div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="country-map">
+    <p style="color: white;">Add map from Europe that is clickable and links to the countries detail page</p>
+  </div>
+
+</div>
