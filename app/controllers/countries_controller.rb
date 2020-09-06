@@ -1,6 +1,10 @@
 class CountriesController < ApplicationController
 skip_before_action :authenticate_user!, only: [ :show, :result ]
 
+  def index
+    @countries = Country.all
+  end
+
   def show
     @country = Country.find(params[:id])
 
