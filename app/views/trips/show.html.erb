@@ -1,23 +1,190 @@
-<div>
-  <%= link_to trip_path(@trip), method: :delete do %>
-    <i class="far fa-trash-alt"></i>
-  <% end %>
+ <div class="container-fluid col-10">
+  <div class="mt-5 d-flex align-items-center">
+    <h1 class="flex-grow-1">From <%= link_to @trip.origin.name, country_path(@trip.origin) %> to <%= link_to @trip.destination.name, country_path(@trip.destination)  %> </h1>
+    <%= link_to trip_path(@trip), method: :delete do %>
+      <h1><i class="far fa-trash-alt"></i></h1>
+    <% end %>
+  </div>
+
+   <div class="card mb-5 col-12 p-0">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <!--  Open -->
+          <h5 class="card-title">
+            Travel
+          </h5>
+          <p class="card-text">
+            <% case @destination_open.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              You can travel without limitations
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              You cannot travel to <%= @trip.destination.name %>
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              You can travel with limitations
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+            </p>
+          <!--  High Risk Areas -->
+          <p class="card-text">
+            <% case @destination_high_risk_areas.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-danger"></i>
+              All the country is under lockdown
+            <% when "N" %>
+              <i class="fas fa-circle text-success"></i>
+              There aren't any risk areas under lockdown
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              There are some risk areas under lockdown
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %></p>
+          <!--  Quarantine -->
+          <p class="card-text">
+            <% case @destination_quarantine.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              No quarantine needed
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              Quarantine needed
+              <i class="far fa-question-circle text-black-50"></i>
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              Quarantine is requested in some circumstances
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+          </p>
+
+          <!--  Test -->
+          <p class="card-text">
+            <% case @destination_test.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              No tests needed
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              You need a test to enter
+              <i class="far fa-question-circle text-black-50"></i>
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              Testing is requested in some circumstances
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-5 col-12 p-0">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="https://images.unsplash.com/photo-1563183969-a63149297766" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            Local restrictions
+          </h5>
+          <p class="card-text">
+            <% case @destination_restaurants.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              Restaurants are open
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              Restaurants are closed
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              Restaurants are open with limitations
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+          </p>
+          <p class="card-text">
+            <% case @destination_bars_cafes.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              Bars and cafes are open
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              Bars and cafes are closed
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              Bars and cafes are open with limitations
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-5 text-right">Coming back</h2>
+
+   <div class="card mb-5 col-12 p-0">
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <div class="card-body">
+          <!--  Open -->
+          <h5 class="card-title">
+            Travel
+          </h5>
+          <p class="card-text">
+            <% case @origin_open.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              You can travel without limitations
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              You cannot travel to <%= @trip.origin.name %>
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              You can travel with limitations
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+            </p>
+          <!--  Quarantine -->
+          <p class="card-text">
+            <% case @origin_quarantine.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-success"></i>
+              No quarantine needed
+            <% when "N" %>
+              <i class="fas fa-circle text-danger"></i>
+              Quarantine needed
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              Quarantine is requested in some circumstances
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+          </p>
+
+          <!--  Test -->
+          <p class="card-text">
+            <% case @origin_test.status %>
+            <% when "Y" %>
+              <i class="fas fa-circle text-danger"></i>
+              No tests needed
+            <% when "N" %>
+              <i class="fas fa-circle text-success"></i>
+              You need a test to enter
+            <% when "WL" %>
+              <i class="fas fa-circle text-warning"></i>
+              Testing is requested in some circumstances
+              <i class="far fa-question-circle text-black-50"></i>
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
+      </div>
+    </div>
+  </div>
 </div>
-
-<h1>We don't really need this page anymore.</h1>
-
-Only if we want to show the details of the saved trips. But then should look very similar to result.html.erb maybe with some extra options for logged in users.
-
-<h1>So we still need it. But not so important for the first user story.</h1>
-
-<br>
-<br>
-<br>
-Available variables:
-
-<p><%= link_to @trip.destination.name, country_path(@trip.destination)  %></p>
-<p><%= link_to @trip.origin.name, country_path(@trip.origin)  %></p>
-
-<br>
-<br>
-<br>

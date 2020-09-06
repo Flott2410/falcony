@@ -18,10 +18,25 @@ before_action :set_trip, only: [ :show, :destroy ]
 
   def index
     @trips = Trip.where(user: current_user).order(updated_at: :desc)
-
   end
 
   def show
+    # raise
+    @origin = @trip.origin
+    @destination = @trip.destination
+
+    @destination_open = Indication.where(country: @destination).find_by(name: "open")
+    @destination_high_risk_areas = Indication.where(country: @destination).find_by(name: "high_risk_areas")
+    @destination_quarantine = Indication.where(country: @destination).find_by(name: "quarantine")
+    @destination_test = Indication.where(country: @destination).find_by(name: "test")
+
+    @destination_restaurants = Indication.where(country: @destination).find_by(name: "restaurants")
+    @destination_bars_cafes = Indication.where(country: @destination).find_by(name: "bars_cafes")
+    @destination_new_cases = Case.where(country: @destination).last.new_cases
+
+    @origin_open = Indication.where(country: @origin).find_by(name: "open")
+    @origin_quarantine = Indication.where(country: @origin).find_by(name: "quarantine")
+    @origin_test = Indication.where(country: @origin).find_by(name: "test")
   end
 
   def destroy
