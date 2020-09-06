@@ -11,12 +11,21 @@
   <div class="wrapper"></div>
 
   <!-- travel indications -->
-
-  <%= @country.indications %>
-
-
-
-
+  <div class="card-indications"><
+    <p><%= @masks_in_public.description %></p>
+    <p><%= @physical_distancing.description %></p>
+    <p><%= @health_protocols.description %></p>
+    <p><%= @gatherings.description %></p>
+    <p><%= @high_risk_areas.description %></p>
+    <p><%= @tourism_accomodations.description %></p>
+    <p><%= @restaurants.description %></p>
+    <p><%= @bars_cafes.description %></p>
+    <p><%= @beaches.description %></p>
+    <p><%= @museums.description %></p>
+    <p><%= @personal_services.description %></p>
+    <p><%= @places_of_worship.description %></p>
+    <p><%= @public_transportation.description %></p>
+  </div>
 
   <div class="wrapper"></div>
 
@@ -24,32 +33,43 @@
   <div class="card-cases">
 
     <!-- new_cases average of last two weeks -->
-    <%= @last_two_weeks_average_new_cases %>
+    <h3>Avg new cases (last 14 days):</h3>
+    <p><%= @last_two_weeks_average_new_cases %></p>
 
     <!-- icon (green arrow down, red arrow up) that shows trend -->
+    <h3>Trend</h3>
     <% if @trend == true %>
       <p>insert green arrow down</p>
     <% else %>
       <p>insert red arrow up</p>
     <% end %>
 
+    <!-- insert graph with actual new case numbers -->
+    <div id="cases-graph">Placeholder graph</div>
+
     <!-- total_deaths per population -->
-    <%= @deaths_pop %>
+    <h3>Total death rate</h3>
+    <P><%= @deaths_pop %> %</P>
 
     <!-- tests divided by the number of cases -->
-    <%= @tests_per_case  %>
+    <h3>Test rate</h3>
+    <P><%= @tests_per_case %></P>
 
     <!-- new tests last week -->
-    <%= @new_tests_last_week  %>
+    <h3>New tests last week</h3>
+    <P><%= @new_tests_last_week_avg  %></P>
 
     <!-- total_tests -->
-    <%= @total_tests %>
+    <h3>Total tests done</h3>
+    <P><%= @total_tests %></P>
 
     <!-- stringency index interpretation -->
-    <%= @stringency_index %>
+    <h3>Stringency Index</h3>
+    <P><%= @stringency_index %></P>
 
     <!-- last updated at -->
-    <%= @update_date %>
+    <h3>Last updatet at</h3>
+    <P><%= @update_date %></P>
 
   </div>
 
