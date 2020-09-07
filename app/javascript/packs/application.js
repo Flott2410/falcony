@@ -30,9 +30,11 @@ import { initSelect2 } from '../components/init_select2';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../plugins/map';
 
 document.addEventListener('turbolinks:load', () => {
 
-  // Call your functions here, e.g:
-   initSelect2();
+  // Call your functions here
+  initSelect2();
+  initMapbox();
 });

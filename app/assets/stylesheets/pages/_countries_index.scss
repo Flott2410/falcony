@@ -1,11 +1,33 @@
-.country-map {
+.country-list {
+  width: 30%;
+}
+
+// Map ////////////////////////////////////////////////////////////////////////
+
+#map {
   position: sticky;
   height: 100vh;
   top: 0px;
-  background: blue;
   width: 70%;
 }
+#map .mapboxgl-popup-content {
+  padding: 10px;
+  max-width: 300px;
+  padding-top: 20px;
+}
+#map .mapboxgl-popup-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
 
-.country-list {
-  width: 30%;
+#map .mapboxgl-popup-content ul h3 {
+  margin: 0 0 10px 0;
+}
+
+#map .mapboxgl-popup-content img {
+  float:left;
+  width: 30px;
+  margin-right: 10px;
 }
