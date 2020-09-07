@@ -1,14 +1,23 @@
 .country-list {
-  width: 30%;
+  width: 35%;
+  margin-bottom: 20px;
+}
+
+#country-show-header {
+  text-align: center;
+  height: 120px;
+  padding-top: 60px;
 }
 
 // Map ////////////////////////////////////////////////////////////////////////
+#map-width {
+  width: 90%;
+}
 
 #map {
   position: sticky;
   height: 100vh;
   top: 0px;
-  width: 70%;
 }
 #map .mapboxgl-popup-content {
   padding: 10px;

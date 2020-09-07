@@ -1,28 +1,31 @@
-<div class="content-container d-flex">
+<div class="container-fluid">
 
-  <div class="country-list">
-    <div class="col-md-8 project-list">
-      <h1 class="text-center">Countries list</h1>
-      <% @countries.each do |country| %>
-        <div class="d-flex align-items-center justify-content-left bg-white m-1 px-3">
-          <%= link_to country_path(country) do %>
-            <%= country.name %>
-          <% end %>
-          <div class="ml-3">Flag icon</div>
-        </div>
-      <% end %>
+  <!-- Header -->
+  <div id="country-show-header">
+    <h2>Find the country you want to learn more about</h2>
+  </div>
+  <hr>
+  <!-- List of countries -->
+  <div class="content-container d-flex">
+    <div class="country-list">
+      <div class="col-md-12 project-list p-l-3">
+        <p>Click the <strong>name</strong> to get more information:</p>
+        <% @countries.each do |country| %>
+          <div class="d-flex align-items-center justify-content-between bg-white m-1 px-3">
+            <%= link_to country_path(country) do %>
+              <%= country.name %>
+            <% end %>
+            <div class="ml-3"><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[country.name]}/flat/32.png") %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+   <!-- Html Code for map -->
+    <div id="map-width">
+      <p>Click the country to see <strong>actual COVID-numbers:</strong></p>
+      <div id="map"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
   </div>
-
- <!-- Html Code for map -->
-  <div id="map"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
 </div>
-
-<br>
-<br>
-<br>
-
-
-
