@@ -1,10 +1,58 @@
 
+// Select2 crazy container, don't change
+
+.select2-container {
+	width: 200px !important;
+}
+
+// Search form
+
+.form-trip-input {
+  // width: 20%;
+  border-radius: 3px;
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.5);
+  text-indent: 5px;
+  // border: 1px solid rgba(80,80,80,0.5);
+  line-height: 0px;
+  outline: none;
+  margin: 1.5% 1.5%;
+  padding: 0px;
+}
 
 
+.form-trip-input:hover {
+  box-shadow: 1px 4px 8px rgba(150, 150, 150, 0.5);
+  // width: 100%;
+}
 
-.min-width-select {
-	min-width: 100%;
-	min-height: 100%;
-	position: relative;
-    right: 5px;
+.form-trip-input:focus {
+  box-shadow: 1px 4px 8px rgba(150, 150, 150, 0.5);
+  // width: 100%;
+}
+
+.form-trip-button {
+  // width: 100%;
+}
+
+#home_search{
+	display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+#results_search{
+  display: flex;
+    justify-content: center;
+  align-items: center;
+}
+
+
+.country_label{
+	color: white;
+	text-shadow: 1px 1px 1px rgba(80,80,80,0.5);
+}
+
+.country_label_black{
+  color: black;
+  text-shadow: 1px 1px 1px rgba(80,80,80,0.5);
 }

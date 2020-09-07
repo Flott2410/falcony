@@ -8,9 +8,11 @@
       <!-- search form for creating a trip -->
       <div class="form-trip">
         <%= form_tag result_countries_path, method: :get do %>
-        <div class="d-flex justify-content-center">
-          <div class="form-trip-input" ><%= collection_select(:country, :origin, Country.all, :id, :name,{}, {class: 'min-width-select'}) %></div>
-          <div class="form-trip-input"><%= collection_select(:country, :destination, Country.all, :id, :name,{}, {class: 'min-width-select'}) %></div>
+        <div class="d-flex" id="home_search">
+          <label class="country_label"><strong>ORIGIN</strong></label>
+          <div class="form-trip-input d-flex justify-content-center" ><%= collection_select(:country, :origin, Country.all, :id, :name,{selected: session[:create_trip_origin_id]}, {class: 'min-width-select select2'}) %></div>
+          <label class="country_label"><strong>DESTINATION</strong></label>
+          <div class="form-trip-input d-flex justify-content-center"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: 'min-width-select select2'}) %></div>
         </div>
         <div class="text-center">
           <%= submit_tag "Search", class: "form-trip-button btn btn-falcony" %>
