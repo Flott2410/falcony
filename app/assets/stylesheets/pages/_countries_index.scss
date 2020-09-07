@@ -1,11 +1,3 @@
-.country-map {
-  position: sticky;
-  height: 100vh;
-  top: 0px;
-  background: blue;
-  width: 70%;
-}
-
 .country-list {
   width: 30%;
 }
@@ -13,8 +5,10 @@
 // Map ////////////////////////////////////////////////////////////////////////
 
 #map {
-  height: 500px;
-  width: 1000px;
+  position: sticky;
+  height: 100vh;
+  top: 0px;
+  width: 70%;
 }
 #map .mapboxgl-popup-content {
   padding: 10px;
