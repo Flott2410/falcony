@@ -1,14 +1,26 @@
 class CountriesController < ApplicationController
 skip_before_action :authenticate_user!, only: [ :show, :result ]
+before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
 
   def index
     @countries = Country.all
   end
 
   def show
+
+
     @country = Country.find(params[:id])
 
     # Code for indication variables ############################################
+
+    # open
+    @open = Indication.where(country: @country).find_by(name: 'open')
+
+    # quarantine
+    @quarantine = Indication.where(country: @country).find_by(name: 'quarantine')
+
+    # test
+    @test = Indication.where(country: @country).find_by(name: 'test')
 
     # masks_in_public
     @masks_in_public = Indication.where(country: @country).find_by(name: 'masks_in_public')
@@ -146,6 +158,44 @@ skip_before_action :authenticate_user!, only: [ :show, :result ]
 
     # create Trip instance for simple form - hidden (session parameters)
     @trip = Trip.new
+  end
+
+  private
+
+  def set_countries_iso_alpha_2
+    @alpha_codes = {
+      "Austria" => 'at',
+      "Belgium" => 'be',
+      "Bulgaria" => 'bg',
+      "Croatia" => 'hr',
+      "Cyprus" => 'cy',
+      "Czech Republic" => 'cz',
+      "Denmark" => 'dk',
+      "Estonia" => 'ee',
+      "Finland" => 'fi',
+      "France" => 'fr',
+      "Germany" => 'de',
+      "Greece" => 'gr',
+      "Hungary" => 'hu',
+      "Iceland" => 'is',
+      "Ireland" => 'ie',
+      "Italia" => 'it',
+      "Latvia" => 'lv',
+      "Lithuania" => 'lt',
+      "Luxembourg" => 'lu',
+      "Malta" => 'mt',
+      "Netherlands" => 'nl',
+      "Norway" => 'no',
+      "Poland" => 'pl',
+      "Portugal" => 'pt',
+      "Romania" => 'ro',
+      "Slovakia" => 'sk',
+      "Slovenia" => 'si',
+      "Spain" => 'es',
+      "Sweden" => 'se',
+      "Switzerland" => 'ch'
+    }
+
   end
 
 end
