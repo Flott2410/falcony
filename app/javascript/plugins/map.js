@@ -44,7 +44,8 @@ const initMapbox = () => {
               <li><strong>Currencies:</strong> ${country.currencies.map((c) => c.code).join(', ')}</li>
               <li><strong>Capital:</strong> ${country.capital}</li>
               <li><strong>Population:</strong> ${country.population}</li>
-              <li><strong>Demonym:</strong> ${country.demonym}</li>
+              <!-- with iso code (country.alpha3Code) access gon.total_cases and get right value from Object} -->
+              <li><strong>Total cases:</strong> ${gon.total_cases[country.alpha3Code]}</li>
             </ul>
           `; // Now we have a good looking popup HTML segment.
           new mapboxgl.Popup() //Create a new popup
