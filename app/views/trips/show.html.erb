@@ -1,189 +1,350 @@
- <div class="container-fluid col-10">
-  <div class="mt-5 d-flex align-items-center">
-    <h1 class="flex-grow-1">From <%= link_to @trip.origin.name, country_path(@trip.origin) %> to <%= link_to @trip.destination.name, country_path(@trip.destination)  %> </h1>
-    <%= link_to trip_path(@trip), method: :delete do %>
-      <h1><i class="far fa-trash-alt"></i></h1>
-    <% end %>
-  </div>
+<div id="accordion">
+  <div class="container-fluid col-10">
 
-   <div class="card mb-5 col-12 p-0">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <!--  Open -->
-          <h5 class="card-title">
-            Travel
-          </h5>
-          <p class="card-text">
-            <% case @destination_open.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              You can travel without limitations
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              You cannot travel to <%= @trip.destination.name %>
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              You can travel with limitations
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-            </p>
-          <!--  High Risk Areas -->
-          <p class="card-text">
-            <% case @destination_high_risk_areas.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-danger"></i>
-              All the country is under lockdown
-            <% when "N" %>
-              <i class="fas fa-circle text-success"></i>
-              There aren't any risk areas under lockdown
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              There are some risk areas under lockdown
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %></p>
-          <!--  Quarantine -->
-          <p class="card-text">
-            <% case @destination_quarantine.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              No quarantine needed
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              Quarantine needed
-              <i class="far fa-question-circle text-black-50"></i>
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              Quarantine is requested in some circumstances
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-          </p>
 
-          <!--  Test -->
-          <p class="card-text">
-            <% case @destination_test.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              No tests needed
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              You need a test to enter
-              <i class="far fa-question-circle text-black-50"></i>
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              Testing is requested in some circumstances
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-          </p>
+    <!-- Code pasted from Tiago for Select2 effect -->
+
+    <div class="mt-5">
+      <%= form_tag result_countries_path, method: :get do %>
+        <div class="d-flex justify-content-center" id="results_search">
+          <div class="d-flex align-items-center mx-3">
+            ORIGIN
+            <div class="mx-3"><%= collection_select(:country, :origin, Country.all, :id, :name, { selected: session[:create_trip_origin_id]}, {class: ' min-width-select select2'}) %></div>
+          </div>
+          <div class="d-flex align-items-center mx-3">
+            DESTINATION
+            <div class="mx-3"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %></div>
+          </div>
+          <div>
+            <%= submit_tag "Search", class: "btn btn-falcony mx-3" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Resume of the Trip and links to countries pages -->
+    <div class="mt-5 d-flex align-items-center">
+      <h1 class="flex-grow-1">From <%= link_to @trip.origin.name, country_path(@trip.origin) %> to <%= link_to @trip.destination.name, country_path(@trip.destination)  %> </h1>
+      <%= link_to trip_path(@trip), method: :delete, remote: :true do %>
+        <h1><i class="far fa-trash-alt"></i></h1>
+      <% end %>
+    </div>
+
+
+    <div class="card mb-5 col-12 p-0">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              Travel
+            </h5>
+
+            <!--  Open -->
+            <div class="card-text">
+              <% case @destination_open.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-plane text-success mr-1"></i>
+                  You can travel without limitations
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-plane text-danger mr-1"></i>
+                  You cannot travel to <%= @trip.destination.name %>
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-plane text-warning mr-1"></i>
+                  You can travel with limitations
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationOpen" aria-expanded="false" aria-controls="collapseDestinationOpen"></i>
+                    <div id="collapseDestinationOpen" class="collapse" aria-labelledby="headingDestinationOpen" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_open.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+            <!--  High Risk Areas -->
+            <div class="card-text">
+              <% case @destination_high_risk_areas.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-street-view text-danger mr-2"></i>
+                  All the country is under lockdown
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-street-view text-success mr-2"></i>
+                  There aren't any risk areas under lockdown
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-street-view text-warning mr-2"></i>
+                  There are some risk areas under lockdown
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestionationAreas" aria-expanded="true" aria-controls="collapseDestionationAreas"></i>
+                    <div id="collapseDestionationAreas" class="collapse" aria-labelledby="headingDestionationAreas" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_test.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+            <!--  Quarantine -->
+            <div class="card-text">
+              <% case @destination_quarantine.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-house-user text-success mr-1"></i>
+                  No quarantine needed
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-house-user text-danger mr-1"></i>
+                  Quarantine needed
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
+                    <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_quarantine.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-house-user text-warning mr-1"></i>
+                  Quarantine is requested in some circumstances
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
+                    <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_quarantine.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+            <!--  Test -->
+            <div class="card-text">
+              <% case @destination_test.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-vial text-success mr-2"></i>
+                  No tests needed
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-vial text-danger mr-2"></i>
+                  You need a test to enter
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
+                    <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_test.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-vial text-warning mr-2"></i>
+                  Testing is requested in some circumstances
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
+                    <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_test.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="card mb-5 col-12 p-0">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1563183969-a63149297766" class="card-img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">
-            Local restrictions
-          </h5>
-          <p class="card-text">
-            <% case @destination_restaurants.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              Restaurants are open
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              Restaurants are closed
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              Restaurants are open with limitations
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-          </p>
-          <p class="card-text">
-            <% case @destination_bars_cafes.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              Bars and cafes are open
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              Bars and cafes are closed
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              Bars and cafes are open with limitations
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %></p>
+    <div class="card mb-5 col-12 p-0">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1563183969-a63149297766" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              Local restrictions
+            </h5>
+
+            <!-- Restaurants -->
+            <div class="card-text">
+              <% case @destination_restaurants.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-utensils text-success mr-2"></i>
+                  Restaurants are open
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-utensils text-danger mr-2"></i>
+                  Restaurants are closed
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-utensils text-warning mr-2"></i>
+                  Restaurants are open with limitations
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationRestaurants" aria-expanded="true" aria-controls="collapseDestinationRestaurants"></i>
+                    <div id="collapseDestinationRestaurants" class="collapse" aria-labelledby="headingDestinationRestaurants" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_restaurants.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+            <!-- Bars and cafes -->
+            <div class="card-text">
+              <% case @destination_bars_cafes.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-beer text-success mr-2"></i>
+                  Bars and cafes are open
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-beer text-danger mr-2"></i>
+                  Bars and cafes are closed
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-beer text-warning mr-2"></i>
+                  Bars and cafes are open with limitations
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
+                    <div id="collapseDestinationBars" class="collapse" aria-labelledby="headingDestinationBars" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @destination_restaurants.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <h2 class="mt-5 text-right">Coming back</h2>
+    <h2 class="mt-5 text-right">Coming back</h2>
 
-   <div class="card mb-5 col-12 p-0">
-    <div class="row no-gutters">
-      <div class="col-md-8">
-        <div class="card-body">
-          <!--  Open -->
-          <h5 class="card-title">
-            Travel
-          </h5>
-          <p class="card-text">
-            <% case @origin_open.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              You can travel without limitations
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              You cannot travel to <%= @trip.origin.name %>
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              You can travel with limitations
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-            </p>
-          <!--  Quarantine -->
-          <p class="card-text">
-            <% case @origin_quarantine.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-success"></i>
-              No quarantine needed
-            <% when "N" %>
-              <i class="fas fa-circle text-danger"></i>
-              Quarantine needed
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              Quarantine is requested in some circumstances
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-          </p>
+     <div class="card mb-5 col-12 p-0">
+      <div class="row no-gutters">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              Travel
+            </h5>
 
-          <!--  Test -->
-          <p class="card-text">
-            <% case @origin_test.status %>
-            <% when "Y" %>
-              <i class="fas fa-circle text-danger"></i>
-              No tests needed
-            <% when "N" %>
-              <i class="fas fa-circle text-success"></i>
-              You need a test to enter
-            <% when "WL" %>
-              <i class="fas fa-circle text-warning"></i>
-              Testing is requested in some circumstances
-              <i class="far fa-question-circle text-black-50"></i>
-            <% end %>
-          </p>
+            <!-- Open -->
+            <div class="card-text">
+              <% case @origin_open.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-plane text-success mr-1"></i>
+                  You can travel without limitations
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-plane text-danger mr-1"></i>
+                  You cannot travel to <%= @trip.destination.name %>
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-plane text-warning mr-1"></i>
+                  You can travel with limitations
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginOpen" aria-expanded="true" aria-controls="collapseOriginOpen"></i>
+                    <div id="collapseOriginOpen" class="collapse" aria-labelledby="headingOriginOpen" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @origin_open.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+              </div>
+
+            <!--  Quarantine -->
+            <div class="card-text">
+              <% case @origin_quarantine.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-house-user text-success mr-1"></i>
+                  No quarantine needed
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-house-user text-danger mr-1"></i>
+                  Quarantine needed
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
+                    <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @origin_quarantine.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-house-user text-warning mr-1"></i>
+                  Quarantine is requested in some circumstances
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
+                    <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @origin_quarantine.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+            <!--  Test -->
+            <div class="card-text">
+              <% case @origin_test.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-vial text-success mr-2"></i>
+                  No tests needed
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-vial text-danger mr-2"></i>
+                  You need a test to enter
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
+                    <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @origin_test.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-vial text-warning mr-2"></i>
+                  Testing is requested in some circumstances
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
+                    <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%= @origin_test.description.html_safe %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
+        </div>
       </div>
     </div>
   </div>
