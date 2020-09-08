@@ -172,22 +172,22 @@ puts "Users created ;-)"
 
 # Trips
 
-puts 'Generating trips...'
-# A for loop to create all possible trips
-for country_a in countries
-  # create countries_prime that contains all countries except the origin country so the origin isn't equal to the destination
-  countries_prime = countries.reject{ |country|
-      country == country_a
-    }
-  for country_b in countries_prime
-    Trip.create!(
-      origin: Country.find_by(name: country_a), # get origin from coutries array
-      destination: Country.find_by(name: country_b), # get destination from countries_prime array
-      user: User.all.sample,
-      bookmarked: [true, false].sample
-      )
-  end
-end
+# puts 'Generating trips...'
+# # A for loop to create all possible trips
+# for country_a in countries
+#   # create countries_prime that contains all countries except the origin country so the origin isn't equal to the destination
+#   countries_prime = countries.reject{ |country|
+#       country == country_a
+#     }
+#   for country_b in countries_prime
+#     Trip.create!(
+#       origin: Country.find_by(name: country_a), # get origin from coutries array
+#       destination: Country.find_by(name: country_b), # get destination from countries_prime array
+#       user: User.all.sample,
+#       bookmarked: [true, false].sample
+#       )
+#   end
+# end
 
 puts "Trips created ;-)"
 
