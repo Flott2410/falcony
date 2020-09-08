@@ -37,6 +37,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'gon'
 gem 'letter_opener', group: :development
 gem 'postmark-rails'
+gem 'twilio-ruby'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
