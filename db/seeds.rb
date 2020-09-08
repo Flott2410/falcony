@@ -124,10 +124,10 @@ puts 'Generating 4 static users...'
 kleyv = User.new(
   first_name: 'Eukleyv',
   last_name: 'Smith',
-  phone_number: '123456789',
-  email: 'eukleyv@gmail.com',
+  phone_number: '+351927691750',
+  email: 'eukleyvcardoso@gmail.com',
   password: '123456',
-  country_id: Country.all.sample.id
+  country_id: Country..find_by(name: 'Portugal')
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/kleyv')
 kleyv.photo.attach(io: file, filename: 'kleyv_avatar.png', content_type: 'image/png')
@@ -135,23 +135,23 @@ kleyv.save!
 
 florian = User.new(
   first_name: 'Florian',
-  last_name: 'Smith',
-  phone_number: '123456789',
-  email: 'florian@gmail.com',
+  last_name: 'Ott',
+  phone_number: '+436605633993',
+  email: 'florian.ott@gmx.at',
   password: '123456',
-  country_id: Country.all.sample.id
+  country_id: Country.find_by(name: 'Austria')
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/Flott2410')
 florian.photo.attach(io: file, filename: 'florian_avatar.png', content_type: 'image/png')
 florian.save!
 
 raffaelle = User.new(
-  first_name: 'Raffaelle',
-  last_name: 'Smith',
-  phone_number: '123456789',
-  email: 'raffaelle@gmail.com',
+  first_name: 'Raffaele',
+  last_name: 'Viggiani',
+  phone_number: '+393356284820',
+  email: 'raffaele.viggiani@gmail.com',
   password: '123456',
-  country_id: Country.all.sample.id
+  country_id: Country.find_by(name: 'Italia')
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/raffoz')
 raffaelle.photo.attach(io: file, filename: 'raffaelle_avatar.png', content_type: 'image/png')
@@ -159,9 +159,9 @@ raffaelle.save!
 
 tiago = User.new(
   first_name: 'Tiago',
-  last_name: 'Smith',
-  phone_number: '123456789',
-  email: 'tiago@gmail.com',
+  last_name: 'Palhoca',
+  phone_number: '+351919412637',
+  email: 'palhoca.tiago@gmail.com',
   password: '123456',
   country_id: Country.all.sample.id
   )

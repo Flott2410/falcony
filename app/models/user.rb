@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   validates :photo, presence: true
+  validates :phone_number, phone: true
 
   private
 
