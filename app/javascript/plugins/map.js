@@ -39,7 +39,7 @@ const initMapbox = () => {
           // Let's build our HTML in a template tag
           const html = `
             <ul>
-              <li><h3>${country.name.link("countries/" + gon.country_ids[country.alpha3Code])}<img src='${country.flag}'/></h3></li>
+              <li><h3>${country.name.link(gon.country_ids[country.alpha3Code])}<img src='${country.flag}'/></h3></li>
               <li><strong>Population: </strong> ${(country.population / 1000000).toLocaleString('en')} mio.</li>
               <!-- with iso code (country.alpha3Code) access gon.total_cases and get right value from Object} -->
               <li><strong>Total cases: </strong> ${(gon.total_cases[country.alpha3Code]).toLocaleString('en')}</li>
