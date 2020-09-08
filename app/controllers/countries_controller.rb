@@ -4,11 +4,24 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
 
   def index
     @countries = Country.all
+
+    # set latest date the data was updated
+    @update_date = @countries.sample.cases.last.date
+
+    total_cases = []
+    tmp_total_cases = Case.where(date: @update_date)
+    tmp_total_cases.each do |item|
+      total_cases << item.total_cases
+    end
+    countries = ['AUT', "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "NOR", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "CHE"]
+    gon.total_cases = countries.zip(total_cases).to_h
+
+    # gon.total_cases = {"AUT"=>28495, "BEL"=>86450, "BGR"=>16617, "HRV"=>11094, "CYP"=>1498, "CZE"=>26452, "DNK"=>17374, "EST"=>2128, "FIN"=>2444, "FRA"=>8200, "DEU"=>300181, "GRC"=>246948, "HUN"=>10998, "ISL"=>6923, "IRL"=>29206, "ITA"=>272912, "LVA"=>1410, "LTU"=>2978, "LUX"=>6745, "MLT"=>1965, "NLD"=>72392, "NOR"=>11035, "POL"=>69129, "PRT"=>59051, "ROU"=>91256, "SVK"=>4163, "SVN"=>3041, "ESP"=>84729, "SWE"=>43127, "CHE"=>nil}
+    # gon.new_cases_last_week =
+    # gon.deaths_pop =
   end
 
   def show
-
-
     @country = Country.find(params[:id])
 
     # Code for indication variables ############################################
