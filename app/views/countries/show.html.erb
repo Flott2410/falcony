@@ -42,15 +42,15 @@
     <div class="tab-pane fade" id="healthSafety" role="tabpanel" aria-labelledby="healthSafety-tab">
       <!-- Health & Safety -->
       <div class="card-indications">
-        <% if @masks_in_public %>
+        <% if @masks_in_public.description.length > 1 %>
           <h3>Duty to wear masks</h3>
           <p><%== @masks_in_public.description %></p>
         <% end %>
-        <% if @physical_distancing %>
+        <% if @physical_distancing.description.length > 1 %>
           <h3>Physical distancing measures</h3>
           <p><%== @physical_distancing.description %></p>
         <% end %>
-        <% if @health_protocols %>
+        <% if @health_protocols.description.length > 1 %>
           <h3>Health protocols</h3>
           <p><%== @health_protocols.description %></p>
         <% end %>
@@ -60,43 +60,43 @@
     <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
       <!-- Services -->
       <div class="card-indications">
-        <% if @gatherings %>
+        <% if @gatherings.description.length > 1 %>
            <h3>Rules for gatherings</h3>
           <p><%== @gatherings.description %></p>
         <% end %>
-        <% if @high_risk_areas %>
+        <% if @high_risk_areas.description.length > 1 %>
            <h3>Areas of high risks</h3>
           <p><%== @high_risk_areas.description %></p>
         <% end %>
-        <% if @tourism_accomodations %>
+        <% if @tourism_accomodations.description.length > 1 %>
            <h3>Accomodations</h3>
           <p><%== @tourism_accomodations.description %></p>
         <% end %>
-        <% if @restaurants %>
+        <% if @restaurants.description.length > 1 %>
           <h3>Restaurants</h3>
           <p><%== @restaurants.description %></p>
         <% end %>
-        <% if @bars_cafes %>
+        <% if @bars_cafes.description.length > 1 %>
           <h3>Bars / Cafes</h3>
           <p><%== @bars_cafes.description %></p>
         <% end %>
-        <% if @beaches %>
+        <% if @beaches.description.length > 1 %>
           <h3>Beaches</h3>
           <p><%== @beaches.description %></p>
         <% end %>
-        <% if @museums %>
+        <% if @museums.description.length > 1 %>
           <h3>Museums</h3>
           <p><%== @museums.description %></p>
         <% end %>
-        <% if @personal_services %>
+        <% if @personal_services.description.length > 1 %>
           <h3>Personal services</h3>
           <p><%== @personal_services.description %></p>
         <% end %>
-        <% if @places_of_worship %>
+        <% if @places_of_worship.description.length > 1 %>
           <h3>Places of worship</h3>
           <p><%== @places_of_worship.description %></p>
         <% end %>
-        <% if @public_transportation %>
+        <% if @public_transportation.description.length > 1 %>
           <h3>Public transportation</h3>
           <p><%== @public_transportation.description %></p>
         <% end %>
@@ -112,11 +112,66 @@
   <!-- information about cases -->
   <div class="card-cases">
 
-    <!-- new_cases average of last two weeks -->
-    <% if @last_two_weeks_average_new_cases %>
-      <h3>Avg new cases per day (last 14 days):</h3>
-      <p><%== @last_two_weeks_average_new_cases %></p>
-    <% end %>
+    <div class="cases-info mx-3">
+      <div class="population-and-daily-cases d-flex align-items-center">
+        <div class="population">
+          <!-- population -->
+          <% if @population %>
+            <h3>Population</h3>
+            <P><%== @population.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></P>
+          <% end %>
+        </div>
+        <div class="daily-cases flex-grow-1">
+          <!-- insert graph with actual new case numbers -->
+          <h3 >Daily cases</h3>
+          <div id="chartdiv"></div>
+        </div>
+      </div>
+      <div class="total-cases">
+        <!-- total_cases -->
+        <% if @total_cases %>
+          <h3>Total cases</h3>
+          <P><%== @total_cases.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></P>
+        <% end %>
+      </div>
+      <div class="total-deaths">
+        <!-- total_deaths -->
+        <% if @total_deaths %>
+          <h3>Total deaths</h3>
+          <P><%== @total_deaths.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse  %></P>
+        <% end %>
+      </div>
+      <div class="mortality">
+        <!-- mortality -->
+        <% if @mortality %>
+          <h3>Mortality</h3>
+          <P><%== @mortality %>%</P>
+          <p><small>Percentage of total population that died with COVID</small></p>
+        <% end %>
+
+      </div>
+      <div class="morbidity">
+        <!-- morbidity -->
+        <% if @morbidity %>
+          <h3>Morbidity</h3>
+          <P><%== @morbidity %>%</P>
+          <p><small>Percentage of infeced that died due to COVID</small></p>
+        <% end %>
+      </div>
+      <div class="total-tests">
+        <% if @total_tests %>
+          <h3>Total tests done</h3>
+          <P><%== @total_tests %></P>
+        <% end %>
+      </div>
+      <div class="test-rate">
+        <!-- morbidity -->
+        <% if @tests_per_case %>
+          <h3>Test per positive case</h3>
+          <P><%== @tests_per_case %></P>
+        <% end %>
+      </div>
+    </div>
 
     <!-- icon (green arrow down, red arrow up) that shows trend -->
     <% if @trend %>
@@ -128,44 +183,9 @@
       <% end %>
     <% end %>
 
-    <!-- insert graph with actual new case numbers -->
-    <div id="cases-graph">Placeholder graph</div>
-
-    <!-- total_deaths per population -->
-    <% if @deaths_pop %>
-      <h3>Total death rate</h3>
-      <P><%== @deaths_pop %> %</P>
-    <% end %>
-
-    <!-- tests divided by the number of cases -->
-    <% if @tests_per_case %>
-      <h3>Test rate</h3>
-      <P><%== @tests_per_case %></P>
-    <% end %>
-
-    <!-- new tests last week -->
-    <% if @new_tests_last_week_avg %>
-      <h3>New tests last week</h3>
-      <P><%== @new_tests_last_week_avg  %></P>
-    <% end %>
-
-    <!-- total_tests -->
-    <% if @total_tests %>
-      <h3>Total tests done</h3>
-      <P><%== @total_tests %></P>
-    <% end %>
-
-    <!-- stringency index interpretation -->
-    <% if @stringency_index %>
-      <h3>Stringency Index</h3>
-      <P><%== @stringency_index %></P>
-    <% end %>
     <!-- last updated at -->
-    <h3>Last updatet at</h3>
-    <P><%== @update_date %></P>
+    <P>Last updated on <%== @update_date %></P>
 
   </div>
-
-
 
   <div class="wrapper"></div>

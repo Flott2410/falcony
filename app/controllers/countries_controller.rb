@@ -151,6 +151,12 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     # total_deaths per population
     deaths_pop_full = @country.cases.last.total_deaths / @country.cases.last.population.to_f * 100
     @deaths_pop = deaths_pop_full.round(3)
+    @total_deaths = @country.cases.last.total_deaths
+    @total_cases = @country.cases.last.total_cases
+    @population = @country.cases.last.population
+    @mortality = (@total_deaths * 100 / @population.to_f).round(3)
+    @morbidity = (@total_deaths * 100 / @total_cases.to_f).round(3)
+
 
     # tests per case
     @tests_per_case = @country.cases.last.tests_per_case
@@ -172,6 +178,19 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
 
     # stringency index
     @stringency_index = @country.cases.last.stringency_index
+
+    @single_country_values = []
+    daily_cases = Case.where(country: @country).where(date: Date.parse('2020-01-01')..@update_date)
+    daily_cases.each do |currentCase|
+      var_name = @country.iso
+      each_day = {}
+      each_day = { 'date': currentCase['date'].strftime('%Y-%m-%d'), 'value': currentCase['new_cases'].nil? ? 0 : currentCase['new_cases'] }
+      # each_day[:date] = covid_data['date']
+      # each_day[:value] = covid_data['new_cases']
+      @single_country_values << each_day
+    end
+    gon.daily_cases = @single_country_values
+    # @single_country_data[var_name] = @single_country_values
 
   end
 

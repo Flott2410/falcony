@@ -31,10 +31,12 @@ import { initSelect2 } from '../components/init_select2';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/map';
+import { get_daily_cases } from '../daily_cases_chart';
 
 document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here
   initSelect2();
   initMapbox();
+  get_daily_cases();
 });
