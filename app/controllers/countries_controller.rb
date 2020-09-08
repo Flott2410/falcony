@@ -152,6 +152,7 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     @countries = Country.all
     @origin = Country.find(params[:country][:origin])
     @destination = Country.find(params[:country][:destination])
+    @countries_wo_origin = @countries.reject{ |country| country == @origin }
 
     session[:create_trip_destination_id] = @destination.id
     session[:create_trip_origin_id] = @origin.id
