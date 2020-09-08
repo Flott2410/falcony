@@ -15,7 +15,7 @@
           <label class="country_label_black">ORIGIN</label>
           <div class="form-trip-input d-flex justify-content-center" ><%= collection_select(:country, :origin, Country.all, :id, :name, { selected: session[:create_trip_origin_id]}, {class: ' min-width-select select2'}) %></div>
           <label class="country_label_black">DESTINATION</label>
-          <div class="form-trip-input class-input-medium d-flex justify-content-center"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %></div>
+          <div class="form-trip-input class-input-medium d-flex justify-content-center"><%= collection_select(:country, :destination, @countries_wo_origin, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %></div>
           <div class="text-center align-items-center">
             <%= submit_tag "Search", class: "form-trip-button btn btn-falcony" %>
           </div>
