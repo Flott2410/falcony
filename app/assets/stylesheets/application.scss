@@ -14,10 +14,26 @@
 @import "pages/index";
 
 // background image for all pages
+// body {
+//   background-image: url("background.png");
+//   background-color: #cccccc;
+//   background-size: cover;
+// }
+
 body {
-  background-image: url("background.png");
-  background-color: #cccccc;
-  background-size: cover;
+  background: linear-gradient(-45deg, #C4C4C4, #173B63, #66BDF8, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
-// whatsapp: "https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png"
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
