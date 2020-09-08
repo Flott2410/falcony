@@ -127,7 +127,7 @@ kleyv = User.new(
   phone_number: '+351927691750',
   email: 'eukleyvcardoso@gmail.com',
   password: '123456',
-  country_id: Country..find_by(name: 'Portugal')
+  country_id: Country.find_by(name: 'Portugal').id
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/kleyv')
 kleyv.photo.attach(io: file, filename: 'kleyv_avatar.png', content_type: 'image/png')
@@ -139,7 +139,7 @@ florian = User.new(
   phone_number: '+436605633993',
   email: 'florian.ott@gmx.at',
   password: '123456',
-  country_id: Country.find_by(name: 'Austria')
+  country_id: Country.find_by(name: 'Austria').id
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/Flott2410')
 florian.photo.attach(io: file, filename: 'florian_avatar.png', content_type: 'image/png')
@@ -151,7 +151,7 @@ raffaelle = User.new(
   phone_number: '+393356284820',
   email: 'raffaele.viggiani@gmail.com',
   password: '123456',
-  country_id: Country.find_by(name: 'Italia')
+  country_id: Country.find_by(name: 'Italia').id
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/raffoz')
 raffaelle.photo.attach(io: file, filename: 'raffaelle_avatar.png', content_type: 'image/png')
@@ -163,7 +163,7 @@ tiago = User.new(
   phone_number: '+351919412637',
   email: 'palhoca.tiago@gmail.com',
   password: '123456',
-  country_id: Country.all.sample.id
+  country_id: Country.find_by(name: 'Portugal').id
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/Tiago-Palhoca')
 tiago.photo.attach(io: file, filename: 'tiago_avatar.png', content_type: 'image/png')
