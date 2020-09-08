@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div class="row justify-content-center my-5">
-    <div class="col-md-8 project-list">
+    <div class="col-md-6 project-list">
       <h1 class="text-center">My trips</h1>
+
         <div class="d-flex align-items-center bg-white my-3 mx-1 px-3">
           <div class="flex-grow-1 p-2"> <strong>Trips</strong> </div>
           <%= link_to root_path do %>
@@ -11,20 +12,26 @@
             </div>
           <% end %>
         </div>
+
       <% @trips.each do |trip| %>
         <div class="d-flex align-items-center bg-white m-1 px-3">
+
+          <!-- Link to the trip -->
           <div class="flex-grow-1 p-2">
             <%= link_to trip_path(trip) do %>
               <%= trip.origin.name %> - <%= trip.destination.name  %>
             <% end %>
           </div>
+
+          <!-- Link to delete the trip -->
           <div>
-            <%= link_to trip_path(trip), method: :delete do %>
+            <%= link_to trip_path(trip), method: :delete, remote: :true do %>
               <i class="far fa-trash-alt"></i>
             <% end %>
           </div>
         </div>
       <% end %>
+
     </div>
   </div>
 </div>

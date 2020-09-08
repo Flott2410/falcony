@@ -150,8 +150,13 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
 
   def result
     @countries = Country.all
-    @origin = Country.find(params[:country][:origin])
-    @destination = Country.find(params[:country][:destination])
+    if URI(request.referer).path != "/" && URI(request.referer).path != "/countries/result"
+      # @origin = @trip.origin
+      # @destination = @trip.destination
+    else
+      @origin = Country.find(params[:country][:origin])
+      @destination = Country.find(params[:country][:destination])
+    end
 
     session[:create_trip_destination_id] = @destination.id
     session[:create_trip_origin_id] = @origin.id
