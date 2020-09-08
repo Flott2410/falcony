@@ -35,6 +35,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cloudinary', '~> 1.16.0'
 gem 'gon'
+gem 'letter_opener', group: :development
+gem 'postmark-rails'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
