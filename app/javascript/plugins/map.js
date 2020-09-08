@@ -38,14 +38,13 @@ const initMapbox = () => {
         .then((country) => { //country contains the data from the API request
           // Let's build our HTML in a template tag
           const html = `
-            <img src='${country.flag}' />
             <ul>
-              <li><h3>${country.name}</h3></li>
-              <li><strong>Currencies:</strong> ${country.currencies.map((c) => c.code).join(', ')}</li>
-              <li><strong>Capital:</strong> ${country.capital}</li>
-              <li><strong>Population:</strong> ${country.population}</li>
+              <li><h3>${country.name.link("countries/" + gon.country_ids[country.alpha3Code])}<img src='${country.flag}'/></h3></li>
+              <li><strong>Population: </strong> ${(country.population / 1000000).toLocaleString('en')} mio.</li>
               <!-- with iso code (country.alpha3Code) access gon.total_cases and get right value from Object} -->
-              <li><strong>Total cases:</strong> ${gon.total_cases[country.alpha3Code]}</li>
+              <li><strong>Total cases: </strong> ${(gon.total_cases[country.alpha3Code]).toLocaleString('en')}</li>
+              <li><strong>New cases (last day): </strong> ${(gon.new_cases[country.alpha3Code]).toLocaleString('en')}</li>
+              <li><strong>Death rate: </strong> ${(gon.total_deaths[country.alpha3Code] / country.population * 100).toFixed(4)} %</li>
             </ul>
           `; // Now we have a good looking popup HTML segment.
           new mapboxgl.Popup() //Create a new popup

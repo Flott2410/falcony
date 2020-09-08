@@ -8,17 +8,44 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     # set latest date the data was updated
     @update_date = @countries.sample.cases.last.date
 
+    # define country iso code 3 array
+    countries = ['AUT', "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "NOR", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "CHE"]
+
+    # define total cases for use it in javascript map
     total_cases = []
     tmp_total_cases = Case.where(date: @update_date)
     tmp_total_cases.each do |item|
       total_cases << item.total_cases
     end
-    countries = ['AUT', "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "NOR", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "CHE"]
+    # creates a hash with key value pairs iso-code and total cases
+    # gon.total_cases = {"AUT"=>28495, "BEL"=>86450, ...
     gon.total_cases = countries.zip(total_cases).to_h
 
-    # gon.total_cases = {"AUT"=>28495, "BEL"=>86450, "BGR"=>16617, "HRV"=>11094, "CYP"=>1498, "CZE"=>26452, "DNK"=>17374, "EST"=>2128, "FIN"=>2444, "FRA"=>8200, "DEU"=>300181, "GRC"=>246948, "HUN"=>10998, "ISL"=>6923, "IRL"=>29206, "ITA"=>272912, "LVA"=>1410, "LTU"=>2978, "LUX"=>6745, "MLT"=>1965, "NLD"=>72392, "NOR"=>11035, "POL"=>69129, "PRT"=>59051, "ROU"=>91256, "SVK"=>4163, "SVN"=>3041, "ESP"=>84729, "SWE"=>43127, "CHE"=>nil}
-    # gon.new_cases_last_week =
-    # gon.deaths_pop =
+    # define new cases to use it in javascript map
+    tmp_cases_per_country = Case.where(date: @update_date)
+    new_cases = []
+    tmp_cases_per_country.each do |item|
+      if item.new_cases == nil
+        item.new_cases = 0
+      end
+      new_cases << item.new_cases
+    end
+    gon.new_cases = countries.zip(new_cases).to_h
+
+    # define death rate to use it in javascript map
+    tmp_total_deaths = Case.where(date: @update_date)
+    total_deaths = []
+    tmp_total_deaths.each do |item|
+      if item.total_deaths == nil
+        item.total_deaths = 0
+      end
+      total_deaths << item.total_deaths
+    end
+    gon.total_deaths = countries.zip(total_deaths).to_h
+
+    # define country ids
+    country_ids = Country.all.map { |country| country.id }
+    gon.country_ids = countries.zip(country_ids).to_h
   end
 
   def show
@@ -152,6 +179,7 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     @countries = Country.all
     @origin = Country.find(params[:country][:origin])
     @destination = Country.find(params[:country][:destination])
+    @countries_wo_origin = @countries.reject{ |country| country == @origin }
 
     session[:create_trip_destination_id] = @destination.id
     session[:create_trip_origin_id] = @origin.id
