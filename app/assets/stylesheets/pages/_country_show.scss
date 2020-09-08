@@ -6,12 +6,44 @@
   padding: 20px;
 }
 
+.cases-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.population-and-daily-cases {
+  grid-column: span 4;
+}
+
+.population {
+  width: 240px;
+}
+
+.cases-info h3  {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.nav a  {
+  font-size: 2rem;
+}
+.cases-info p  {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+small  {
+  font-size: 16px;
+}
+
+
 .card-indications {
   margin: 0 10vw;
   height: auto;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 20px;
+  padding: 16px;
 }
 
 #cases-graph {
