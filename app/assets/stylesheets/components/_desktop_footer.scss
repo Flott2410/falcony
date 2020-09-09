@@ -29,17 +29,23 @@
   color: white;
   a, p {
     color: white;
+    // font-weight: bold;
+  }
+  &:hover {
+    // color: red;
+    // opacity: 0.9;
+    text-decoration: none;
   }
   a:hover {
-      color: $green-falcony;
-      opacity: 0.9;
+      color: $light-blue-falcony;
+      // opacity: 0.9;
       text-decoration: none;
     }
 }
 
 .footer-copyright {
   .fa-heart {
-  color: rgb(22,127,251);
+  color: $blue-falcony;
   }
   p {
     color: white;

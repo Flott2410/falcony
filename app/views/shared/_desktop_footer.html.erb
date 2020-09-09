@@ -3,15 +3,17 @@
 
     <!-- icons with links to Github, Linkedin and Facebook -->
     <div class="footer-icons">
-      <a class="footer-link" href="https://github.com/flott2410/falcony" target="_blank"><i class="fab fa-github"></i></a>
-      <a class="footer-link" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a class="footer-link" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a class="footer-link mr-1" href="https://github.com/flott2410/falcony" target="_blank"><i class="fab fa-github"></i></a>
+      <!-- <a class="footer-link" href="#" target="_blank"><i class="fab fa-linkedin"></i></a> -->
+      <a class="footer-link mr-1" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a class="footer-link" href="mailto: contact@falcony.info" target="_blank"><i class="fas fa-at"></i></a>
     </div>
 
     <!-- links to about Falcony page and Privacy policy -->
-    <div class="footer-link">
-      <p class="paragraph-no-margin"> <%= link_to t("global.navbar.about"), root_path %></p>
-      <p class="paragraph-no-margin"> <%= link_to t("global.navbar.privacy_policy"), root_path %></p>
+    <div class="d-flex justify-content-center footer-link">
+      <p class="paragraph-no-margin mr-4"> <%= link_to t("global.navbar.sources"), root_path %></p>
+      <p class="paragraph-no-margin mr-0"> <%= link_to t("global.navbar.privacy_policy"), root_path %></p>
+      <!-- <p class="paragraph-no-margin"> <%= link_to t("global.navbar.cookie_policy"), root_path %></p> -->
     </div>
 
     <!-- Stripe -->
@@ -27,8 +29,8 @@
 
     <!--  contact info - copyright -->
     <div class="footer-copyright">
-       <p class="paragraph-no-margin">Coded with <i class="fas fa-heart"></i> in Lisbon & Diamante</p>
-       <p class="paragraph-no-margin">Contact us: <a class="footer-link" href = "mailto: email@falcony.info">info@falcony.info</a></p>
+       <p class="paragraph-no-margin">Coded with <i class="fas fa-heart"></i> in Lisbon, Milan & Diamante</p>
+       <!-- <p class="paragraph-no-margin">Contact us: <a class="footer-link" href = "mailto: contact@falcony.info">contact@falcony.info</a></p> -->
     </div>
 
   <!-- </div> -->
