@@ -26,11 +26,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body id="content-wrap">
+  <!-- <body id="content-wrap"> -->
+  <body>
     <%= render 'shared/desktop_navbar' %>
     <%= render 'shared/flashes' %>
 
-    <%= yield %>
+    <div class="content-for-footer">
+      <%= yield %>
+    </div>
+
     <%= render 'shared/login_modal' %>
     <%= render 'shared/desktop_footer' %>
   </body>
