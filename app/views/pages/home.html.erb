@@ -1,87 +1,88 @@
 <!-- Navbar -->
 <div class="container-fluid p-0">
+
+
   <!-- Section 1: Banner with title, and create trip form -->
   <div class="row">
     <div class="banner-landing-1" style="background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(220, 220, 200, 0.1)), url('<%= image_path "landing_page/banner-1.jpg"%>'); ">
-      <!-- have to fix this div, using temporary breaklines -->
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h3 class="mt-3 mb-0" id="motto">Fly above risk</h3>
-      <h3 id="headline-banner-1">Find all important COVID-19 related travel infos</h3>
+
+      <!-- 3 phrases in home page -->
+      <h3 class="mt-3 mb-3" id="motto">Fly above risk</h3>
+      <h3 id="headline-banner-1">Get important and updated</h3><br>
+      <h3 id="headline-banner-1">COVID-19 related travel infos</h3>
       <p id="subheadline-banner-1"><strong>Where do you want to go?</strong></p>
+
       <!-- search form for creating a trip -->
       <div class="mt-3">
-      <%= form_tag result_countries_path, method: :get do %>
-        <div class="d-flex justify-content-center" id="home_search">
-          <div class="d-flex align-items-center mx-3 country_label">
-            <strong>ORIGIN</strong>
-            <div class="mx-3"><%= collection_select(:country, :origin, Country.all, :id, :name, { selected: Country.find_by(name: "Portugal").id}, {class: ' min-width-select select2'}) %></div>
-          </div>
-          <div class="d-flex align-items-center mx-3 country_label">
+        <%= form_tag result_countries_path, method: :get do %>
+          <div class="d-flex justify-content-center" id="home_search">
+
+            <div class="d-flex align-items-center mx-3 country_label">
+              <strong>ORIGIN</strong>
+              <div class="mx-3">
+                <%= collection_select(:country, :origin, Country.all, :id, :name, { selected: Country.find_by(name: "Portugal").id}, {class: ' min-width-select select2'}) %>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mx-3 country_label">
+              <div class="mx-3">
+                <%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %>
+              </div>
             <strong>DESTINATION</strong>
-            <div class="mx-3"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %></div>
+            </div>
+
           </div>
-        </div>
-        <div class="text-center" id="home_page_search_btn">
-              <%= submit_tag "Search", class: "btn btn-falcony mx-3 mt-3" %>
-        </div>
+
+          <div>
+            <%= submit_tag "Search", class: "btn btn-falcony mr-5 mt-4" %>
+          </div>
+
         <% end %>
       </div>
+
     </div>
   </div>
 
 
-
-
-
   <!-- Section 2: First info section explaining falcony -->
-
-  <!-- Section 3: Second info section about the bookmark and notification feature -->
-
-  <!-- Section 4: Third info section with info that Falcony is trustable and maybe references/testimonials -->
-
-
-
-
-  <div class="card-feature justify-content-evenly" id="content-a">
+  <div class="card-feature">
     <div>
         <img src="https://images.unsplash.com/photo-1593437886622-34881819f1d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1590&q=80" alt="Search">
     </div>
     <div class="description">
-    	<h1>Get informed</h1>
-    	<br>
-    	<p> Get all <strong>relevant info</strong> regarding the countries you want to travel to and from</p>
+    	<h1>Stay informed</h1>
+    	<p>Get all <strong>relevant info</strong> regarding the countries you want to travel to and from</p>
+      <p>Can you <strong>take a plane</strong> to go there? Do you need <strong>quarantine</strong> or a previous negative <strong>test</strong>?</p>
+      <p>And check if <strong>restaurants</strong> are open or if you can <strong>go out for a beer</strong> in the night</p>
+      <p></p>
     </div>
   </div>
 
+
+  <!-- Section 3: Second info section about the bookmark and notification feature -->
   <div class="card-feature" id="content-b">
     <div class="description">
         <h1>Dive deep</h1>
-        <br>
-        <p> See <strong>detailed</strong> descriptions for each country</p>
-        <p>Analise all the restrictions in place</p>
-        <p>Compare countries</p>
+        <p>See <strong>detailed</strong> descriptions for each country</p>
+        <p>Analise <strong>all the restrictions</strong> in place and how they are changing</p>
+        <p>Compare countries and see their <strong>graphs</strong></p>
     </div>
     <div>
-        <img src="https://images.unsplash.com/photo-1590608897129-79da98d15969?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Search">
+        <%= image_tag "dive-deep.png" %>
     </div>
   </div>
 
-  <div class="card-feature justify-content-around" id="content-c">
+  <!-- Section 4: Third info section with info that Falcony is trustable and maybe references/testimonials -->
+  <div class="card-feature" id="content-c">
     <div>
         <img src="https://images.unsplash.com/photo-1590488357944-a71ec5581dfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80" alt="Search">
     </div>
     <div class="description p-1">
-      <h1>Get updated</h1>
-      <br>
-      <p> Receive <strong>notifications</strong> everytime there is a new update in any of the countries </p>
+      <h1>Live notifications</h1>
+      <p><strong>Save your preferred routes</strong> to keep them under control</p>
+      <p>Receive instantly <strong>granular notifications</strong> about bookmarks or choosen countries</p>
+      <p>You can even set to <strong>get an alert</strong> if some values go over the setted limit</p>
     </div>
   </div>
-
 
 </div>
