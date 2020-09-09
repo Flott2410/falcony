@@ -39,37 +39,22 @@
 
 .card-feature {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   overflow: hidden;
-  height: 550px;
+  height: 500px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
 }
 
 #content-b {
   background-color: rgb(43, 54, 54);
   color: white;
 }
-#content-a {    
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 200px;
-}
-#content-a img{
-  height: 120px;
-  width: 120px;
-  opacity: 0.8;
-  margin-bottom: 40px;
-  //margin-left: 50px;
-}
-
-.icon_text{
-  //margin-left: 30px;
-}
 
 .card-feature img {
-  height: 50%;
+  height: 100%;
   width: 400px;
   opacity: 0.8;
 }
@@ -78,16 +63,5 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
+
 }
-
-#content-b .big_icon img{
-  width: 150px;
-  //margin-left: 50px;
-}
-
-#content-b img{
-  width: 150px;
-  //margin-left: 50px;
-}
-
-
