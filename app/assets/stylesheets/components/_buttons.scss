@@ -2,7 +2,7 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: $green-falcony;
+  background: $blue-falcony;
   text-decoration: none;
   box-shadow: 4px 4px 5px 0px rgba(20,20,20,0.46);
 }
@@ -11,4 +11,9 @@
   opacity: 0.9;
   color: white;
   text-decoration: none;
+}
+
+.stripe-button-el {
+  width: 130px;
+  // padding: 16px !important;
 }

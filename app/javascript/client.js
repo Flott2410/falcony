@@ -1,7 +1,7 @@
 const stripeCoffee = () => {
 var stripe = Stripe('pk_test_51HP7jHFjvBKJvhpwIhnOBljbfSMBvI0pXddRVQC6SG42JZikYX4xl2X6TbKE72BDGhjJkUQsxV2nLX1RztaLxFjb00X5HXG5bq');
 
-var checkoutButton = document.querySelector('#checkout-button');
+var checkoutButton = document.querySelector('.stripe-button-el');
 checkoutButton.addEventListener('click', function () {
   stripe.redirectToCheckout({
     lineItems: [{

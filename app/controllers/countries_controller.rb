@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-skip_before_action :authenticate_user!, only: [ :show, :result ]
+skip_before_action :authenticate_user!, only: [ :show, :result, :index ]
 before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
 
   def index
