@@ -16,11 +16,12 @@
 
     <!-- Stripe -->
     <div>
-      <!-- <button id="checkout-button">Pay</button> -->
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-key="pk_test_51HP7jHFjvBKJvhpwIhnOBljbfSMBvI0pXddRVQC6SG42JZikYX4xl2X6TbKE72BDGhjJkUQsxV2nLX1RztaLxFjb00X5HXG5bq"
           data-description="Hot Coffee!"
+          data-label="Hot Coffee ☕️"
           data-amount="200"
+          data-currency="eur"
           data-locale="auto"></script>
     </div>
 
