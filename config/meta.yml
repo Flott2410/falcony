@@ -1,0 +1,5 @@
+meta_product_name: "Falcony"
+meta_title: "Falcony - Fly above the risk"
+meta_description: "Everything you need to know about travels after Covid-19"
+meta_image: "banner_ogImage.jpg" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
