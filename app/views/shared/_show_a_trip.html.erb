@@ -2,15 +2,15 @@
 
 
     <!-- Code pasted from Tiago for Select2 effect -->
-    <div class="mt-5">
+    <div class="mt-5 d-flex p-0">
       <%= form_tag result_countries_path, method: :get do %>
         <div class="d-flex justify-content-center" id="results_search">
-          <div class="d-flex align-items-center mx-3">
-            ORIGIN
+          <div class="d-flex align-items-center mr-3">
+            Origin
             <div class="mx-3"><%= collection_select(:country, :origin, Country.all, :id, :name, { selected: session[:create_trip_origin_id]}, {class: ' min-width-select select2'}) %></div>
           </div>
           <div class="d-flex align-items-center mx-3">
-            DESTINATION
+            Destination
             <div class="mx-3"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %></div>
           </div>
           <div>
@@ -25,13 +25,29 @@
     <div class="mt-5 d-flex align-items-center">
       <h1 class="flex-grow-1">From <%= link_to @origin.name, country_path(@origin) %> to <%= link_to @destination.name, country_path(@destination) %></h1>
 
-      <!-- It shows the delete trip just if coming from trips_path -->
-      <% if URI(request.referer).path != "/" && URI(request.referer).path != "/countries/result" %>
-        <%= link_to trip_path(@trip), method: :delete, remote: :true do %>
-          <h1><i class="far fa-trash-alt"></i></h1>
+      <% if URI(request.referer).path == "/" || URI(request.referer).path == "/countries/result" %>
+        <!-- Add subscription -->
+        <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
+          <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
+            <h1><i class="far fa-bookmark"></i></h1>
+          <% end %>
+        <% else %>
+          <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
+            <h1><i class="fas fa-bookmark"></i></h1>
+          <% end %>
+        <% end %>
+      <% else %>
+        <!-- Add subscription -->
+        <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
+          <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
+            <h1><i class="far fa-bookmark"></i></h1>
+          <% end %>
+        <% else %>
+          <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
+            <h1><i class="fas fa-bookmark"></i></h1>
+          <% end %>
         <% end %>
       <% end %>
-
     </div>
 
 
@@ -67,7 +83,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationOpen" aria-expanded="false" aria-controls="collapseDestinationOpen"></i>
                     <div id="collapseDestinationOpen" class="collapse" aria-labelledby="headingDestinationOpen" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_open.description.html_safe %>
+                        <%== @destination_open.description %>
                       </div>
                     </div>
                 </p>
@@ -94,7 +110,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestionationAreas" aria-expanded="true" aria-controls="collapseDestionationAreas"></i>
                     <div id="collapseDestionationAreas" class="collapse" aria-labelledby="headingDestionationAreas" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_test.description.html_safe %>
+                        <%== @destination_test.description %>
                       </div>
                     </div>
                 </p>
@@ -116,7 +132,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
                     <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_quarantine.description.html_safe %>
+                        <%== @destination_quarantine.description %>
                       </div>
                     </div>
                 </p>
@@ -127,7 +143,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
                     <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_quarantine.description.html_safe %>
+                        <%== @destination_quarantine.description %>
                       </div>
                     </div>
                 </p>
@@ -149,7 +165,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
                     <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_test.description.html_safe %>
+                        <%== @destination_test.description %>
                       </div>
                     </div>
                 </p>
@@ -160,7 +176,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
                     <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_test.description.html_safe %>
+                        <%== @destination_test.description %>
                       </div>
                     </div>
                 </p>
@@ -205,7 +221,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationRestaurants" aria-expanded="true" aria-controls="collapseDestinationRestaurants"></i>
                     <div id="collapseDestinationRestaurants" class="collapse" aria-labelledby="headingDestinationRestaurants" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_restaurants.description.html_safe %>
+                        <%== @destination_restaurants.description %>
                       </div>
                     </div>
                 </p>
@@ -232,7 +248,55 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
                     <div id="collapseDestinationBars" class="collapse" aria-labelledby="headingDestinationBars" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @destination_restaurants.description.html_safe %>
+                        <%==   @destination_restaurants.description %>
+                      </div>
+                    </div>
+                </p>
+              <% end %>
+            </div>
+
+            <!-- Gatherings -->
+            <div class="card-text">
+              <% if @destination_gatherings.description.length > 1 %>
+                <p>
+                  <i class="fas fa-bus text-warning mr-2"></i>
+                  Restrictions on social gatherings
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
+                    <div id="collapseDestinationBars" class="collapse" aria-labelledby="headingDestinationBars" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%== @destination_gatherings.description %>
+                      </div>
+                    </div>
+                </p>
+              <% else %>
+                <p>
+                  <i class="fas fa-bus text-success mr-2"></i>
+                  No restrictions on social gatherings
+                </p>
+              <% end %>
+            </div>
+
+            <!-- Are museums & heritage sites open? -->
+            <div class="card-text">
+              <% case @destination_museums.status %>
+              <% when "Y" %>
+                <p>
+                  <i class="fas fa-landmark text-success mr-2"></i>
+                  Museums & heritage sites are open
+                </p>
+              <% when "N" %>
+                <p>
+                  <i class="fas fa-landmarktext-danger mr-2"></i>
+                  Museums & heritage sites are closed
+                </p>
+              <% when "WL" %>
+                <p>
+                  <i class="fas fa-landmark text-warning mr-2"></i>
+                  Museums & heritage sites are open with limitations
+                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
+                    <div id="collapseDestinationBars" class="collapse" aria-labelledby="headingDestinationBars" data-parent="#accordion">
+                      <div class="card card-body">
+                        <%== @destination_museums.description %>
                       </div>
                     </div>
                 </p>
@@ -276,7 +340,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginOpen" aria-expanded="true" aria-controls="collapseOriginOpen"></i>
                     <div id="collapseOriginOpen" class="collapse" aria-labelledby="headingOriginOpen" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @origin_open.description.html_safe %>
+                        <%== @origin_open.description %>
                       </div>
                     </div>
                 </p>
@@ -298,7 +362,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
                     <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @origin_quarantine.description.html_safe %>
+                        <%== @origin_quarantine.description %>
                       </div>
                     </div>
                 </p>
@@ -309,7 +373,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
                     <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @origin_quarantine.description.html_safe %>
+                        <%== @origin_quarantine.description %>
                       </div>
                     </div>
                 </p>
@@ -331,7 +395,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
                     <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @origin_test.description.html_safe %>
+                        <%== @origin_test.description %>
                       </div>
                     </div>
                 </p>
@@ -342,7 +406,7 @@
                   <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
                     <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
                       <div class="card card-body">
-                        <%= @origin_test.description.html_safe %>
+                        <%== @origin_test.description %>
                       </div>
                     </div>
                 </p>

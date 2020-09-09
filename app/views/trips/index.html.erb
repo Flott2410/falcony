@@ -25,8 +25,8 @@
 
           <!-- Link to delete the trip -->
           <div>
-            <%= link_to trip_path(trip), method: :delete, remote: :true do %>
-              <i class="far fa-trash-alt"></i>
+            <%= link_to trip_path(trip), method: :patch, remote: :true do %>
+              <i class="fas fa-bookmark"></i>
             <% end %>
           </div>
         </div>

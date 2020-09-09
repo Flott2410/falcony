@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-before_action :set_trip, only: [ :show, :destroy ]
+before_action :set_trip, only: [ :show, :update, :destroy ]
 
   def create
     # get trip variables from hidden for or not hidden form if user already sign in
@@ -17,7 +17,7 @@ before_action :set_trip, only: [ :show, :destroy ]
   end
 
   def index
-    @trips = Trip.where(user: current_user).order(updated_at: :desc)
+    @trips = Trip.where(user: current_user).where(bookmarked: true).order(updated_at: :desc)
   end
 
   def show
@@ -34,15 +34,29 @@ before_action :set_trip, only: [ :show, :destroy ]
     @destination_bars_cafes = Indication.where(country: @destination).find_by(name: "bars_cafes")
     @destination_new_cases = Case.where(country: @destination).last.new_cases
 
+    @destination_gatherings = Indication.where(country: @destination).find_by(name: "gatherings")
+    @destination_museums = Indication.where(country: @destination).find_by(name: "museums")
+
     @origin_open = Indication.where(country: @origin).find_by(name: "open")
     @origin_quarantine = Indication.where(country: @origin).find_by(name: "quarantine")
     @origin_test = Indication.where(country: @origin).find_by(name: "test")
   end
 
+  def update
+    if @trip.bookmarked.nil?
+      bookmark
+    elsif @trip.bookmarked == true
+      unbookmark
+    else
+      bookmark
+    end
+    @trip.save
+    redirect_to trips_path
+  end
+
   def destroy
     @trip.destroy
     redirect_to trips_path
-
   end
 
   private
@@ -53,5 +67,15 @@ before_action :set_trip, only: [ :show, :destroy ]
 
   def set_trip
     @trip = Trip.find(params[:id])
+  end
+
+  def bookmark
+    @trip.bookmarked = true
+    @trip.save
+  end
+
+  def unbookmark
+    @trip.bookmarked = false
+    @trip.save
   end
 end
