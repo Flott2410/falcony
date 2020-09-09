@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-center my-5">
-    <div class="col-md-6 project-list">
+    <div class="col-md-6">
       <h1 class="text-center">My trips</h1>
 
         <div class="d-flex align-items-center bg-white my-3 mx-1 px-3">
@@ -13,24 +13,25 @@
           <% end %>
         </div>
 
-      <% @trips.each do |trip| %>
-        <div class="d-flex align-items-center bg-white m-1 px-3">
-
-          <!-- Link to the trip -->
-          <div class="flex-grow-1 p-2">
-            <%= link_to trip_path(trip) do %>
-              <%= trip.origin.name %> - <%= trip.destination.name  %>
-            <% end %>
-          </div>
-
-          <!-- Link to delete the trip -->
-          <div>
-            <%= link_to trip_path(trip), method: :delete, remote: :true do %>
-              <i class="far fa-trash-alt"></i>
-            <% end %>
-          </div>
+        <div class="trips-grid">
+          <% @trips.each do |trip| %>
+              <div class="card" style="width: 18rem;">
+                <%= link_to trip_path(trip) do %>
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body d-flex justify-content-around align-items-center">
+                    <div class="flex-grow-1">
+                      <p class="card-text"><%= trip.origin.name %> - <%= trip.destination.name %></p>
+                    </div>
+                    <div>
+                      <%= link_to trip_path(trip), method: :delete, remote: :true do %>
+                        <i class="far fa-trash-alt"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+          <% end %>
         </div>
-      <% end %>
 
     </div>
   </div>

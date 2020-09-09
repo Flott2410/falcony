@@ -54,3 +54,10 @@
   width: 400px;
   opacity: 0.8;
 }
+
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 24px;
+
+}
