@@ -25,6 +25,7 @@
     <div class="mt-5 d-flex align-items-center">
       <h1 class="flex-grow-1">From <%= link_to @origin.name, country_path(@origin) %> to <%= link_to @destination.name, country_path(@destination) %></h1>
 
+      <!-- Render the bookmark icon differently dependending on where the user comes from. If the user comes from -->
       <% if URI(request.referer).path == "/" || URI(request.referer).path == "/countries/result" %>
         <!-- Add subscription -->
         <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
@@ -52,7 +53,7 @@
 
 
     <!-- First section -->
-    <div class="card mb-5 col-12 p-0">
+    <div class="card mb-5 col-12 p-0 card-shadow">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
@@ -190,7 +191,7 @@
 
 
     <!-- Second section -->
-    <div class="card mb-5 col-12 p-0">
+    <div class="card mb-5 col-12 p-0 card-shadow">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img src="https://images.unsplash.com/photo-1563183969-a63149297766" class="card-img" alt="...">
@@ -312,7 +313,7 @@
     <!-- Third section -->
     <h2 class="mt-5 text-right">Coming back</h2>
 
-     <div class="card mb-5 col-12 p-0">
+     <div class="card mb-5 col-12 p-0 card-shadow">
       <div class="row no-gutters">
         <div class="col-md-8">
           <div class="card-body">
