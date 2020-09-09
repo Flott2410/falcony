@@ -212,6 +212,9 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     @destination_bars_cafes = Indication.where(country: @destination).find_by(name: "bars_cafes")
     @destination_new_cases = Case.where(country: @destination).last.new_cases
 
+    @destination_gatherings = Indication.where(country: @destination).find_by(name: "gatherings")
+    @destination_museums = Indication.where(country: @destination).find_by(name: "museums")
+
     @origin_open = Indication.where(country: @origin).find_by(name: "open")
     @origin_quarantine = Indication.where(country: @origin).find_by(name: "quarantine")
     @origin_test = Indication.where(country: @origin).find_by(name: "test")
