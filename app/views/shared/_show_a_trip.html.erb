@@ -25,29 +25,47 @@
     <div class="mt-5 d-flex align-items-center">
       <h1 class="flex-grow-1">From <%= link_to @origin.name, country_path(@origin) %> to <%= link_to @destination.name, country_path(@destination) %></h1>
 
-      <!-- Render the bookmark icon differently dependending on where the user comes from. If the user comes from -->
-      <% if URI(request.referer).path == "/" || URI(request.referer).path == "/countries/result" %>
-        <!-- Add subscription -->
-        <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
-          <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
-            <h1><i class="far fa-bookmark"></i></h1>
+      <% if user_signed_in? %>
+        <!-- Render the bookmark icon differently dependending on where the user comes from. If the user comes from -->
+        <% if URI(request.referer).path == "/" || URI(request.referer).path == "/countries/result" %>
+          <!-- Add subscription -->
+          <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
+            <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
+              <h1><i class="far fa-bookmark"></i></h1>
+            <% end %>
+          <% else %>
+            <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
+              <h1><i class="fas fa-bookmark"></i></h1>
+            <% end %>
           <% end %>
         <% else %>
-          <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
-            <h1><i class="fas fa-bookmark"></i></h1>
+          <!-- Add subscription -->
+          <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
+            <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
+              <h1><i class="far fa-bookmark"></i></h1>
+            <% end %>
+          <% else %>
+            <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
+              <h1><i class="fas fa-bookmark"></i></h1>
+            <% end %>
           <% end %>
         <% end %>
       <% else %>
-        <!-- Add subscription -->
-        <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
-          <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-            <h1><i class="far fa-bookmark"></i></h1>
+      <!-- hidden form to submit the destination and origin to trip controller method create -->
+      <div class="mb-3">
+        <%= simple_form_for @trip do |f| %>
+
+          <%= f.input :destination_id, :as => :hidden, :input_html => { :value => @destination.id } %>
+          <%= f.input :origin_id, :as => :hidden, :input_html => { :value => @origin.id } %>
+
+          <!-- show button to save trip - user get's directed to log-in/sign-up -->
+          <!-- triggers create_trip_from_session (not really :) -->
+          <% if !user_signed_in? %>
+            <a href="" class='btn btn-primary' data-toggle="modal" data-target="#modalLoginForm">Save trip</a>
           <% end %>
-        <% else %>
-          <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-            <h1><i class="fas fa-bookmark"></i></h1>
-          <% end %>
+          <!-- after user is logged in he is directed to the page where his saved trips are shown -> index page for trips -->
         <% end %>
+      </div>
       <% end %>
     </div>
 
