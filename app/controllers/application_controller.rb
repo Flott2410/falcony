@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include MetaTagsHelper
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :create_trip_from_session
@@ -36,5 +37,9 @@ class ApplicationController < ActionController::Base
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 end
