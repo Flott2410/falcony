@@ -32,6 +32,7 @@ import { initSelect2 } from '../components/init_select2';
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/map';
 import { get_daily_cases } from '../daily_cases_chart';
+import { stripeCoffee } from '../client';
 
 document.addEventListener('turbolinks:load', () => {
 
@@ -39,4 +40,5 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   initMapbox();
   get_daily_cases();
+  stripeCoffee();
 });

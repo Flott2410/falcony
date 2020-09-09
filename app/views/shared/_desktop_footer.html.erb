@@ -14,7 +14,17 @@
       <p class="paragraph-no-margin"> <%= link_to t("global.navbar.privacy_policy"), root_path %></p>
     </div>
 
-   <!--  contact info - copyright -->
+    <!-- Stripe -->
+    <div>
+      <!-- <button id="checkout-button">Pay</button> -->
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Hot Coffee!"
+          data-amount="200"
+          data-locale="auto"></script>
+    </div>
+
+    <!--  contact info - copyright -->
     <div class="footer-copyright">
        <p class="paragraph-no-margin">Coded with <i class="fas fa-heart"></i> in Lisbon & Diamante</p>
        <p class="paragraph-no-margin">Contact us: <a class="footer-link" href = "mailto: email@falcony.info">info@falcony.info</a></p>
