@@ -38,7 +38,7 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  height: 600px;
+  height: 550px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
@@ -56,12 +56,12 @@
   height: 120px;
   width: 120px;
   opacity: 0.8;
-  margin-bottom: 20px;
-  margin-left: 50px;
+  margin-bottom: 40px;
+  //margin-left: 50px;
 }
 
 .icon_text{
-  margin-left: 30px;
+  //margin-left: 30px;
 }
 
 .card-feature img {
@@ -74,6 +74,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
+}
+
+#content-b .big_icon img{
+  width: 150px;
+  //margin-left: 50px;
+}
+
+#content-b img{
+  width: 150px;
+  //margin-left: 50px;
 }
 
 
