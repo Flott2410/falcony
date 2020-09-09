@@ -11,19 +11,19 @@
       <div class="col-md-12 project-list p-l-3">
         <p>Click the <strong>name</strong> to get more information:</p>
         <% @countries.each do |country| %>
-          <div class="d-flex align-items-center justify-content-between bg-white m-1 px-3">
-            <%= link_to country_path(country) do %>
+          <%= link_to country_path(country),class: "link_to_country" do %>
+            <div class="country_item d-flex align-items-center justify-content-between bg-white mb-2 px-3">
               <%= country.name %>
-            <% end %>
-            <div class="ml-3"><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[country.name]}/flat/32.png") %></div>
-          </div>
+              <div class="ml-3"><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[country.name]}/flat/32.png") %></div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
 
    <!-- Html Code for map -->
     <div id="map-width">
-      <p>Click the country to see <strong>actual COVID-numbers:</strong></p>
+      <p>Click a blue country to see <strong>actual COVID-numbers:</strong></p>
       <div id="map"
          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
