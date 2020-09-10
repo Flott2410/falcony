@@ -247,7 +247,7 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
       "Hungary" => 'hu',
       "Iceland" => 'is',
       "Ireland" => 'ie',
-      "Italia" => 'it',
+      "Italy" => 'it',
       "Latvia" => 'lv',
       "Lithuania" => 'lt',
       "Luxembourg" => 'lu',
