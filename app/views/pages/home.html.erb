@@ -20,7 +20,7 @@
             <div class="d-flex align-items-center flex-grow mx-3 country_label">
               <strong>ORIGIN</strong>
               <div class="mx-3">
-                <%= collection_select(:country, :origin, Country.all, :id, :name, { selected: Country.find_by(name: "Portugal").id}, {class: ' min-width-select select2'}) %>
+                <%= collection_select(:country, :origin, Country.all, :id, :name, { selected: Country.find_by(name: "Italy").id}, {class: ' min-width-select select2'}) %>
               </div>
             </div>
 
