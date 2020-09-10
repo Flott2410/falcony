@@ -7,11 +7,11 @@
         <div class="d-flex" id="results_search">
           <div class="d-flex align-items-center mr-3">
             Origin
-            <div class="mx-3"><%= collection_select(:country, :origin, Country.all, :id, :name, { selected: session[:create_trip_origin_id]}, {class: ' min-width-select select2'}) %></div>
+            <div class="mx-3"><%= collection_select(:country, :origin, Country.all, :id, :name, { selected: session[:create_trip_origin_id]}, {class: 'select2'}) %></div>
           </div>
           <div class="d-flex align-items-center mx-3">
             Destination
-            <div class="mx-3"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %></div>
+            <div class="mx-3"><%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: 'select2'}) %></div>
           </div>
           <div>
             <%= submit_tag "Search", class: "btn btn-falcony mx-3" %>
@@ -26,7 +26,6 @@
       <h1 class="flex-grow-1 ml-2">From <%= link_to @origin.name, country_path(@origin) %> to <%= link_to @destination.name, country_path(@destination) %></h1>
 
       <% if user_signed_in? %>
-
         <!-- Render the bookmark icon differently dependending on where the user comes from -->
 
         <!-- If the user comes from homepage or result page -->
@@ -34,11 +33,11 @@
 
           <!-- Add subscription -->
           <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
-            <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
+            <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
               <h2><i class="far fa-bookmark mr-2"></i></h2>
             <% end %>
           <% else %>
-            <%= link_to trip_path(current_user.trips.last), method: :patch, remote: :true do %>
+            <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
               <h2><i class="fas fa-bookmark mr-2"></i></h2>
             <% end %>
           <% end %>

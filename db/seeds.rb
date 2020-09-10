@@ -20,7 +20,7 @@ Trip.destroy_all
 # Countries_____________________________________________________________________
 
 # Constant with all countries
-countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italia"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
+countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italy"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
 
 # For loop that creates a country instance using the strings in the countries constant
 puts 'Generating countries...'
@@ -151,7 +151,7 @@ raffaelle = User.new(
   phone_number: '+393356284820',
   email: 'raffaele.viggiani@gmail.com',
   password: '123456',
-  country_id: Country.find_by(name: 'Italia').id
+  country_id: Country.find_by(name: 'Italy').id
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/raffoz')
 raffaelle.photo.attach(io: file, filename: 'raffaelle_avatar.png', content_type: 'image/png')
@@ -167,7 +167,7 @@ tiago = User.new(
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/Tiago-Palhoca')
 tiago.photo.attach(io: file, filename: 'tiago_avatar.png', content_type: 'image/png')
-tiago.save
+tiago.save!
 puts "Users created ;-)"
 
 # Trips

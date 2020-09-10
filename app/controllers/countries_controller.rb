@@ -220,7 +220,12 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     @origin_test = Indication.where(country: @origin).find_by(name: "test")
 
     # create Trip instance for simple form - hidden (session parameters)
-    @trip = Trip.new
+    @trip = Trip.new(
+        origin_id: session[:create_trip_origin_id],
+        destination_id: session[:create_trip_destination_id],
+        user: current_user,
+        bookmarked: false
+        )
   end
 
   private
@@ -242,7 +247,7 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
       "Hungary" => 'hu',
       "Iceland" => 'is',
       "Ireland" => 'ie',
-      "Italia" => 'it',
+      "Italy" => 'it',
       "Latvia" => 'lv',
       "Lithuania" => 'lt',
       "Luxembourg" => 'lu',
