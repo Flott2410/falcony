@@ -167,7 +167,7 @@ tiago = User.new(
   )
 file = URI.open('https://kitt.lewagon.com/placeholder/users/Tiago-Palhoca')
 tiago.photo.attach(io: file, filename: 'tiago_avatar.png', content_type: 'image/png')
-tiago.save
+tiago.save!
 puts "Users created ;-)"
 
 # Trips
