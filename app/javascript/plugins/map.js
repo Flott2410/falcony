@@ -1,8 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 
-const mapElement = document.getElementById('map');
-
 const buildMap = () => {
+  const mapElement = document.getElementById('map');
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
@@ -12,7 +11,9 @@ const buildMap = () => {
 };
 
 const initMapbox = () => {
+  const mapElement = document.getElementById('map');
   if (mapElement) {
+    console.log('blah map');
     const map = buildMap();
     map.on('load', function() { //On map load, we want to do some stuff
       map.addLayer({ //here we are adding a layer containing the tileset we just uploaded

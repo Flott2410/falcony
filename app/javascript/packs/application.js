@@ -34,11 +34,10 @@ import { stripeCoffee } from '../client';
 document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here
-  initSelect2();
   initMapbox();
   stripeCoffee();
   if (document.getElementById("chartdiv")) {
     get_daily_cases();
   }
-
+  initSelect2();
 });
