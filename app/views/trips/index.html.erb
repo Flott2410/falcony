@@ -23,7 +23,7 @@
                   </div>
                   <div>
                     <!-- Link to unbookmark the trip -->
-                    <%= link_to trip_path(trip), method: :patch, remote: :true do %>
+                    <%= link_to trip_path(trip), method: :delete, remote: :true do %>
                       <i class="fas fa-bookmark card-text-countries-name"></i>
                     <% end %>
                   </div>
