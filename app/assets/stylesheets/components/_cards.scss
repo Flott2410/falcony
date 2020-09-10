@@ -78,5 +78,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 36px;
+}
 
+.card-text-countries-name {
+  color: $heavy-blue-falcony;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.card-text-countries-name:hover {
+  color: $blue-falcony;
 }

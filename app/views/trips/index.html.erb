@@ -19,12 +19,12 @@
                 <%= image_tag ("https://source.unsplash.com/1600x900/?#{trip.destination.name},landscape"), :class => "card-img-top" %>
                 <div class="card-body d-flex justify-content-between align-items-center p-3 mx-1">
                   <div class="flex-grow-1">
-                    <p class="card-text"><%= trip.origin.name %> - <%= trip.destination.name %></p>
+                    <p class="card-text-countries-name"><%= trip.origin.name %> - <%= trip.destination.name %></p>
                   </div>
                   <div>
                     <!-- Link to unbookmark the trip -->
                     <%= link_to trip_path(trip), method: :patch, remote: :true do %>
-                      <i class="fas fa-bookmark"></i>
+                      <i class="fas fa-bookmark card-text-countries-name"></i>
                     <% end %>
                   </div>
                 </div>
