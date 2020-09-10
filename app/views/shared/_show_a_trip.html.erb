@@ -23,7 +23,7 @@
 
     <!-- Resume of the Result and links to countries pages -->
     <div class="mt-5 d-flex align-items-center">
-      <h1 class="flex-grow-1 ml-2">From <%= link_to @origin.name, country_path(@origin) %> to <%= link_to @destination.name, country_path(@destination) %></h1>
+      <h1 class="flex-grow-1">From <%= link_to @origin.name, country_path(@origin) %> to <%= link_to @destination.name, country_path(@destination) %></h1>
 
       <% if user_signed_in? %>
         <!-- Render the bookmark icon differently dependending on where the user comes from -->
