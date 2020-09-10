@@ -34,11 +34,11 @@
           <!-- Add subscription -->
           <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
             <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-              <h2><i class="far fa-bookmark mr-2"></i></h2>
+              <h2><i class="far fa-bookmark"></i></h2>
             <% end %>
           <% else %>
             <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-              <h2><i class="fas fa-bookmark mr-2"></i></h2>
+              <h2><i class="fas fa-bookmark"></i></h2>
             <% end %>
           <% end %>
 
@@ -48,11 +48,11 @@
           <!-- Add subscription -->
           <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
             <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-              <h2><i class="far fa-bookmark mr-2"></i></h2>
+              <h2><i class="far fa-bookmark"></i></h2>
             <% end %>
           <% else %>
             <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-              <h2><i class="fas fa-bookmark mr-2"></i></h2>
+              <h2><i class="fas fa-bookmark"></i></h2>
             <% end %>
           <% end %>
         <% end %>
@@ -69,7 +69,7 @@
           <!-- show button to save trip - user get's directed to log-in/sign-up -->
           <!-- triggers create_trip_from_session (not really :) -->
           <% if !user_signed_in? %>
-            <a href="" class='btn btn-falcony mr-2' data-toggle="modal" data-target="#modalLoginForm">Bookmark</a>
+            <a href="" class='btn btn-falcony' data-toggle="modal" data-target="#modalLoginForm">Bookmark</a>
           <% end %>
           <!-- after user is logged in he is directed to the page where his saved trips are shown -> index page for trips -->
         <% end %>
@@ -337,7 +337,7 @@
 
 
     <!-- Third section -->
-    <h1 class="mt-5 text-right mr-2">Coming back</h1>
+    <h1 class="mt-5 text-right">Coming back</h1>
 
      <div class="card mb-5 col-12 p-0 card-shadow">
       <div class="row no-gutters">
