@@ -5,7 +5,8 @@
     <div class="container banner-country-show" style="background-image: linear-gradient(rgba(10, 10, 10, 0.1), rgba(50, 50, 50, 0.05)), url('https://source.unsplash.com/1600x900/?<%= @country.name %>,landscape'); ">
       <!-- headline - country name and animated flag -->
       <div class="banner-country-title d-flex justify-content-center align-items-center">
-        <h1 class="mr-5"><%== @country.name %> <%= image_tag ("https://www.countryflags.io/#{@alpha_codes[@country.name]}/flat/64.png") %></h1>
+        <h1 class="mr-3"><%== @country.name %></h1>
+        <h1><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[@country.name]}/flat/64.png") %></h1>
       </div>
     </div>
   </div>
@@ -15,36 +16,43 @@
     <!-- travel indications -->
 
     <!-- categories to choose from - filter -->
-    <ul class="nav nav-tabs card-indications-menu justify-content-center" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="travel-tab" data-toggle="tab" href="#travel" role="tab" aria-controls="travel" aria-selected="true">Travel</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="healthSafety-tab" data-toggle="tab" href="#healthSafety" role="tab" aria-controls="healthSafety" aria-selected="false">Health & Safety</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services</a>
-      </li>
-    </ul>
+    <div class="d-flex card-indications-menu justify-content-center align-items-center" role="tablist">
+      <ul class="nav nav-tabs">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="travel-tab" data-toggle="tab" href="#travel" role="tab" aria-controls="travel" aria-selected="true">Travel</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="healthSafety-tab" data-toggle="tab" href="#healthSafety" role="tab" aria-controls="healthSafety" aria-selected="false">Health & Safety</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services</a>
+        </li>
+      </ul>
+    </div>
+
 
     <div class="tab-content" id="myTabContent">
 
-      <!-- first tab - travel -->
+
+      <!-- First tab - travel -->
       <div class="tab-pane fade show active" id="travel" role="tabpanel" aria-labelledby="travel-tab">
         <!-- Travel -->
         <div class="card-indications">
-          <% if @open.description.length > 1 %>
-            <h4>Flight restrictions</h4>
-            <p><%== @open.description %></p>
-          <% else %>
-            <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
-          <% end %>
+          <div class="mx-3 mt-2">
+            <% if @open.description.length > 1 %>
+              <h4>Flight restrictions</h4>
+              <p><%== @open.description %></p>
+            <% else %>
+              <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
+            <% end %>
+          </div>
         </div>
       </div>
 
-      <!-- second tab - Health & Safety -->
+      <!-- Second tab - Health & Safety -->
       <div class="tab-pane fade" id="healthSafety" role="tabpanel" aria-labelledby="healthSafety-tab">
         <div class="card-indications">
+          <div class="mx-3 mt-2">
           <% if @masks_in_public.description.length <= 1 && @masks_in_public.description.length <= 1 && @health_protocols.description.length <= 1 %>
             <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
           <% end %>
@@ -60,71 +68,74 @@
             <h4>Health protocols</h4>
             <p><%== @health_protocols.description %></p>
           <% end %>
+          </div>
         </div>
       </div>
 
-      <!-- second tab - Services -->
+      <!-- Third tab - Services -->
       <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
         <div class="card-indications">
-          <% if @gatherings.description.length <= 1 && @high_risk_areas.description.length <= 1 && @tourism_accomodations.description.length <= 1 && @restaurants.description.length <= 1 && @public_transportation.description.length <= 1 %>
-            <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
-          <% end %>
-          <% if @gatherings.description.length > 1 %>
-             <h4>Rules for gatherings</h4>
-            <p><%== @gatherings.description %></p>
-          <% end %>
-          <% if @high_risk_areas.description.length > 1 %>
-             <h4>Areas of high risks</h4>
-            <p><%== @high_risk_areas.description %></p>
-          <% end %>
-          <% if @tourism_accomodations.description.length > 1 %>
-             <h4>Accomodations</h4>
-            <p><%== @tourism_accomodations.description %></p>
-          <% end %>
-          <% if @restaurants.description.length > 1 %>
-            <h4>Restaurants</h4>
-            <p><%== @restaurants.description %></p>
-          <% end %>
-          <% if @bars_cafes.description.length > 1 %>
-            <h4>Bars / Cafes</h4>
-            <p><%== @bars_cafes.description %></p>
-          <% end %>
-          <% if @beaches.description.length > 1 %>
-            <h4>Beaches</h4>
-            <p><%== @beaches.description %></p>
-          <% end %>
-          <% if @museums.description.length > 1 %>
-            <h4>Museums</h4>
-            <p><%== @museums.description %></p>
-          <% end %>
-          <% if @personal_services.description.length > 1 %>
-            <h4>Personal services</h4>
-            <p><%== @personal_services.description %></p>
-          <% end %>
-          <% if @places_of_worship.description.length > 1 %>
-            <h4>Places of worship</h4>
-            <p><%== @places_of_worship.description %></p>
-          <% end %>
-          <% if @public_transportation.description.length > 1 %>
-            <h4>Public transportation</h4>
-            <p><%== @public_transportation.description %></p>
-          <% end %>
+          <div class="mx-3 mt-2">
+            <% if @gatherings.description.length <= 1 && @high_risk_areas.description.length <= 1 && @tourism_accomodations.description.length <= 1 && @restaurants.description.length <= 1 && @public_transportation.description.length <= 1 %>
+              <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
+            <% end %>
+            <% if @gatherings.description.length > 1 %>
+               <h4>Rules for gatherings</h4>
+              <p><%== @gatherings.description %></p>
+            <% end %>
+            <% if @high_risk_areas.description.length > 1 %>
+               <h4>Areas of high risks</h4>
+              <p><%== @high_risk_areas.description %></p>
+            <% end %>
+            <% if @tourism_accomodations.description.length > 1 %>
+               <h4>Accomodations</h4>
+              <p><%== @tourism_accomodations.description %></p>
+            <% end %>
+            <% if @restaurants.description.length > 1 %>
+              <h4>Restaurants</h4>
+              <p><%== @restaurants.description %></p>
+            <% end %>
+            <% if @bars_cafes.description.length > 1 %>
+              <h4>Bars / Cafes</h4>
+              <p><%== @bars_cafes.description %></p>
+            <% end %>
+            <% if @beaches.description.length > 1 %>
+              <h4>Beaches</h4>
+              <p><%== @beaches.description %></p>
+            <% end %>
+            <% if @museums.description.length > 1 %>
+              <h4>Museums</h4>
+              <p><%== @museums.description %></p>
+            <% end %>
+            <% if @personal_services.description.length > 1 %>
+              <h4>Personal services</h4>
+              <p><%== @personal_services.description %></p>
+            <% end %>
+            <% if @places_of_worship.description.length > 1 %>
+              <h4>Places of worship</h4>
+              <p><%== @places_of_worship.description %></p>
+            <% end %>
+            <% if @public_transportation.description.length > 1 %>
+              <h4>Public transportation</h4>
+              <p><%== @public_transportation.description %></p>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
 
     <div class="wrapper"></div>
 
-    <!-- information about cases -->
+
+    <!-- Second section -->
     <div class="card-cases">
       <!-- <div class="cases-info mx-3"> -->
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mx-4">
         <h3>Covid-19 Dashboard - <%= @country.name %></h3>
-        <p><em>Last updated on <%== @update_date %></em></p>
+        <p><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
       </div>
       <div class="daily-cases flex-grow-1 mt-5">
-        <div class="d-flex justify-content-between">
-          <h4 class="mb-md-5">Daily cases since 15.03.2020</h4>
+        <div class="d-flex justify-content-between mx-4">
+          <h4 class="mb-4">Daily cases since 15.03.2020</h4>
           <div>
             <!-- icon (green arrow down, red arrow up) that shows trend -->
             <% if @trend == true || @trend == false %>
@@ -170,7 +181,8 @@
           <% if @mortality %>
             <h4>Mortality</h4>
             <p><%== @mortality %>%</p>
-            <small>% of population died from Covid-19</small>
+            <small>% of population died</small><br>
+            <small>from Covid-19</small>
           <% end %>
         </div>
 
@@ -179,7 +191,8 @@
           <% if @morbidity %>
             <h4>Morbidity</h4>
             <p><%== @morbidity %>%</p>
-            <small>% of infected died from Covid-19</small>
+            <small>% of infected died</small><br>
+            <small>from Covid-19</small>
           <% end %>
         </div>
 
