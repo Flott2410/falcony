@@ -51,7 +51,7 @@ before_action :set_trip, only: [ :show, :update, :destroy ]
       bookmark
     end
     @trip.save
-    redirect_to trips_path
+    redirect_to trip_path(@trip)
   end
 
   def destroy
