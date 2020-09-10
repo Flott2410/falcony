@@ -18,7 +18,12 @@
 
 .banner-country-title {
   color: white;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  h1 {
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  font-size: 48px;
+  font-weight: 900;
+  text-align: right;
+  }
 }
 
 .nav a  {
@@ -48,12 +53,16 @@ small  {
 }
 
 .card-indications-menu {
-  height: 58px;
+  height: 50px;
   box-shadow: 0px 0 15px 1px rgba(0,0,0,0.2);
-  padding: 16px;
-  padding-top: 8px;
+  // padding: 16px;
+  // padding-top: 8px;
   background-color: #F9FAFA;
   border: 1px solid rgba(0,0,0,0.2);
+}
+
+#tabs li.active>a{
+background:red;
 }
 
 .card-indications {
