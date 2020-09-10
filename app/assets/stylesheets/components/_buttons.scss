@@ -4,7 +4,7 @@
   border-radius: 4px;
   background: $blue-falcony;
   text-decoration: none;
-  box-shadow: 4px 4px 5px 0px rgba(20,20,20,0.46);
+  box-shadow: 2px 2px 5px 0px rgba(20,20,20,0.46);
 }
 
 .btn-falcony:hover {
@@ -16,4 +16,8 @@
 .stripe-button-el {
   width: 130px;
   // padding: 16px !important;
+}
+
+.fa-question-circle {
+  cursor: pointer;
 }
