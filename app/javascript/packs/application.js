@@ -31,13 +31,17 @@ import { initMapbox } from '../plugins/map';
 import { get_daily_cases } from '../daily_cases_chart';
 import { stripeCoffee } from '../client';
 
+document.addEventListener('turbolinks:before-cache', () => {
+  $('select.select2').select2('destroy');
+});
+
 document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here
+  initSelect2();
   initMapbox();
   stripeCoffee();
   if (document.getElementById("chartdiv")) {
     get_daily_cases();
   }
-  initSelect2();
 });
