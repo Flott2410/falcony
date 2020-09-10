@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 10px 0 15px -8px rgba(0,0,0,0.2);
+  box-shadow: 10px 0 15px 1px rgba(0,0,0,0.2);
 }
 
 .banner-country-title {
@@ -25,58 +25,63 @@
   font-size: 20px;
 }
 
+a#travel-tab.nav-link.active {
+  background-color: white;
+}
+a#healthSafety-tab.nav-link.active {
+  background-color: white;
+}
+a#services-tab.nav-link.active {
+  background-color: white;
+}
+
 .cases-info p  {
   text-align: center;
   font-weight: bold;
 }
 
 small  {
-  font-size: 16px;
+  font-size: 14px;
+  font-style: none;
+  margin-bottom: 0px;
+  text-align: center;
 }
 
 .card-indications-menu {
-  height: auto;
-  background: white;
-  box-shadow: 10px 0 15px -8px rgba(0,0,0,0.2);
+  height: 58px;
+  box-shadow: 0px 0 15px 1px rgba(0,0,0,0.2);
   padding: 16px;
-  background-color: #C4C4C4;
+  padding-top: 8px;
+  background-color: #F9FAFA;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .card-indications {
   height: auto;
   background: white;
-  box-shadow: 10px 0 15px -8px rgba(0,0,0,0.2);
+  box-shadow: 0px 0 15px 1px rgba(0,0,0,0.2);
   padding: 16px;
-}
-
-#cases-graph {
-  margin: 30px 10vw;
-  height: 50vh;
-  max-height: 200px;
-  background: green;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .card-cases {
   height: auto;
   background: white;
   box-shadow: 10px 0 15px -8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.2);
   padding: 20px;
 }
 
-.cases-info {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.cases-dashboard {
+  margin-top: 30px;
 }
 
-.population-and-daily-cases {
-  grid-column: span 4;
-}
-
-.population {
-  width: 240px;
-}
-
-.cases-info h4  {
+.card-case-d {
+  max-width: 170px;
   text-align: center;
-  margin-top: 16px;
+  margin: 0 auto;
+}
+
+.card-case-d p {
+  font-size: 20px;
 }

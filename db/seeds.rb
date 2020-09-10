@@ -44,7 +44,7 @@ countries.each do |country|
   # iso code: country[0]
   cases[country[0]]['data'].each do |covid_data|
     date = Date.parse(covid_data['date'])
-    if date > Date.new(2020, 7, 1)
+    if date > Date.new(2020, 3, 15)
     Case.create!(
       date: date,
       country: Country.find_by(iso: country[0]),
