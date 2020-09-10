@@ -49,10 +49,13 @@
 
 .country_label{
 	color: white;
-	text-shadow: 1px 1px 1px rgba(80,80,80,0.5);
 }
 
 .country_label_black{
   color: black;
   text-shadow: 1px 1px 1px rgba(80,80,80,0.5);
+}
+
+#country_tag{
+  text-shadow: 2px 1px 1px rgba(70,70,70,0.9);
 }

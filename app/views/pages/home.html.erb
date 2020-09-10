@@ -8,7 +8,7 @@
 
       <!-- 3 phrases in home page -->
       <h3 class="mt-3 mb-3" id="motto">Fly above risk</h3>
-      <h3 id="headline-banner-1">Get important and updated</h3><br>
+      <h3 id="headline-banner-1">Get important and daily updated</h3><br>
       <h3 id="headline-banner-1">Covid-19 related travel info</h3>
       <p id="subheadline-banner-1"><strong>Where do you want to go?</strong></p>
 
@@ -18,7 +18,7 @@
           <div class="d-flex justify-content-center" id="home_search">
 
             <div class="d-flex align-items-center flex-grow mx-3 country_label">
-              <strong>ORIGIN</strong>
+              <strong id="country_tag">ORIGIN</strong>
               <div class="mx-3">
                 <%= collection_select(:country, :origin, Country.all, :id, :name, { selected: Country.find_by(name: "Italy").id}, {class: ' min-width-select select2'}) %>
               </div>
@@ -28,7 +28,7 @@
               <div class="mx-3">
                 <%= collection_select(:country, :destination, Country.all, :id, :name, {selected: session[:create_trip_destination_id]}, {class: ' min-width-select select2'}) %>
               </div>
-            <strong>DESTINATION</strong>
+            <strong id="country_tag">DESTINATION</strong>
             </div>
 
           </div>
