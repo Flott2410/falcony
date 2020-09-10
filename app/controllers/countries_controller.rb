@@ -226,6 +226,9 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
         user: current_user,
         bookmarked: false
         )
+    if user_signed_in?
+      @trip.save
+    end
   end
 
   private

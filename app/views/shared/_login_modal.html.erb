@@ -1,4 +1,4 @@
-  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -9,7 +9,6 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-        
        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
          <div class="form-inputs">
            <%= f.input :email,
@@ -20,20 +19,16 @@
                        required: false,
                        input_html: { autocomplete: "current-password" } %>
            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-           
          </div>
-           <a href="/users/password/new">Forgot your password?</a>
-           <br>
-            <a href="/users/sign_up"><strong>Not a member? How dare you? Register now!!</strong></a>
 
-
-       </div>
-         <div class="modal-footer d-flex justify-content-center">
+          <a href="/users/password/new">Forgot your password?</a>
+          <br>
+          <a href="/users/sign_up"><strong>No account yet? Register now!</strong></a>
+        <div class="modal-footer d-flex justify-content-center">
           <%= f.button :submit, "Log in", class:"log-in-modal-btn" %>
-           <% end %>
+        </div>
+      <% end %>
       </div>
-          
-
     </div>
   </div>
 </div>

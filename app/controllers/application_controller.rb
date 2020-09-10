@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :create_trip_from_session
+  before_action :create_trip_from_session, if: :devise_controller?
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
   def configure_permitted_parameters
@@ -15,11 +15,12 @@ class ApplicationController < ActionController::Base
       Trip.create(
         origin_id: session[:create_trip_origin_id],
         destination_id: session[:create_trip_destination_id],
-        user: current_user
+        user: current_user,
+        bookmarked: true
         )
       session.delete(:create_trip_destination_id)
       session.delete(:create_trip_origin_id)
-      # redirect_to trips_path
+      redirect_to trips_path
     end
   end
 
