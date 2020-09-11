@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def create_trip_from_session
     # check if session variables exist and user signed in - if yes create trip
     if session[:create_trip_destination_id] && session[:create_trip_origin_id] && user_signed_in?
-      Trip.create(
+      @trip = Trip.create(
         origin_id: session[:create_trip_origin_id],
         destination_id: session[:create_trip_destination_id],
         user: current_user,
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         )
       session.delete(:create_trip_destination_id)
       session.delete(:create_trip_origin_id)
-      redirect_to trips_path
+      redirect_to trip_path(@trip)
     end
   end
 
