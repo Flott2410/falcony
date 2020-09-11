@@ -29,8 +29,8 @@ import { initSelect2 } from '../components/init_select2';
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/map';
 import { get_daily_cases } from '../daily_cases_chart';
+import { toggleBell } from '../toggle_notification';
 import { stripeCoffee } from '../client';
-import { getBell } from '../toggle_notification';
 
 document.addEventListener('turbolinks:before-cache', () => {
   $('select.select2').select2('destroy');
@@ -41,21 +41,9 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here
   initSelect2();
   initMapbox();
+  toggleBell();
   stripeCoffee();
   if (document.getElementById("chartdiv")) {
     get_daily_cases();
   }
-  getBell.forEach((bell) => {
-    if (bell.classList.contains('far')) {
-      bell.addEventListener('click', (event) => {
-        bell.classList.toggle('far');
-        bell.classList.toggle('fas');
-      });
-    } else {
-      bell.addEventListener('click', (event) => {
-        bell.classList.toggle('fas');
-        bell.classList.toggle('far');
-      });
-    }
-  });
 });
