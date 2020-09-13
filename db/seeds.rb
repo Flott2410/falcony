@@ -9,29 +9,31 @@ require 'json'
 # consider refactoring and separate seeds into separate files
 # require_relative './_indications'
 
-puts "destroy all ..."
-Country.destroy_all
-Case.destroy_all
-Indication.destroy_all
-User.destroy_all
-Trip.destroy_all
-# Order of creation of seed: 1.countries, 2.cases, 3.indications, 4.users, 5.trips
+puts "Starting the seeds ..."
 
-# Countries_____________________________________________________________________
+# Order of creation of seed: (1.countries), 2.cases, (3.users), (4.trips), 5.indications
 
-# Constant with all countries
-countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italy"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
+# # Countries_____________________________________________________________________
 
-# For loop that creates a country instance using the strings in the countries constant
-puts 'Generating countries...'
+# # Constant with all countries
+# countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italy"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
 
-countries.each do |country|
-  Country.create!(name: country[1], iso: country[0])
-end
+# # For loop that creates a country instance using the strings in the countries constant
+# puts "Destroy countries..."
+# Country.destroy_all
 
-puts "Countries created ;-)"
+# puts 'Generating countries...'
+
+# countries.each do |country|
+#   Country.create!(name: country[1], iso: country[0])
+# end
+
+# puts "Countries created ;-)"
 
 # Cases   ______________________________________________________________________
+
+puts "Destroying cases..."
+Case.destroy_all
 
 puts 'Generating cases...'
 
@@ -64,7 +66,7 @@ end
 
 puts "Cases created ;-)"
 
-# Previous fake code to create fake cases ____________________________
+# Previous fake code to create fake cases ______________________________________
 
 # current_day = Date.today
 # day_zero = Date.new(2020, 8, 1)
@@ -115,62 +117,65 @@ puts "Cases created ;-)"
 
 # puts "Cases created ;-)"
 
-# Users ______________________________________________________________________
-# Don't forget to add images
+# # Users ______________________________________________________________________
 
-# Create 4 static users that we can always count on for tests
+# # Create 4 static users that we can always count on for tests
+# puts "Destroy users..."
+# User.destroy_all
+# puts 'Generating 4 static users...'
+# kleyv = User.new(
+#   first_name: 'Eukleyv',
+#   last_name: 'Smith',
+#   phone_number: '+351927691750',
+#   email: 'eukleyvcardoso@gmail.com',
+#   password: '123456',
+#   country_id: Country.find_by(name: 'Portugal').id
+#   )
+# file = URI.open('https://kitt.lewagon.com/placeholder/users/kleyv')
+# kleyv.photo.attach(io: file, filename: 'kleyv_avatar.png', content_type: 'image/png')
+# kleyv.save!
 
-puts 'Generating 4 static users...'
-kleyv = User.new(
-  first_name: 'Eukleyv',
-  last_name: 'Smith',
-  phone_number: '+351927691750',
-  email: 'eukleyvcardoso@gmail.com',
-  password: '123456',
-  country_id: Country.find_by(name: 'Portugal').id
-  )
-file = URI.open('https://kitt.lewagon.com/placeholder/users/kleyv')
-kleyv.photo.attach(io: file, filename: 'kleyv_avatar.png', content_type: 'image/png')
-kleyv.save!
+# florian = User.new(
+#   first_name: 'Florian',
+#   last_name: 'Ott',
+#   phone_number: '+436605633993',
+#   email: 'florian.ott@gmx.at',
+#   password: '123456',
+#   country_id: Country.find_by(name: 'Austria').id
+#   )
+# file = URI.open('https://kitt.lewagon.com/placeholder/users/Flott2410')
+# florian.photo.attach(io: file, filename: 'florian_avatar.png', content_type: 'image/png')
+# florian.save!
 
-florian = User.new(
-  first_name: 'Florian',
-  last_name: 'Ott',
-  phone_number: '+436605633993',
-  email: 'florian.ott@gmx.at',
-  password: '123456',
-  country_id: Country.find_by(name: 'Austria').id
-  )
-file = URI.open('https://kitt.lewagon.com/placeholder/users/Flott2410')
-florian.photo.attach(io: file, filename: 'florian_avatar.png', content_type: 'image/png')
-florian.save!
+# raffaelle = User.new(
+#   first_name: 'Raffaele',
+#   last_name: 'Viggiani',
+#   phone_number: '+393356284820',
+#   email: 'raffaele.viggiani@gmail.com',
+#   password: '123456',
+#   country_id: Country.find_by(name: 'Italy').id
+#   )
+# file = URI.open('https://kitt.lewagon.com/placeholder/users/raffoz')
+# raffaelle.photo.attach(io: file, filename: 'raffaelle_avatar.png', content_type: 'image/png')
+# raffaelle.save!
 
-raffaelle = User.new(
-  first_name: 'Raffaele',
-  last_name: 'Viggiani',
-  phone_number: '+393356284820',
-  email: 'raffaele.viggiani@gmail.com',
-  password: '123456',
-  country_id: Country.find_by(name: 'Italy').id
-  )
-file = URI.open('https://kitt.lewagon.com/placeholder/users/raffoz')
-raffaelle.photo.attach(io: file, filename: 'raffaelle_avatar.png', content_type: 'image/png')
-raffaelle.save!
+# tiago = User.new(
+#   first_name: 'Tiago',
+#   last_name: 'Palhoca',
+#   phone_number: '+351919412637',
+#   email: 'palhoca.tiago@gmail.com',
+#   password: '123456',
+#   country_id: Country.find_by(name: 'Portugal').id
+#   )
+# file = URI.open('https://kitt.lewagon.com/placeholder/users/Tiago-Palhoca')
+# tiago.photo.attach(io: file, filename: 'tiago_avatar.png', content_type: 'image/png')
+# tiago.save!
+# puts "Users created ;-)"
 
-tiago = User.new(
-  first_name: 'Tiago',
-  last_name: 'Palhoca',
-  phone_number: '+351919412637',
-  email: 'palhoca.tiago@gmail.com',
-  password: '123456',
-  country_id: Country.find_by(name: 'Portugal').id
-  )
-file = URI.open('https://kitt.lewagon.com/placeholder/users/Tiago-Palhoca')
-tiago.photo.attach(io: file, filename: 'tiago_avatar.png', content_type: 'image/png')
-tiago.save!
-puts "Users created ;-)"
+# # Trips ________________________________________________________________________
 
-# Trips
+# puts "Destroy trips..."
+# Trip.destroy_all
 
 # puts 'Generating trips...'
 # # A for loop to create all possible trips
@@ -189,7 +194,7 @@ puts "Users created ;-)"
 #   end
 # end
 
-puts "Trips created ;-)"
+# puts "Trips created ;-)"
 
 # Indications____________________________________________________________________
 
@@ -324,6 +329,9 @@ puts "Trips created ;-)"
 #   description: 'Events without assigned seats are allowed with a maximum of 100 visitors. Indoors events with assigned seats are allowed with a maximum of 250 visitors. Events with assigned seats in the open air are allowed with a maximum of 500 visitors.',
 #   status: ''
 #   )
+
+puts 'Destroy indications...'
+Indication.destroy_all
 
 puts 'Generating indications...'
 
