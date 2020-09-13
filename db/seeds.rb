@@ -16,7 +16,8 @@ puts "Starting the seeds ..."
 # # Countries_____________________________________________________________________
 
 # # Constant with all countries
-# countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italy"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
+
+countries = [["AUT", "Austria"], ["BEL", "Belgium"], ["BGR", "Bulgaria"], ["HRV", "Croatia"], ["CYP", "Cyprus"], ["CZE", "Czech Republic"], ["DNK", "Denmark"], ["EST", "Estonia"], ["FIN", "Finland"], ["FRA", "France"], ["DEU", "Germany"], ["GRC", "Greece"], ["HUN", "Hungary"], ["ISL", "Iceland"], ["IRL", "Ireland"], ["ITA", "Italy"], ["LVA", "Latvia"], ["LTU", "Lithuania"], ["LUX", "Luxembourg"], ["MLT", "Malta"], ["NLD", "Netherlands"], ["NOR", "Norway"], ["POL", "Poland"], ["PRT", "Portugal"], ["ROU", "Romania"], ["SVK", "Slovakia"], ["SVN", "Slovenia"], ["ESP", "Spain"], ["SWE", "Sweden"], ["CHE", "Switzerland"]]
 
 # # For loop that creates a country instance using the strings in the countries constant
 # puts "Destroy countries..."
