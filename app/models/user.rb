@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :trips, dependent: :destroy
   has_one_attached :photo
 
-  validates :photo, presence: true
+  validates :photo, presence: false
   validates :phone_number, phone: true
 
   private

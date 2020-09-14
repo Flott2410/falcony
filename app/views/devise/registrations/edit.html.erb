@@ -2,7 +2,11 @@
   <div class="row justify-content-center">
     <div class="col-10 col-md-5 p-3" style="background-color: white;">
       <h2>Edit <%= resource_name.to_s.humanize %> Profile</h2>
-      <%= cl_image_tag current_user.photo.key, width: 200, crop: :fill, radius: :max %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, width: 200, crop: :fill, radius: :max %>
+      <% else %>
+        <%= cl_image_tag ('https://res.cloudinary.com/dybiixki8/image/upload/v1600063129/falcony/default_avatar_hlklvm.png'), width: 200, crop: :fill, radius: :max %>
+      <% end %>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
