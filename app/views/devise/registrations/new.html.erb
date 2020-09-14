@@ -10,7 +10,7 @@
         <div class="form-inputs">
         <!--  note: still need to add country form for choosing home-country -->
           <%= f.input :photo, as: :file,
-                      required: true %>
+                      required: false %>
           <%= f.input :first_name,
                       required: true,
                       autofocus: true,
@@ -20,7 +20,6 @@
                       autofocus: true,
                       input_html: { autocomplete: "Last name" }%>
           <%= f.input :phone_number,
-                      required: true,
                       autofocus: true,
                       input_html: { autocomplete: "Phone Number" }%>
           <%= f.input :email,
