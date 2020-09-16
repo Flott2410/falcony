@@ -9,4 +9,10 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  # for sidekiq
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
