@@ -35,17 +35,19 @@ yarn install --check-files
 ```
 
 #### Create and migrate the database
-`rails db:create db:migrate`
-`rails c`
-`Country.destroy_all`
-`
+```
+rails db:create db:migrate
+rails c
+Country.destroy_all
+
 countries.each do |country|
   Country.create!(name: country[1], iso: country[0])
 end
-`
-`exit`
-`rails db:seed`
 
+exit
+
+rails db:seed
+```
 
 
 ### Git guidelines
@@ -56,11 +58,15 @@ end
 You can do multiple commits per Pull Request so do them as often as possible explaining *what* you changed and *why* as suggested on the guide linked above.
 
 #### First thing in the morning
-`git checkout master`
-`git pull origin master`
+```
+git checkout master
+git pull origin master
+```
 
 #### Test Pull Request
-`git checkout master`
-`git checkout -b <pull-request-branch>`
-`git checkout <pull-request-branch>`
-`rails s`
+```
+git checkout master
+git checkout -b <pull-request-branch>
+git checkout <pull-request-branch>
+rails s
+```
