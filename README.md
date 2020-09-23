@@ -31,11 +31,23 @@ bundle binstub sidekiq
 
 yarn install --check-files
 
-# Create and migrate the database
-rails db:create db:migrate
-
-# Request necessary environment variables from existing contributors
+# Request .env file from existing contributors an
 ```
+
+#### Create and migrate the database
+`rails db:create db:migrate`
+`rails c`
+`Country.destroy_all`
+`
+countries.each do |country|
+  Country.create!(name: country[1], iso: country[0])
+end
+`
+`exit`
+`rails db:seed`
+
+
+
 ### Git guidelines
 
 #### Making a Pull Request
