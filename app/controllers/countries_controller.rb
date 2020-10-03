@@ -180,7 +180,7 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
     @stringency_index = @country.cases.last.stringency_index
 
     @single_country_values = []
-    daily_cases = Case.where(country: @country).where(date: Date.parse('2020-01-01')..@update_date)
+    daily_cases = Case.where(country: @country)
     daily_cases.each do |currentCase|
       var_name = @country.iso
       each_day = {}
