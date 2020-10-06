@@ -41,7 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here
   initSelect2();
   initMapbox();
-  toggleBell();
   stripeCoffee();
   if (document.getElementById("chartdiv")) {
     get_daily_cases();

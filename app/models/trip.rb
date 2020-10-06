@@ -7,4 +7,14 @@ class Trip < ApplicationRecord
   has_many :notifications
 
   validates :new_daily_cases_thresholds, numericality: { greater_than_or_equal_to: 0 }
+
+  # Check if a trip has notification
+  def has_notification_for?(trip)
+    self.notifications.where(trip: trip).any?
+  end
+
+  # Get a specific notification id in ordor to update it, destroy it, etc
+  def notification_id(trip)
+    self.notifications.find_by(trip: trip)
+  end
 end

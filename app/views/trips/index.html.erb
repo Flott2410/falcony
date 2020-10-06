@@ -24,8 +24,17 @@
                   </div>
                 <% end %>
                 <div>
-                  <!-- Link to unbookmark the trip -->
-                  <i class="far fa-bell mr-1"></i>
+                  <!-- Use Trip's has_notification_for? method to check if a specific trip has a notification or not and render the bell accordingly -->
+                  <% if trip.has_notification_for?(trip) %>
+                    <%= link_to notification_path(trip.notification_id(trip)), method: :delete, remote: :true do %>
+                    <i class="fas fa-bell mr-1"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to get_notified_trip_path(trip), method: :post, remote: :true do %>
+                      <a href="" data-toggle="modal" data-target="#modalNotification"><i class="far fa-bell mr-1"></i></a>
+
+                    <% end %>
+                  <% end %>
                   <%= link_to trip_path(trip), method: :delete, remote: :true do %>
                     <i class="fas fa-bookmark card-text-countries-name"></i>
                   <% end %>
