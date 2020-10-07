@@ -1,8 +1,17 @@
 // Specific CSS for your home-page
 
+// hide and show mobile vs desktop
+.content-desktop {display: block;}
+.content-mobile {display: none;}
+
+@media screen and (max-width: 768px) {
+  .content-desktop {display: none;}
+  .content-mobile {display: block;}
+}
+
 // Section 1:
 
-// Banner-1:
+// Banner-1 - desktop:
 .banner-landing-1 {
   width: 100%;
   height: 90vh;
@@ -49,4 +58,55 @@
   .landing-page-button {
     min-width: 260px;
   }
+}
+
+// Banner-1 - mobile:
+.banner-landing-1-mobile {
+  width: 100%;
+  height: 100vh;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // Title inside banner:
+  #headline-banner-1m {
+  margin-top: 60px;
+
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+
+  color: white;
+  text-shadow: 0.5px 0.5px 1px rgba(70,70,70,0.9);
+  }
+
+  .banner-text-white {
+    color: white;
+    margin: 0;
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  .landing-page-button-m {
+    width: 298px;
+  }
+}
+
+.login-mobile-landing {
+  color: white;
+}
+
+.flex-element-banner-m {
+  margin: 0px auto;
+  width: 298px;
+}
+
+.pics-landing-m {
+  margin: 10px auto;
+  width: 250px;
+  text-align: center;
 }
