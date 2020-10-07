@@ -13,6 +13,7 @@
       </div>
       <div class="trips-grid">
         <% @trips.each do |trip| %>
+          <!-- Store the trip object inside @trip so that the model can have access to a specific trip's id -->
           <% @trip = trip %>
             <div class="card card-shadow">
               <%= link_to trip_path(trip) do %>
