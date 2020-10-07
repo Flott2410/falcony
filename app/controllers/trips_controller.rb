@@ -65,13 +65,15 @@ before_action :set_trip, only: [ :show, :update, :destroy ]
     @trip = Trip.find(params[:id])
     @notification.trip = @trip
     @notification.save
+    @trip.update(trip_params)
+    @trip.save
     redirect_to trips_path, notice: 'Notification added'
   end
 
   private
 
   def trip_params
-    params.require(:trip).permit(:origin_id, :destination_id)
+    params.require(:trip).permit(:origin_id, :destination_id, :new_daily_cases_thresholds)
   end
 
   def set_trip

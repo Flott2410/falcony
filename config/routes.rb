@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :trips, only: [ :create, :show, :index, :update, :destroy ] do
     member do
       # Use the get_notified method as a post method
-      post :get_notified
+      patch :get_notified
     end
   end
 

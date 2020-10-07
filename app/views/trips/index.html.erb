@@ -13,6 +13,7 @@
       </div>
       <div class="trips-grid">
         <% @trips.each do |trip| %>
+          <% @trip = trip %>
             <div class="card card-shadow">
               <%= link_to trip_path(trip) do %>
                 <%= image_tag ("https://source.unsplash.com/1600x900/?#{trip.destination.name},landscape"), :class => "card-img-top" %>
@@ -30,10 +31,9 @@
                     <i class="fas fa-bell mr-1"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to get_notified_trip_path(trip), method: :post, remote: :true do %>
                       <a href="" data-toggle="modal" data-target="#modalNotification"><i class="far fa-bell mr-1"></i></a>
+                      <%= render 'notification_modal' %>
 
-                    <% end %>
                   <% end %>
                   <%= link_to trip_path(trip), method: :delete, remote: :true do %>
                     <i class="fas fa-bookmark card-text-countries-name"></i>
