@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
 skip_before_action :authenticate_user!, only: [ :show, :result, :index ]
-before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
+before_action :set_countries_iso_alpha_2, only: [ :index, :show, :result ]
 
   def index
     @countries = Country.all
@@ -266,7 +266,6 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show ]
       "Sweden" => 'se',
       "Switzerland" => 'ch'
     }
-
   end
 
 end
