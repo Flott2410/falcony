@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 before_action :set_trip, only: [ :show, :update, :destroy ]
+before_action :set_countries_iso_alpha_2, only: [ :show ]
 
   def create
     # get trip variables from hidden for or not hidden form if user already sign in
@@ -77,5 +78,42 @@ before_action :set_trip, only: [ :show, :update, :destroy ]
   def unbookmark
     @trip.bookmarked = false
     @trip.save
+  end
+
+  private
+
+  def set_countries_iso_alpha_2
+    @alpha_codes = {
+      "Austria" => 'at',
+      "Belgium" => 'be',
+      "Bulgaria" => 'bg',
+      "Croatia" => 'hr',
+      "Cyprus" => 'cy',
+      "Czech Republic" => 'cz',
+      "Denmark" => 'dk',
+      "Estonia" => 'ee',
+      "Finland" => 'fi',
+      "France" => 'fr',
+      "Germany" => 'de',
+      "Greece" => 'gr',
+      "Hungary" => 'hu',
+      "Iceland" => 'is',
+      "Ireland" => 'ie',
+      "Italy" => 'it',
+      "Latvia" => 'lv',
+      "Lithuania" => 'lt',
+      "Luxembourg" => 'lu',
+      "Malta" => 'mt',
+      "Netherlands" => 'nl',
+      "Norway" => 'no',
+      "Poland" => 'pl',
+      "Portugal" => 'pt',
+      "Romania" => 'ro',
+      "Slovakia" => 'sk',
+      "Slovenia" => 'si',
+      "Spain" => 'es',
+      "Sweden" => 'se',
+      "Switzerland" => 'ch'
+    }
   end
 end
