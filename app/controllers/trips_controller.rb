@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-before_action :set_trip, only: [ :show, :update, :destroy ]
+before_action :set_trip, only: [ :show, :update, :destroy, :get_notified, :disable_notifications ]
 
   def create
     # get trip variables from hidden for or not hidden form if user already sign in
@@ -61,19 +61,24 @@ before_action :set_trip, only: [ :show, :update, :destroy ]
 
   # Add a notification to a trip
   def get_notified
-    @notification = Notification.new
-    @trip = Trip.find(params[:id])
-    @notification.trip = @trip
-    @notification.save
     @trip.update(trip_params)
+    @trip.update(notify: true)
     @trip.save
     redirect_to trips_path, notice: 'Notification added'
+  end
+
+  def disable_notifications
+    @trip.notifications.all.destroy_all
+    @trip.new_daily_cases_threshold = 0
+    @trip.notify = false
+    @trip.save
+    redirect_to trips_path, alert: 'Notification removed'
   end
 
   private
 
   def trip_params
-    params.require(:trip).permit(:origin_id, :destination_id, :new_daily_cases_thresholds)
+    params.require(:trip).permit(:origin_id, :destination_id, :new_daily_cases_threshold)
   end
 
   def set_trip

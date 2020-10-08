@@ -12,7 +12,7 @@
         Form
           <%= simple_form_for(@trip, as: :trip, method: :patch, url: get_notified_trip_path(@trip)) do |f| %>
             <div class="form-inputs">
-             <%= f.input :new_daily_cases_thresholds %>
+             <%= f.input :new_daily_cases_threshold %>
             </div>
             <div class="modal-footer d-flex justify-content-center">
               <%= f.button :submit, "Notify me", class:"log-in-modal-btn" %>

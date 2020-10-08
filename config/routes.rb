@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do
       # Use the get_notified method as a post method
       patch :get_notified
+      patch :disable_notifications
+
     end
   end
 
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
       get :result
     end
   end
-  resources :notifications, only: [ :index, :destroy ]
+  resources :notifications, only: [ :index ]
 
   # for sidekiq
   require "sidekiq/web"

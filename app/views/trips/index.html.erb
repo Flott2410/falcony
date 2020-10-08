@@ -27,8 +27,8 @@
                 <% end %>
                 <div>
                   <!-- Use Trip's has_notification_for? method to check if a specific trip has a notification or not and render the bell accordingly -->
-                  <% if trip.has_notification_for?(trip) %>
-                    <%= link_to notification_path(trip.notification_id(trip)), method: :delete, remote: :true do %>
+                  <% if trip.notify %>
+                    <%= link_to disable_notifications_trip_path(trip), method: :patch, remote: :true do %>
                     <i class="fas fa-bell mr-1"></i>
                     <% end %>
                   <% else %>
