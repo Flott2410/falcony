@@ -91,11 +91,11 @@
 }
 
 
-.fa-bell {
+.fa-bell, .fa-pen-square {
   color: $heavy-blue-falcony;
   cursor: pointer;
 }
 
-.fa-bell:hover {
+.fa-bell:hover, .fa-pen-square:hover {
   color: $blue-falcony;
 }
