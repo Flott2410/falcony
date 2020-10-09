@@ -1,3 +1,12 @@
+// hide and show mobile vs desktop
+.content-desktop {display: block;}
+.content-mobile {display: none;}
+
+@media screen and (max-width: 768px) {
+  .content-desktop {display: none;}
+  .content-mobile {display: block;}
+}
+
 .container-width-1140 {
   width: 1140px;
   margin: 0 auto;
