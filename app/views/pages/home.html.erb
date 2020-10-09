@@ -70,7 +70,7 @@
               </div>
             <% else %>
               <div>
-                <a class="login-mobile-landing btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+                <a class="btn btn-default btn-rounded" style="color: white;" data-toggle="modal" data-target="#modalLoginForm">Login</a>
               </div>
             <% end %>
           </div>
@@ -117,6 +117,19 @@
       </div>
     </div>
 
+    <!-- Additional link to country index for mobile -->
+    <div class="content-mobile" style="background-color: #505050; text-align: center;">
+      <br>
+      <br>
+      <br>
+      <h4 style="color: white;">Find details for EU countries:</h4>
+      <%= link_to countries_path, class: "nav-link mr-2" do %>
+        <i class="fas fa-globe-europe fa-7x"></i>
+      <% end %>
+      <br>
+      <br>
+      <br>
+    </div>
   <!-- End of Section 1 -->
 
 
@@ -145,7 +158,7 @@
       <br>
       <div style="text-align: center">
         <img class="pics-landing-m" src="https://images.unsplash.com/photo-1593437886622-34881819f1d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1590&q=80" alt="Search">
-        <h3 class="mt-3">Stay informed 🗞</h3>
+        <h4 class="mt-3">Stay informed 🗞</h4>
         <p class="mx-3">Get all <strong>relevant info</strong> regarding the countries you want to travel to and from</p>
       </div>
       <br>
@@ -179,7 +192,7 @@
       <br>
       <div style="text-align: center">
         <div class="pics-landing-m"><%= image_tag "dive-deep-m.png" %></div>
-        <h3 class="mt-3" style="color: white;">Dive deep 🕵🏻‍♀️</h3>
+        <h4 class="mt-3" style="color: white;">Dive deep 🕵🏻‍♀️</h4>
         <p class="mx-3" style="color: white;">See <strong>detailed</strong> descriptions and <strong>actual Covid numbers</strong> for each country</p>
       </div>
       <br>
@@ -214,7 +227,7 @@
       <br>
       <div style="text-align: center">
         <img class="pics-landing-m" src="https://images.unsplash.com/photo-1590488357944-a71ec5581dfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80" alt="Search">
-        <h3 class="mt-3" >Save trips, get alerts ⚡️</h3>
+        <h4 class="mt-3" >Save trips, get alerts ⚡️</h4>
         <p class="mx-3" >Create a profile to <strong>save your preferred routes</strong> and <strong>get notfied</strong> if cases raise over the setted limit</p>
       </div>
       <br>

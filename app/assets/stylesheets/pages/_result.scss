@@ -1,3 +1,5 @@
+// Desktop
+
 .wrapper {
   height: 10vh;
 }
@@ -37,4 +39,20 @@
 
 .card-summary .card-summary-infos {
   padding: 24px;
+}
+
+// Mobile
+
+.logo-and-signin-mobile {
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.bookmark-result-mobile {
+  width: 100%;
+  height: 50px;
+  margin-top: 0px;
+  display: inline-block;
+  border-radius: 0px;
 }
