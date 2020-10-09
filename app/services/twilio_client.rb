@@ -15,6 +15,14 @@ class TwilioClient
     )
   end
 
+  def new_daily_cases_notification(user, message)
+    client.api.account.messages.create(
+      to: user.phone_number,
+      from: '+447445101924',
+      body: message
+    )
+  end
+
   private
 
   def account_sid
