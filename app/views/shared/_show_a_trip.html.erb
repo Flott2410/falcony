@@ -32,34 +32,30 @@
       <% if user_signed_in? %>
         <!-- Render the bookmark icon differently dependending on where the user comes from -->
 
-        <!-- If the user comes from homepage or result page -->
-        <% if URI(request.referer).path == "/" || URI(request.referer).path == "/countries/result" %>
-
-          <!-- Add subscription -->
+          <!-- Add bookmark -->
           <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
             <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
               <h2><i class="far fa-bookmark"></i></h2>
             <% end %>
           <% else %>
+
+                  <% if @trip.notify %>
+                    <a href="" data-toggle="modal" data-target="#modalNotification"><h2><i class="fas fa-pen-square mr-3"></i></h2></a>
+                    <%= render 'notification_modal' %>
+                    <%= link_to disable_notifications_trip_path(@trip), method: :patch, remote: :true do %>
+                      <h2><i class="fas fa-bell mr-3"></i></h2>
+                    <% end %>
+                  <% else %>
+                    <a href="" data-toggle="modal" data-target="#modalNotification"><h2><i class="far fa-bell mr-3"></i></h2></a>
+                    <%= render 'notification_modal' %>
+                  <% end %>
+
+
+
             <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
               <h2><i class="fas fa-bookmark"></i></h2>
             <% end %>
           <% end %>
-
-        <!-- If the user is not coming from homepage or result page -->
-        <% else %>
-
-          <!-- Add subscription -->
-          <% if @trip.bookmarked.nil? || @trip.bookmarked == false %>
-            <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-              <h2><i class="far fa-bookmark"></i></h2>
-            <% end %>
-          <% else %>
-            <%= link_to trip_path(@trip), method: :patch, remote: :true do %>
-              <h2><i class="fas fa-bookmark"></i></h2>
-            <% end %>
-          <% end %>
-        <% end %>
 
       <% else %>
       <!-- if user is not signed in -->

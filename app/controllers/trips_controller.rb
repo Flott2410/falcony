@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [ :show, :update, :destroy, :get_notified, :disable_notifications ]
   before_action :set_countries_iso_alpha_2, only: [ :show ]
-
+byeb
   def create
     # get trip variables from hidden for or not hidden form if user already sign in
     @trip = Trip.new(trip_params)
@@ -65,7 +65,7 @@ class TripsController < ApplicationController
     @trip.update(trip_params)
     @trip.update(notify: true)
     @trip.save
-    redirect_to trips_path, notice: 'Notification added'
+    redirect_to trip_path(@trip), notice: 'Notification added'
   end
 
   def disable_notifications
@@ -73,7 +73,7 @@ class TripsController < ApplicationController
     @trip.new_daily_cases_threshold = 0
     @trip.notify = false
     @trip.save
-    redirect_to trips_path, alert: 'Notification removed'
+    redirect_to trip_path(@trip), alert: 'Notification removed'
   end
 
   private
@@ -89,6 +89,7 @@ class TripsController < ApplicationController
   def bookmark
     @trip.bookmarked = true
     @trip.save
+
   end
 
   def unbookmark

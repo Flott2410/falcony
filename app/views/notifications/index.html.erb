@@ -4,7 +4,7 @@
 
       <h1 class="text-center">My notifications</h1>
         <% @trips.each do |trip| %>
-          <% @notifications = trip.notifications %>
+          <% @notifications = trip.notifications.order(updated_at: :desc).limit(1) %>
           <% @notifications.each do |notification| %>
             <div class="bg-light my-2 px-3">
               <p><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[notification.trip.destination.name]}/flat/32.png") %> | <%= notification.content %></p>
