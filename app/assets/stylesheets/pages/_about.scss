@@ -1,0 +1,35 @@
+.about-banner {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.vision-text {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .vision-text {font-size: 16px;}
+}
+
+.motivational-quote {
+  background-color: #F0ECF5;
+  font-style: italic;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  h3 {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+.about-container {
+  width: 80%;
+  margin: auto;
+}
+
+.image-about-sources {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+}
