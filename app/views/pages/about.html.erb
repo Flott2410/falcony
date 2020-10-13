@@ -1,0 +1,78 @@
+<!-- HEADER only for Mobile -->
+
+<div class="content-mobile">
+
+  <!-- Logo and login button -->
+  <div class="logo-and-signin-mobile">
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "logo/small_logo_white.svg", class: "logo_navbar_mobile" %>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= cl_image_tag ('https://res.cloudinary.com/dybiixki8/image/upload/v1600063129/falcony/default_avatar_hlklvm.png'), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Settings", edit_user_registration_path(current_user), class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      <% else %>
+        <div>
+          <a class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="banner">
+  <img src="<%= image_path "about_page/banner-safe.jpg"%>" alt="" class="about-banner">
+</div>
+
+<div class="about-container">
+  <h4 class="mt-5">About us</h4>
+  <hr style="height:2px;width:20%;text-align:left;margin-left:0;border-width:0;background-color:#035C93;">
+  <div class="d-flex">
+    <div class="vision-text pt-3 pb-5">
+    We are young international team from different countries in Europe that all love to travel. As the COVID sitation and rules from the different countries are changing so frequently we had to build a tool that helps to easily get an overview and let's you safe trips and receive notifications for sudden changes. Our mission is to provide easy-to-read but exhaustive information to allow safe travel decisions in the EU in times of COVID-19.
+    </div>
+    <div>
+      <img src="<%= image_path "about_page/team.jpg"%>" alt="Team picture" class="image-about-sources content-desktop">
+    </div>
+  </div>
+</div>
+
+<div class="motivational-quote">
+  <h3 class="about-container font-italic">“Not all those who wander are lost” ~ J.R.R. TOLKIEN</h3>
+</div>
+
+<div class="about-container">
+  <h4 class="mt-5">Our data sources</h4>
+  <hr style="height:2px;width:20%;text-align:left;margin-left:0;border-width:0;background-color:#035C93;">
+  <div class="d-flex mt-5">
+    <div class="vision-text pt-3 pb-5">
+    <strong>Travel indications:</strong>
+    <br>
+    The data is downloaded from Re-Open EU (https://reopen.europa.eu/en). A web platform to support a safe relaunch of travelling and tourism across Europe. It provides real-time information on borders and available means of transport and tourism services in EU Member States.
+    </div>
+    <div>
+      <img src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/21/banner1.jpg" alt="Re-Open EU" class="image-about-sources content-desktop">
+    </div>
+  </div>
+  <div class="d-flex mt-5 mb-5">
+    <div class="vision-text pt-3 pb-5">
+      <strong>COVID-19 numbers:</strong>
+      <br>
+      Max Roser, Hannah Ritchie, Esteban Ortiz-Ospina and Joe Hasell (2020) - “Coronavirus Pandemic (COVID-19)". Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/coronavirus'
+    </div>
+    <div>
+      <img src="https://ourworldindata.org/default-thumbnail.jpg" alt="Our world in data" class="image-about-sources content-desktop">
+    </div>
+  </div>
+</div>
