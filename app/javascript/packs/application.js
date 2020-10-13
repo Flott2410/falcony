@@ -29,7 +29,6 @@ import { initSelect2 } from '../components/init_select2';
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/map';
 import { get_daily_cases } from '../daily_cases_chart';
-import { toggleBell } from '../toggle_notification';
 import { stripeCoffee } from '../client';
 
 document.addEventListener('turbolinks:before-cache', () => {
@@ -41,7 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here
   initSelect2();
   initMapbox();
-  toggleBell();
   stripeCoffee();
   if (document.getElementById("chartdiv")) {
     get_daily_cases();

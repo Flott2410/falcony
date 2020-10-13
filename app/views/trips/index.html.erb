@@ -13,6 +13,8 @@
       </div>
       <div class="trips-grid">
         <% @trips.each do |trip| %>
+          <!-- Store the trip object inside @trip so that the model can have access to a specific trip's id -->
+          <% @trip = trip %>
             <div class="card card-shadow">
               <%= link_to trip_path(trip) do %>
                 <%= image_tag ("https://source.unsplash.com/1600x900/?#{trip.destination.name},landscape"), :class => "card-img-top" %>
@@ -24,8 +26,6 @@
                   </div>
                 <% end %>
                 <div>
-                  <!-- Link to unbookmark the trip -->
-                  <i class="far fa-bell mr-1"></i>
                   <%= link_to trip_path(trip), method: :delete, remote: :true do %>
                     <i class="fas fa-bookmark card-text-countries-name"></i>
                   <% end %>
