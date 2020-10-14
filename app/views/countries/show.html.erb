@@ -239,6 +239,13 @@
     </div>
   </div>
 
+  <!-- Backlink to country index page -->
+  <%= link_to countries_path do %>
+    <div class="back-button-contries-mobile">
+      Back <i class="fas fa-arrow-circle-left back-button-contries-mobile"></i>
+    </div>
+  <% end %>
+
   <!--  Banner with country name -->
   <div class="container banner-country-show" style="background-image: linear-gradient(rgba(10, 10, 10, 0.1), rgba(50, 50, 50, 0.05)), url('https://source.unsplash.com/1600x900/?<%= @country.name %>,landscape'); ">
     <!-- headline - country name and animated flag -->
@@ -248,18 +255,19 @@
     </div>
   </div>
 
-  <div>
+  <!-- Indications mobile -->
+  <div class="content-mobile-indications">
     <!-- categories to choose from - filter -->
     <div class="d-flex card-indications-menu justify-content-center align-items-center" role="tablist">
       <ul class="nav nav-tabs">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="travel-tab" data-toggle="tab" href="#travel" role="tab" aria-controls="travel" aria-selected="true">Travel</a>
+          <a class="nav-link active" id="travelm-tab" data-toggle="tab" href="#travelm" role="tab" aria-controls="travelm" aria-selected="true">Travel</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="healthSafety-tab" data-toggle="tab" href="#healthSafety" role="tab" aria-controls="healthSafety" aria-selected="false">Health & Safety</a>
+          <a class="nav-link" id="healthSafetym-tab" data-toggle="tab" href="#healthSafetym" role="tab" aria-controls="healthSafetym" aria-selected="false">Health & Safety</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services</a>
+          <a class="nav-link" id="servicesm-tab" data-toggle="tab" href="#servicesm" role="tab" aria-controls="servicesm" aria-selected="false">Services</a>
         </li>
       </ul>
     </div>
@@ -267,7 +275,7 @@
     <div class="tab-content" id="myTabContent">
 
       <!-- First tab - travel -->
-      <div class="tab-pane fade show active" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+      <div class="tab-pane fade show active" id="travelm" role="tabpanel" aria-labelledby="travelm-tab">
         <!-- Travel -->
         <div class="card-indications">
           <div class="mx-3 mt-2">
@@ -282,7 +290,7 @@
       </div>
 
       <!-- Second tab - Health & Safety -->
-      <div class="tab-pane fade" id="healthSafety" role="tabpanel" aria-labelledby="healthSafety-tab">
+      <div class="tab-pane fade" id="healthSafetym" role="tabpanel" aria-labelledby="healthSafetym-tab">
         <div class="card-indications">
           <div class="mx-3 mt-2">
           <% if @masks_in_public.description.length <= 1 && @masks_in_public.description.length <= 1 && @health_protocols.description.length <= 1 %>
@@ -305,7 +313,7 @@
       </div>
 
       <!-- Third tab - Services -->
-      <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+      <div class="tab-pane fade" id="servicesm" role="tabpanel" aria-labelledby="servicesm-tab">
         <div class="card-indications">
           <div class="mx-3 mt-2">
             <% if @gatherings.description.length <= 1 && @high_risk_areas.description.length <= 1 && @tourism_accomodations.description.length <= 1 && @restaurants.description.length <= 1 && @public_transportation.description.length <= 1 %>
@@ -356,6 +364,82 @@
       </div>
     </div>
   </div>
+
+  <div style="background-color: #035C93; height: 3px;"></div>
+
+  <!-- Cases mobile -->
+  <div class="">
+    <!-- <div class="cases-info mx-3"> -->
+    <div class="my-5 mx-3">
+      <h3>Case numbers - <%= @country.name %></h3>
+      <p style="font-size: 12px;"><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
+    </div>
+    <div class="daily-cases flex-grow-1 mt-5 mx-3">
+      <h4 class="mb-4">Daily Cases last week</h4>
+      <div>
+        <!-- icon (green arrow down, red arrow up) that shows trend -->
+        <% if @trend == true || @trend == false %>
+          <% if @trend == true %>
+            <p>Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-down fa-2x"style="color:green; margin-left: 10px;"></i></p>
+          <% elsif @trend == false %>
+            <p">Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-up fa-2x" style="color:red; margin-left: 10px;"></i></p>
+          <% else %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="cases-dashboard mx-3">
+      <div class="population d-flex justify-content-between">
+        <!-- population -->
+        <% if @population %>
+          <h4>Population</h4>
+          <p class="mr-5"><%== @population.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
+        <% end %>
+      </div>
+
+      <div class="total-cases d-flex justify-content-between">
+        <!-- total_cases -->
+        <% if @total_cases %>
+          <h4>Total cases</h4>
+          <p class="mr-5"><%== @total_cases.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
+        <% end %>
+      </div>
+
+      <div class="total-deaths d-flex justify-content-between">
+        <!-- total_deaths -->
+        <% if @total_deaths %>
+          <h4>Total deaths</h4>
+          <p class="mr-5"><%== @total_deaths.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse  %></P>
+        <% end %>
+      </div>
+
+      <div class="mortality d-flex justify-content-between">
+        <!-- mortality -->
+        <% if @mortality %>
+          <h4>Mortality</h4>
+          <p class="mr-5"><%== @mortality %>% ¹</p>
+        <% end %>
+      </div>
+
+      <div class="morbidity d-flex justify-content-between">
+        <!-- morbidity -->
+        <% if @morbidity %>
+          <h4>Morbidity</h4>
+          <p class="mr-5"><%== @morbidity %>% ²</p>
+        <% end %>
+      </div>
+
+      <% if @mortality %>
+        <p style="font-size: 12px;"><em>¹ % of population died from Covid-19</em></p>
+      <% end %>
+      <% if @morbidity %>
+        <p style="font-size: 12px;"><em>² % of infected died from Covid-19</em></p>
+      <% end %>
+
+    </div>
+  </div>
+
 
 </div>
 
