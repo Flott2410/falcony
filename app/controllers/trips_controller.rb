@@ -80,8 +80,6 @@ before_action :set_countries_iso_alpha_2, only: [ :show ]
     @trip.save
   end
 
-  private
-
   def set_countries_iso_alpha_2
     @alpha_codes = {
       "Austria" => 'at',

@@ -1,3 +1,12 @@
+// hide and show mobile vs desktop
+.content-desktop {display: block;}
+.content-mobile {display: none;}
+
+@media screen and (max-width: 768px) {
+  .content-desktop {display: none;}
+  .content-mobile {display: block;}
+}
+
 .container-width-1140 {
   width: 1140px;
   margin: 0 auto;
@@ -5,7 +14,7 @@
 
 .banner-country-show {
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -98,4 +107,21 @@ background:red;
 
 .card-case-d p {
   font-size: 20px;
+}
+
+.back-button-contries-mobile {
+  color: $heavy-blue-falcony;
+  text-align: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.last-updated-small {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.content-mobile-indications, h4 {
+  font-size: 18px;
 }

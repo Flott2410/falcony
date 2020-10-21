@@ -29,6 +29,7 @@ import { initSelect2 } from '../components/init_select2';
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/map';
 import { get_daily_cases } from '../daily_cases_chart';
+import { get_daily_cases_mobile } from '../daily_cases_chart_mobile';
 import { toggleBell } from '../toggle_notification';
 import { stripeCoffee } from '../client';
 
@@ -43,7 +44,10 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   toggleBell();
   stripeCoffee();
-  if (document.getElementById("chartdiv")) {
+  if (document.querySelector(".chartdiv")) {
     get_daily_cases();
+  }
+  if (document.querySelector(".chartdiv-m")) {
+    get_daily_cases_mobile();
   }
 });

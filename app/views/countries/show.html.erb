@@ -1,46 +1,291 @@
-<div class="container-fluid">
-  <div class="row">
 
-   <!--  Banner with country name -->
-    <div class="container banner-country-show" style="background-image: linear-gradient(rgba(10, 10, 10, 0.1), rgba(50, 50, 50, 0.05)), url('https://source.unsplash.com/1600x900/?<%= @country.name %>,landscape'); ">
-      <!-- headline - country name and animated flag -->
-      <div class="banner-country-title d-flex justify-content-center align-items-center">
-        <h1 class="mr-3"><%== @country.name %></h1>
-        <h1><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[@country.name]}/flat/64.png") %></h1>
+<!-- Desktop -->
+
+<div class="content-desktop">
+
+  <div class="container-fluid">
+    <div class="row">
+
+     <!--  Banner with country name -->
+      <div class="container banner-country-show" style="background-image: linear-gradient(rgba(10, 10, 10, 0.1), rgba(50, 50, 50, 0.05)), url('https://source.unsplash.com/1600x900/?<%= @country.name %>,landscape'); ">
+        <!-- headline - country name and animated flag -->
+        <div class="banner-country-title d-flex justify-content-center align-items-center">
+          <h1 class="mr-3"><%== @country.name %></h1>
+          <h1><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[@country.name]}/flat/64.png") %></h1>
+        </div>
       </div>
+    </div>
+
+    <!-- align to the right width -->
+    <div class="container-width-1140">
+      <!-- travel indications -->
+
+      <!-- categories to choose from - filter -->
+      <div class="d-flex card-indications-menu justify-content-center align-items-center" role="tablist">
+        <ul class="nav nav-tabs">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="travel-tab" data-toggle="tab" href="#travel" role="tab" aria-controls="travel" aria-selected="true">Travel</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="healthSafety-tab" data-toggle="tab" href="#healthSafety" role="tab" aria-controls="healthSafety" aria-selected="false">Health & Safety</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="myTabContent">
+
+        <!-- First tab - travel -->
+        <div class="tab-pane fade show active" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+          <!-- Travel -->
+          <div class="card-indications">
+            <div class="mx-3 mt-2">
+              <% if @open.description.length > 1 %>
+                <p><%== @open.description %></p>
+              <% else %>
+                <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second tab - Health & Safety -->
+        <div class="tab-pane fade" id="healthSafety" role="tabpanel" aria-labelledby="healthSafety-tab">
+          <div class="card-indications">
+            <div class="mx-3 mt-2">
+            <% if @masks_in_public.description.length <= 1 && @masks_in_public.description.length <= 1 && @health_protocols.description.length <= 1 %>
+              <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
+            <% end %>
+            <% if @masks_in_public.description.length > 1 %>
+              <h4>Duty to wear masks</h4>
+              <p><%== @masks_in_public.description %></p>
+            <% end %>
+            <% if @physical_distancing.description.length > 1 %>
+              <h4>Physical distancing measures</h4>
+              <p><%== @physical_distancing.description %></p>
+            <% end %>
+            <% if @health_protocols.description.length > 1 %>
+              <h4>Health protocols</h4>
+              <p><%== @health_protocols.description %></p>
+            <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third tab - Services -->
+        <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+          <div class="card-indications">
+            <div class="mx-3 mt-2">
+              <% if @gatherings.description.length <= 1 && @high_risk_areas.description.length <= 1 && @tourism_accomodations.description.length <= 1 && @restaurants.description.length <= 1 && @public_transportation.description.length <= 1 %>
+                <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
+              <% end %>
+              <% if @gatherings.description.length > 1 %>
+                 <h4>Rules for gatherings</h4>
+                <p><%== @gatherings.description %></p>
+              <% end %>
+              <% if @high_risk_areas.description.length > 1 %>
+                 <h4>Areas of high risks</h4>
+                <p><%== @high_risk_areas.description %></p>
+              <% end %>
+              <% if @tourism_accomodations.description.length > 1 %>
+                 <h4>Accomodations</h4>
+                <p><%== @tourism_accomodations.description %></p>
+              <% end %>
+              <% if @restaurants.description.length > 1 %>
+                <h4>Restaurants</h4>
+                <p><%== @restaurants.description %></p>
+              <% end %>
+              <% if @bars_cafes.description.length > 1 %>
+                <h4>Bars / Cafes</h4>
+                <p><%== @bars_cafes.description %></p>
+              <% end %>
+              <% if @beaches.description.length > 1 %>
+                <h4>Beaches</h4>
+                <p><%== @beaches.description %></p>
+              <% end %>
+              <% if @museums.description.length > 1 %>
+                <h4>Museums</h4>
+                <p><%== @museums.description %></p>
+              <% end %>
+              <% if @personal_services.description.length > 1 %>
+                <h4>Personal services</h4>
+                <p><%== @personal_services.description %></p>
+              <% end %>
+              <% if @places_of_worship.description.length > 1 %>
+                <h4>Places of worship</h4>
+                <p><%== @places_of_worship.description %></p>
+              <% end %>
+              <% if @public_transportation.description.length > 1 %>
+                <h4>Public transportation</h4>
+                <p><%== @public_transportation.description %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="wrapper"></div>
+
+
+      <!-- Second section -->
+      <div class="card-cases">
+        <!-- <div class="cases-info mx-3"> -->
+        <div class="d-flex justify-content-between mx-4">
+          <h3>COVID Dashboard - <%= @country.name %></h3>
+          <p><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
+        </div>
+        <div class="daily-cases flex-grow-1 mt-5">
+          <div class="d-flex justify-content-between mx-4">
+            <h4 class="mb-4">Daily cases since 15 Mar 2020</h4>
+            <div>
+              <!-- icon (green arrow down, red arrow up) that shows trend -->
+              <% if @trend == true || @trend == false %>
+                <% if @trend == true %>
+                  <p>Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-down fa-2x"style="color:green; margin-left: 10px;"></i></p>
+                <% elsif @trend == false %>
+                  <p">Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-up fa-2x" style="color:red; margin-left: 10px;"></i></p>
+                <% else %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="chartdiv"></div>
+        </div>
+        <hr>
+        <div class="cases-dashboard d-flex justify-content-sm-between">
+          <div class="card-case-d population">
+            <!-- population -->
+            <% if @population %>
+              <h4>Population</h4>
+              <p><%== @population.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
+            <% end %>
+          </div>
+
+          <div class="card-case-d total-cases">
+            <!-- total_cases -->
+            <% if @total_cases %>
+              <h4>Total cases</h4>
+              <p><%== @total_cases.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
+            <% end %>
+          </div>
+
+          <div class="card-case-d total-deaths">
+            <!-- total_deaths -->
+            <% if @total_deaths %>
+              <h4>Total deaths</h4>
+              <p><%== @total_deaths.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse  %></P>
+            <% end %>
+          </div>
+
+          <div class="card-case-d mortality">
+            <!-- mortality -->
+            <% if @mortality %>
+              <h4>Mortality</h4>
+              <p><%== @mortality %>%</p>
+              <small>% of population died</small><br>
+              <small>from Covid-19</small>
+            <% end %>
+          </div>
+
+          <div class="card-case-d morbidity">
+            <!-- morbidity -->
+            <% if @morbidity %>
+              <h4>Morbidity</h4>
+              <p><%== @morbidity %>%</p>
+              <small>% of infected died</small><br>
+              <small>from Covid-19</small>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper"></div>
+  </div>
+</div>
+
+
+<!-- Mobile -->
+
+<div class="content-mobile">
+
+  <!-- Logo and login button -->
+  <div class="logo-and-signin-mobile mb-3">
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "logo/small_logo_white.svg", class: "logo_navbar_mobile" %>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= cl_image_tag ('https://res.cloudinary.com/dybiixki8/image/upload/v1600063129/falcony/default_avatar_hlklvm.png'), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Settings", edit_user_registration_path(current_user), class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      <% else %>
+        <div>
+          <a class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <!-- align to the right width -->
-  <div class="container-width-1140">
-    <!-- travel indications -->
+  <!-- Backlink to country index page -->
+  <div class="d-flex justify-content-between align-items-end">
+    <div>
+      <p class="last-updated-small"><em>Last updated on <%== @date_indications.strftime('%-d %b %Y') %></em></p>
+    </div>
+    <div>
+      <%= link_to countries_path do %>
+        <div class="back-button-contries-mobile">
+          Back <i class="fas fa-arrow-circle-left back-button-contries-mobile"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
+  <!--  Banner with country name -->
+  <div class="container banner-country-show" style="background-image: linear-gradient(rgba(10, 10, 10, 0.1), rgba(50, 50, 50, 0.05)), url('https://source.unsplash.com/1600x900/?<%= @country.name %>,landscape'); ">
+    <!-- headline - country name and animated flag -->
+    <div class="banner-country-title d-flex justify-content-center align-items-center">
+      <h1 class="mr-3"><%== @country.name %></h1>
+      <h1><%= image_tag ("https://www.countryflags.io/#{@alpha_codes[@country.name]}/flat/64.png") %></h1>
+    </div>
+  </div>
+
+  <!-- Indications mobile -->
+  <div class="content-mobile-indications">
     <!-- categories to choose from - filter -->
     <div class="d-flex card-indications-menu justify-content-center align-items-center" role="tablist">
       <ul class="nav nav-tabs">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="travel-tab" data-toggle="tab" href="#travel" role="tab" aria-controls="travel" aria-selected="true">Travel</a>
+          <a class="nav-link active" id="travelm-tab" data-toggle="tab" href="#travelm" role="tab" aria-controls="travelm" aria-selected="true">Travel</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="healthSafety-tab" data-toggle="tab" href="#healthSafety" role="tab" aria-controls="healthSafety" aria-selected="false">Health & Safety</a>
+          <a class="nav-link" id="healthSafetym-tab" data-toggle="tab" href="#healthSafetym" role="tab" aria-controls="healthSafetym" aria-selected="false">Health & Safety</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services</a>
+          <a class="nav-link" id="servicesm-tab" data-toggle="tab" href="#servicesm" role="tab" aria-controls="servicesm" aria-selected="false">Services</a>
         </li>
       </ul>
     </div>
 
-
     <div class="tab-content" id="myTabContent">
 
-
       <!-- First tab - travel -->
-      <div class="tab-pane fade show active" id="travel" role="tabpanel" aria-labelledby="travel-tab">
+      <div class="tab-pane fade show active" id="travelm" role="tabpanel" aria-labelledby="travelm-tab">
         <!-- Travel -->
         <div class="card-indications">
           <div class="mx-3 mt-2">
             <% if @open.description.length > 1 %>
-              <h4>Flight restrictions</h4>
               <p><%== @open.description %></p>
             <% else %>
               <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
@@ -50,7 +295,7 @@
       </div>
 
       <!-- Second tab - Health & Safety -->
-      <div class="tab-pane fade" id="healthSafety" role="tabpanel" aria-labelledby="healthSafety-tab">
+      <div class="tab-pane fade" id="healthSafetym" role="tabpanel" aria-labelledby="healthSafetym-tab">
         <div class="card-indications">
           <div class="mx-3 mt-2">
           <% if @masks_in_public.description.length <= 1 && @masks_in_public.description.length <= 1 && @health_protocols.description.length <= 1 %>
@@ -73,7 +318,7 @@
       </div>
 
       <!-- Third tab - Services -->
-      <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+      <div class="tab-pane fade" id="servicesm" role="tabpanel" aria-labelledby="servicesm-tab">
         <div class="card-indications">
           <div class="mx-3 mt-2">
             <% if @gatherings.description.length <= 1 && @high_risk_areas.description.length <= 1 && @tourism_accomodations.description.length <= 1 && @restaurants.description.length <= 1 && @public_transportation.description.length <= 1 %>
@@ -122,83 +367,87 @@
           </div>
         </div>
       </div>
-
-    <div class="wrapper"></div>
-
-
-    <!-- Second section -->
-    <div class="card-cases">
-      <!-- <div class="cases-info mx-3"> -->
-      <div class="d-flex justify-content-between mx-4">
-        <h3>Covid-19 Dashboard - <%= @country.name %></h3>
-        <p><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
-      </div>
-      <div class="daily-cases flex-grow-1 mt-5">
-        <div class="d-flex justify-content-between mx-4">
-          <h4 class="mb-4">Daily cases since 15 Mar 2020</h4>
-          <div>
-            <!-- icon (green arrow down, red arrow up) that shows trend -->
-            <% if @trend == true || @trend == false %>
-              <% if @trend == true %>
-                <p>Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-down fa-2x"style="color:green; margin-left: 10px;"></i></p>
-              <% elsif @trend == false %>
-                <p">Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-up fa-2x" style="color:red; margin-left: 10px;"></i></p>
-              <% else %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-        <div id="chartdiv"></div>
-      </div>
-      <hr>
-      <div class="cases-dashboard d-flex justify-content-sm-between">
-        <div class="card-case-d population">
-          <!-- population -->
-          <% if @population %>
-            <h4>Population</h4>
-            <p><%== @population.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
-          <% end %>
-        </div>
-
-        <div class="card-case-d total-cases">
-          <!-- total_cases -->
-          <% if @total_cases %>
-            <h4>Total cases</h4>
-            <p><%== @total_cases.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
-          <% end %>
-        </div>
-
-        <div class="card-case-d total-deaths">
-          <!-- total_deaths -->
-          <% if @total_deaths %>
-            <h4>Total deaths</h4>
-            <p><%== @total_deaths.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse  %></P>
-          <% end %>
-        </div>
-
-        <div class="card-case-d mortality">
-          <!-- mortality -->
-          <% if @mortality %>
-            <h4>Mortality</h4>
-            <p><%== @mortality %>%</p>
-            <small>% of population died</small><br>
-            <small>from Covid-19</small>
-          <% end %>
-        </div>
-
-        <div class="card-case-d morbidity">
-          <!-- morbidity -->
-          <% if @morbidity %>
-            <h4>Morbidity</h4>
-            <p><%== @morbidity %>%</p>
-            <small>% of infected died</small><br>
-            <small>from Covid-19</small>
-          <% end %>
-        </div>
-      </div>
     </div>
-
   </div>
 
-  <div class="wrapper"></div>
+  <div style="background-color: #035C93; height: 3px;"></div>
+
+  <!-- Cases mobile -->
+  <div class="">
+    <!-- <div class="cases-info mx-3"> -->
+    <div class="mt-5 mb-2 mx-3">
+      <h3>COVID dashboard - <%= @country.name %></h3>
+      <p style="font-size: 12px;"><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
+    </div>
+    <div class="daily-cases flex-grow-1 mx-3">
+      <h4 class="mb-4">Daily cases</h4>
+      <div class="chartdiv-m"></div>
+    </div>
+    <div class="mx-3 d-flex justify-content-between mt-5">
+      <h4 class="mb-4">Trend last 2 weeks  </h4>
+      <!-- icon (green arrow down, red arrow up) that shows trend -->
+      <% if @trend == true || @trend == false %>
+        <% if @trend == true %>
+          <i class="fas fa-arrow-alt-circle-down fa-2x mr-5"style="color:green; margin-left: 10px;"></i>
+        <% elsif @trend == false %>
+          <i class="fas fa-arrow-alt-circle-up fa-2x mr-5" style="color:red; margin-left: 10px;"></i>
+        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <hr>
+    <div class="cases-dashboard mx-3">
+      <div class="population d-flex justify-content-between">
+        <!-- population -->
+        <% if @population %>
+          <h4>Population</h4>
+          <p class="mr-5"><%== @population.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
+        <% end %>
+      </div>
+
+      <div class="total-cases d-flex justify-content-between">
+        <!-- total_cases -->
+        <% if @total_cases %>
+          <h4>Total cases</h4>
+          <p class="mr-5"><%== @total_cases.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %></p>
+        <% end %>
+      </div>
+
+      <div class="total-deaths d-flex justify-content-between">
+        <!-- total_deaths -->
+        <% if @total_deaths %>
+          <h4>Total deaths</h4>
+          <p class="mr-5"><%== @total_deaths.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse  %></P>
+        <% end %>
+      </div>
+
+      <div class="mortality d-flex justify-content-between">
+        <!-- mortality -->
+        <% if @mortality %>
+          <h4>Mortality</h4>
+          <p class="mr-5"><%== @mortality %>% ¹</p>
+        <% end %>
+      </div>
+
+      <div class="morbidity d-flex justify-content-between">
+        <!-- morbidity -->
+        <% if @morbidity %>
+          <h4>Morbidity</h4>
+          <p class="mr-5"><%== @morbidity %>% ²</p>
+        <% end %>
+      </div>
+
+      <% if @mortality %>
+        <p style="font-size: 12px;"><em>¹ % of population died from Covid-19</em></p>
+      <% end %>
+      <% if @morbidity %>
+        <p style="font-size: 12px;"><em>² % of infected died from Covid-19</em></p>
+      <% end %>
+
+    </div>
+  </div>
+
+
 </div>
+
