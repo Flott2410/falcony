@@ -192,6 +192,16 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show, :result ]
     gon.daily_cases = @single_country_values
     # @single_country_data[var_name] = @single_country_values
 
+    # indications last updated
+    @date_indications = @country.indications.last.updated_at
+
+    # new cases last week
+    tmp_new_cases_last_week = Case.where(country: @country).where(date: 7.day.ago..@update_date)
+    new_cases_last_week = []
+    tmp_new_cases_last_week.each do |cases|
+      new_cases_last_week << cases.new_cases
+    end
+
   end
 
   def result
@@ -224,7 +234,8 @@ before_action :set_countries_iso_alpha_2, only: [ :index, :show, :result ]
         origin_id: session[:create_trip_origin_id],
         destination_id: session[:create_trip_destination_id],
         user: current_user,
-        bookmarked: false
+        bookmarked: false,
+        new_daily_cases_thresholds: 0
         )
     if user_signed_in?
       @trip.save

@@ -43,7 +43,6 @@
           <div class="card-indications">
             <div class="mx-3 mt-2">
               <% if @open.description.length > 1 %>
-                <h4>Flight restrictions</h4>
                 <p><%== @open.description %></p>
               <% else %>
                 <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
@@ -135,7 +134,7 @@
       <div class="card-cases">
         <!-- <div class="cases-info mx-3"> -->
         <div class="d-flex justify-content-between mx-4">
-          <h3>Covid-19 Dashboard - <%= @country.name %></h3>
+          <h3>COVID Dashboard - <%= @country.name %></h3>
           <p><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
         </div>
         <div class="daily-cases flex-grow-1 mt-5">
@@ -153,7 +152,7 @@
               <% end %>
             </div>
           </div>
-          <div id="chartdiv"></div>
+          <div class="chartdiv"></div>
         </div>
         <hr>
         <div class="cases-dashboard d-flex justify-content-sm-between">
@@ -240,11 +239,18 @@
   </div>
 
   <!-- Backlink to country index page -->
-  <%= link_to countries_path do %>
-    <div class="back-button-contries-mobile">
-      Back <i class="fas fa-arrow-circle-left back-button-contries-mobile"></i>
+  <div class="d-flex justify-content-between align-items-end">
+    <div>
+      <p class="last-updated-small"><em>Last updated on <%== @date_indications.strftime('%-d %b %Y') %></em></p>
     </div>
-  <% end %>
+    <div>
+      <%= link_to countries_path do %>
+        <div class="back-button-contries-mobile">
+          Back <i class="fas fa-arrow-circle-left back-button-contries-mobile"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <!--  Banner with country name -->
   <div class="container banner-country-show" style="background-image: linear-gradient(rgba(10, 10, 10, 0.1), rgba(50, 50, 50, 0.05)), url('https://source.unsplash.com/1600x900/?<%= @country.name %>,landscape'); ">
@@ -280,7 +286,6 @@
         <div class="card-indications">
           <div class="mx-3 mt-2">
             <% if @open.description.length > 1 %>
-              <h4>Flight restrictions</h4>
               <p><%== @open.description %></p>
             <% else %>
               <p>Sorry, there is no information available. Most probably there are no restrictions. Check with the local government website.</p>
@@ -370,24 +375,27 @@
   <!-- Cases mobile -->
   <div class="">
     <!-- <div class="cases-info mx-3"> -->
-    <div class="my-5 mx-3">
-      <h3>Case numbers - <%= @country.name %></h3>
+    <div class="mt-5 mb-2 mx-3">
+      <h3>COVID dashboard - <%= @country.name %></h3>
       <p style="font-size: 12px;"><em>Last updated on <%== @update_date.strftime('%-d %b %Y') %></em></p>
     </div>
-    <div class="daily-cases flex-grow-1 mt-5 mx-3">
-      <h4 class="mb-4">Daily Cases last week</h4>
-      <div>
-        <!-- icon (green arrow down, red arrow up) that shows trend -->
-        <% if @trend == true || @trend == false %>
-          <% if @trend == true %>
-            <p>Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-down fa-2x"style="color:green; margin-left: 10px;"></i></p>
-          <% elsif @trend == false %>
-            <p">Trend last 2 weeks  <i class="fas fa-arrow-alt-circle-up fa-2x" style="color:red; margin-left: 10px;"></i></p>
-          <% else %>
-          <% end %>
-        <% end %>
-      </div>
+    <div class="daily-cases flex-grow-1 mx-3">
+      <h4 class="mb-4">Daily cases</h4>
+      <div class="chartdiv-m"></div>
     </div>
+    <div class="mx-3 d-flex justify-content-between mt-5">
+      <h4 class="mb-4">Trend last 2 weeks  </h4>
+      <!-- icon (green arrow down, red arrow up) that shows trend -->
+      <% if @trend == true || @trend == false %>
+        <% if @trend == true %>
+          <i class="fas fa-arrow-alt-circle-down fa-2x mr-5"style="color:green; margin-left: 10px;"></i>
+        <% elsif @trend == false %>
+          <i class="fas fa-arrow-alt-circle-up fa-2x mr-5" style="color:red; margin-left: 10px;"></i>
+        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+
     <hr>
     <div class="cases-dashboard mx-3">
       <div class="population d-flex justify-content-between">
