@@ -85,9 +85,6 @@
     <!-- First section -->
     <div class="card mb-5 col-12 p-0 card-shadow">
       <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="https://images.unsplash.com/photo-1558617015-8564d52a638f" class="card-img" alt="...">
-        </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">
@@ -111,7 +108,7 @@
                 <p>
                   <i class="fas fa-plane text-warning mr-1"></i>
                   You can travel with limitations
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationOpen" aria-expanded="false" aria-controls="collapseDestinationOpen"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationOpen" aria-expanded="false" aria-controls="collapseDestinationOpen"></i>
                     <div id="collapseDestinationOpen" class="collapse" aria-labelledby="headingDestinationOpen" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_open.description %>
@@ -138,7 +135,7 @@
                 <p>
                   <i class="fas fa-street-view text-warning mr-2"></i>
                   There are some risk areas under lockdown
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestionationAreas" aria-expanded="true" aria-controls="collapseDestionationAreas"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestionationAreas" aria-expanded="true" aria-controls="collapseDestionationAreas"></i>
                     <div id="collapseDestionationAreas" class="collapse" aria-labelledby="headingDestionationAreas" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_high_risk_areas.description %>
@@ -160,7 +157,7 @@
                 <p>
                   <i class="fas fa-house-user text-danger mr-1"></i>
                   Quarantine needed
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
                     <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_quarantine.description %>
@@ -171,7 +168,7 @@
                 <p>
                   <i class="fas fa-house-user text-warning mr-1"></i>
                   Quarantine is requested in some circumstances
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
                     <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_quarantine.description %>
@@ -193,7 +190,7 @@
                 <p>
                   <i class="fas fa-vial text-danger mr-2"></i>
                   You need a test to enter
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
                     <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_test.description %>
@@ -204,7 +201,7 @@
                 <p>
                   <i class="fas fa-vial text-warning mr-2"></i>
                   Testing is requested in some circumstances
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
                     <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_test.description %>
@@ -216,6 +213,9 @@
 
           </div>
         </div>
+        <div class="col-md-4">
+          <img src="<%= image_path "result_page/travel_1.jpg"%>" alt="Travelling" class="card-img">
+        </div>
       </div>
     </div>
 
@@ -224,7 +224,7 @@
     <div class="card mb-5 col-12 p-0 card-shadow">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="https://images.unsplash.com/photo-1563183969-a63149297766" class="card-img" alt="...">
+          <img src="<%= image_path "result_page/travel_2.jpg"%>" alt="Travelling" class="card-img">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -249,7 +249,7 @@
                 <p>
                   <i class="fas fa-utensils text-warning mr-2"></i>
                   Restaurants are open with limitations
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationRestaurants" aria-expanded="true" aria-controls="collapseDestinationRestaurants"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationRestaurants" aria-expanded="true" aria-controls="collapseDestinationRestaurants"></i>
                     <div id="collapseDestinationRestaurants" class="collapse" aria-labelledby="headingDestinationRestaurants" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_restaurants.description %>
@@ -276,7 +276,7 @@
                 <p>
                   <i class="fas fa-beer text-warning mr-2"></i>
                   Bars and cafes are open with limitations
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
                     <div id="collapseDestinationBars" class="collapse" aria-labelledby="headingDestinationBars" data-parent="#accordion">
                       <div class="card card-body">
                         <%==   @destination_restaurants.description %>
@@ -303,7 +303,7 @@
                 <p>
                   <i class="fas fa-landmark text-warning mr-1"></i>
                   Museums & heritage sites are open with limitations
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationMuseums" aria-expanded="true" aria-controls="collapseDestinationMuseums"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationMuseums" aria-expanded="true" aria-controls="collapseDestinationMuseums"></i>
                     <div id="collapseDestinationMuseums" class="collapse" aria-labelledby="headingDestinationMuseums" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_museums.description %>
@@ -319,7 +319,7 @@
                 <p>
                   <i class="fas fa-bus text-warning mr-1"></i>
                   Restrictions on social gatherings
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationGatherings" aria-expanded="true" aria-controls="collapseDestinationGatherings"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationGatherings" aria-expanded="true" aria-controls="collapseDestinationGatherings"></i>
                     <div id="collapseDestinationGatherings" class="collapse" aria-labelledby="headingDestinationGatherings" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @destination_gatherings.description %>
@@ -368,7 +368,7 @@
                 <p>
                   <i class="fas fa-plane text-warning mr-1"></i>
                   You can travel with limitations
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginOpen" aria-expanded="true" aria-controls="collapseOriginOpen"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginOpen" aria-expanded="true" aria-controls="collapseOriginOpen"></i>
                     <div id="collapseOriginOpen" class="collapse" aria-labelledby="headingOriginOpen" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @origin_open.description %>
@@ -390,7 +390,7 @@
                 <p>
                   <i class="fas fa-house-user text-danger mr-1"></i>
                   Quarantine needed
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
                     <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @origin_quarantine.description %>
@@ -401,7 +401,7 @@
                 <p>
                   <i class="fas fa-house-user text-warning mr-1"></i>
                   Quarantine is requested in some circumstances
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
                     <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @origin_quarantine.description %>
@@ -423,7 +423,7 @@
                 <p>
                   <i class="fas fa-vial text-danger mr-2"></i>
                   You need a test to enter
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
                     <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @origin_test.description %>
@@ -434,7 +434,7 @@
                 <p>
                   <i class="fas fa-vial text-warning mr-2"></i>
                   Testing is requested in some circumstances
-                  <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
+                  <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
                     <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
                       <div class="card card-body">
                         <%== @origin_test.description %>
@@ -447,7 +447,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <img src="https://images.unsplash.com/photo-1543429257-3eb0b65d9c58" class="card-img" alt="...">
+          <img src="<%= image_path "result_page/travel_3.jpg"%>" alt="Travelling" class="card-img">
         </div>
       </div>
     </div>
@@ -557,7 +557,7 @@
               <p>
                 <i class="fas fa-plane text-warning mr-1"></i>
                 You can travel with limitations
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationOpen" aria-expanded="false" aria-controls="collapseDestinationOpen"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationOpen" aria-expanded="false" aria-controls="collapseDestinationOpen"></i>
                   <div id="collapseDestinationOpen" class="collapse" aria-labelledby="headingDestinationOpen" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_open.description %>
@@ -584,7 +584,7 @@
               <p>
                 <i class="fas fa-street-view text-warning mr-2"></i>
                 There are some risk areas under lockdown
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestionationAreas" aria-expanded="true" aria-controls="collapseDestionationAreas"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestionationAreas" aria-expanded="true" aria-controls="collapseDestionationAreas"></i>
                   <div id="collapseDestionationAreas" class="collapse" aria-labelledby="headingDestionationAreas" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_high_risk_areas.description %>
@@ -606,7 +606,7 @@
               <p>
                 <i class="fas fa-house-user text-danger mr-1"></i>
                 Quarantine needed
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
                   <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_quarantine.description %>
@@ -617,7 +617,7 @@
               <p>
                 <i class="fas fa-house-user text-warning mr-1"></i>
                 Quarantine is requested in some circumstances
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationQuarantine" aria-expanded="true" aria-controls="collapseDestinationQuarantine"></i>
                   <div id="collapseDestinationQuarantine" class="collapse" aria-labelledby="headingDestinationQuarantine" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_quarantine.description %>
@@ -639,7 +639,7 @@
               <p>
                 <i class="fas fa-vial text-danger mr-2"></i>
                 You need a test to enter
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
                   <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_test.description %>
@@ -650,7 +650,7 @@
               <p>
                 <i class="fas fa-vial text-warning mr-2"></i>
                 Testing is requested in some circumstances
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationTest" aria-expanded="true" aria-controls="collapseDestinationTest"></i>
                   <div id="collapseDestinationTest" class="collapse" aria-labelledby="headingDestinationTest" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_test.description %>
@@ -697,7 +697,7 @@
               <p>
                 <i class="fas fa-utensils text-warning mr-2"></i>
                 Restaurants are open with limitations
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationRestaurants" aria-expanded="true" aria-controls="collapseDestinationRestaurants"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationRestaurants" aria-expanded="true" aria-controls="collapseDestinationRestaurants"></i>
                   <div id="collapseDestinationRestaurants" class="collapse" aria-labelledby="headingDestinationRestaurants" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_restaurants.description %>
@@ -724,7 +724,7 @@
               <p>
                 <i class="fas fa-beer text-warning mr-2"></i>
                 Bars and cafes are open with limitations
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationBars" aria-expanded="true" aria-controls="collapseDestinationBars"></i>
                   <div id="collapseDestinationBars" class="collapse" aria-labelledby="headingDestinationBars" data-parent="#accordion">
                     <div class="card-body-m">
                       <%==   @destination_restaurants.description %>
@@ -751,7 +751,7 @@
               <p>
                 <i class="fas fa-landmark text-warning mr-1"></i>
                 Museums & heritage sites are open with limitations
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationMuseums" aria-expanded="true" aria-controls="collapseDestinationMuseums"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationMuseums" aria-expanded="true" aria-controls="collapseDestinationMuseums"></i>
                   <div id="collapseDestinationMuseums" class="collapse" aria-labelledby="headingDestinationMuseums" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_museums.description %>
@@ -767,7 +767,7 @@
               <p>
                 <i class="fas fa-bus text-warning mr-1"></i>
                 Restrictions on social gatherings
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseDestinationGatherings" aria-expanded="true" aria-controls="collapseDestinationGatherings"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseDestinationGatherings" aria-expanded="true" aria-controls="collapseDestinationGatherings"></i>
                   <div id="collapseDestinationGatherings" class="collapse" aria-labelledby="headingDestinationGatherings" data-parent="#accordion">
                     <div class="card-body-m">
                       <%== @destination_gatherings.description %>
@@ -820,7 +820,7 @@
               <p>
                 <i class="fas fa-plane text-warning mr-1"></i>
                 You can travel with limitations
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginOpen" aria-expanded="true" aria-controls="collapseOriginOpen"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginOpen" aria-expanded="true" aria-controls="collapseOriginOpen"></i>
                   <div id="collapseOriginOpen" class="collapse" aria-labelledby="headingOriginOpen" data-parent="#accordion">
                     <div class="card card-body">
                       <%== @origin_open.description %>
@@ -842,7 +842,7 @@
               <p>
                 <i class="fas fa-house-user text-danger mr-1"></i>
                 Quarantine needed
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
                   <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
                     <div class="card card-body">
                       <%== @origin_quarantine.description %>
@@ -853,7 +853,7 @@
               <p>
                 <i class="fas fa-house-user text-warning mr-1"></i>
                 Quarantine is requested in some circumstances
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginQuarantine" aria-expanded="true" aria-controls="collapseOriginQuarantine"></i>
                   <div id="collapseOriginQuarantine" class="collapse" aria-labelledby="headingOriginQuarantine" data-parent="#accordion">
                     <div class="card card-body">
                       <%== @origin_quarantine.description %>
@@ -875,7 +875,7 @@
               <p>
                 <i class="fas fa-vial text-danger mr-2"></i>
                 You need a test to enter
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
                   <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
                     <div class="card card-body">
                       <%== @origin_test.description %>
@@ -886,7 +886,7 @@
               <p>
                 <i class="fas fa-vial text-warning mr-2"></i>
                 Testing is requested in some circumstances
-                <i class="far fa-question-circle text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
+                <i class="fa fa-arrow-circle-down text-black-50" data-toggle="collapse" data-target="#collapseOriginTest" aria-expanded="true" aria-controls="collapseOriginTest"></i>
                   <div id="collapseOriginTest" class="collapse" aria-labelledby="headingOriginTest" data-parent="#accordion">
                     <div class="card card-body">
                       <%== @origin_test.description %>
